@@ -1,0 +1,140 @@
+@font-face{
+    font-family: quicksandregular;
+    src:url(../fonts/quicksand-regular.ttf);
+}
+@font-face{
+    font-family: quicksandlight;
+    src:url(../fonts/quicksand-light.ttf);
+
+}
+@font-face{
+    font-family: quicksandmedium;
+    src:url(../fonts/quicksand-medium.ttf);
+
+}
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    position: relative;
+    background-color: #f0f2f2;
+}
+
+.allContent_Container{
+    position: relative;
+    /*border:1px solid red;*/
+    width: 100%;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    height: 580px;
+    justify-content: space-between;
+    background-image: url("../img/cai_backdropthree.png");
+
+}
+
+.container_Multiplication{
+    order: 1;
+    border-bottom: 1px solid #cccccc;
+    position: relative;
+   flex-basis: 32%;
+    /*background-color: yellow;*/
+    display: flex;
+    flex-direction: row;
+    justify-content:flex-start;
+    margin-top: 12px;
+
+}
+
+.container_Division{
+     order: 2;
+    border-bottom: 1px solid #cccccc;
+     position: relative;
+    flex-basis: 32%;
+    /*background-color: #3cabd0;*/
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin-top: 12px;
+
+ }
+
+.container_Fractions{
+    order: 3;
+    border-bottom: 1px solid #cccccc;
+    position: relative;
+    flex-basis: 32%;
+    /*background-color: #ff8b85;*/
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin-top: 12px;
+
+}
+
+.topic_picture_Container{
+    position: relative;
+    order:1;
+    width: 200px;
+    margin-left: 40px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.topic_link_Container{
+    position: relative;
+    order:2;
+    /*border: 1px solid orange;*/
+    width: 480px;
+    margin-left: 15px;
+    margin-bottom: 10px;
+}
+
+.topic_buttons_Container{
+    position: relative;
+    order:3;
+    /*border: 1px solid darkviolet;*/
+    width: 610px;
+    margin-bottom: 10px;
+    margin-right: 80px;
+}
+
+#picture_Multiplication{
+    background-image: url("../img/multiplication.png");
+    background-repeat: no-repeat;
+
+}
+
+#picture_Division{
+    background-image: url("../img/division.png");
+    background-repeat: no-repeat;
+}
+
+#picture_Fractions{
+    background-image: url("../img/fractions.png");
+    background-repeat: no-repeat;
+}
+
+.topic_link{
+    font-family: quicksandregular;
+    font-size: 25px;
+    color: #6f7071;
+}
+.topic_link:hover{
+    color: #3cabd0;
+}
+
+.topic_link_labels{
+    font-family: quicksandlight;
+    font-size: 15px;
+    color: #6f7071;
+}
+
+.learn_control_label{
+    font-family: quicksandlight;
+    font-size: 18px;
+    color: #6f7071;
+    margin-left: 18px;
+    /*border: 1px solid red;*/
+
+}

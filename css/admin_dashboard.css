@@ -1,0 +1,232 @@
+@font-face{
+    font-family: quicksandlight;
+    src:url(../fonts/quicksand-light.ttf);
+
+}
+@font-face{
+    font-family: quicksandregular;
+    src:url(../fonts/quicksand-regular.ttf);
+
+}
+@font-face{
+    font-family: quicksandmedium;
+    src:url(../fonts/quicksand-medium.ttf);
+
+}
+
+/*html, body {*/
+    /*height:100%;*/
+    /*width:100%;*/
+/*}*/
+
+/*.wrapper_admin_dashboard{*/
+    /*overflow-y: scroll;*/
+    /*position: relative;*/
+    /*height: 1000px;*/
+/*}*/
+
+.div_dashboardLabel{
+    color: #6f7071;
+    display: flex;
+    /*border:3px solid #ffe423;*/
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#label_schoolName{
+    margin-left: 10px;
+}
+
+#label_Dashboard{
+    margin-left: 60%;
+}
+
+
+.container_status{
+    position: relative;
+    height: 200px;
+    display: flex;
+    background-color: #fafbfb;
+    margin-left: 20px;
+    margin-right: 20px;
+    padding:3px;
+    justify-content: space-around;
+    box-shadow: 1px 5px #f0f2f2;
+}
+
+.div_studentCount {
+    flex-basis: 23%;
+    order: 1;
+    /*border: 1px solid blue;*/
+    background-color: #92c142;
+    max-height: 90%;
+    margin-top: 4%;
+}
+
+.div_studentCount img{
+    position: relative;
+    width: 90px;
+    height: 90px;
+    top: 45px;
+    left: 75px;
+}
+
+#label_Students{
+    position: relative;
+    font-family: quicksandmedium;
+    color: #fdfbfb;
+    font-size: 23px;
+    top: 38px;
+    left: 15px;
+}
+
+.div_teacherCount {
+    flex-basis: 23%;
+    order: 2;
+    /*border: 1px solid blue;*/
+    background-color: #ffd066;
+    max-height: 90%;
+    margin-top: 4%;
+}
+
+.div_teacherCount img{
+    position: relative;
+    width: 90px;
+    height: 90px;
+    top: 50px;
+    left: 75px;
+}
+
+#label_Teachers{
+    position: relative;
+    font-family: quicksandmedium;
+    color: #fdfbfb;
+    font-size: 23px;
+    top: 38px;
+    left: 15px;
+}
+
+.div_sectionCount {
+    order: 3;
+    flex-basis: 23%;
+    /*border: 1px solid blue;*/
+    background-color: #ff8b85;
+    max-height: 90%;
+    margin-top: 4%;
+}
+
+.div_sectionCount img {
+    position: relative;
+    width: 90px;
+    height: 90px;
+    top: 50px;
+    left: 80px;
+}
+
+#label_Sections{
+    position: relative;
+    font-family: quicksandmedium;
+    color: #fdfbfb;
+    font-size: 23px;
+    top: 38px;
+    left: 15px;
+}
+
+.div_finisherCount {
+    order: 4;
+    flex-basis: 24%;
+    /*border: 1px solid blue;*/
+    background-color: #f7cac9;
+    max-height: 90%;
+    margin-top: 4%;
+}
+
+.div_finisherCount img {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    top: 50px;
+    left: 110px;
+}
+
+#label_Finishers{
+    position: relative;
+    font-family: quicksandmedium;
+    color: #fdfbfb;
+    font-size: 23px;
+    top: 50px;
+    left: 15px;
+}
+
+.container_announcement{
+    position: relative;
+    height: 300px;
+    background-color: #fafbfb;
+    order: 2;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 15px;
+    padding:3px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 1px 5px #f0f2f2;
+}
+
+#announcement_Label_Container {
+    border-bottom: 1px solid #cccccc;
+    /*background-color: #00809c;*/
+    padding-top: 3%;
+    padding-left: 1%;
+    margin-left: 1%;
+    margin-right: 1%;
+}
+
+#announcement_Label{
+    position: relative;
+    order: 1;
+    font-family: quicksandlight;
+    font-size: 18px;
+    color:  #6f7071;
+}
+
+#announcement_Date{
+    position: relative;
+    order: 2;
+    font-family: quicksandlight;
+    font-size: 18px;
+    color:  #6f7071;
+    left: 75%;
+}
+
+.container_analysis{
+    position: relative;
+    height: 300px;
+    background-color: #fafbfb;
+    order: 3;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 15px;
+    padding:3px;
+    flex-direction: column;
+    box-shadow: 1px 5px #f0f2f2;
+
+}
+
+#analysis_Label_Container{
+    border-bottom: 1px solid #cccccc;
+    background-color: #00809c;
+    padding-top: 3%;
+    padding-left: 1%;
+    margin-left: 1%;
+    margin-right: 1%;
+}
+
+.statusLabel {
+    position: relative;
+    font-family: quicksandmedium;
+    color: #fdfbfb;
+    font-size: 25px;
+    left: 4%;
+    top: 5%;
+}
+

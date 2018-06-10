@@ -1,0 +1,116 @@
+@font-face{
+    font-family: quicksandregular;
+    src:url(../fonts/quicksand-regular.ttf);
+}
+@font-face{
+    font-family: quicksandlight;
+    src:url(../fonts/quicksand-light.ttf);
+
+}
+@font-face{
+    font-family: quicksandmedium;
+    src:url(../fonts/quicksand-medium.ttf);
+
+}
+/*html, body {*/
+    /*width: 100%;*/
+    /*height: 100%;*/
+    /*overflow: hidden;*/
+    /*background-color: whitesmoke;*/
+    /*position: relative;*/
+/*}*/
+
+/*------------------------------------Start Modal (AddUser)----------------------------------------------*/
+
+.modal_content_addNewUser {
+     overflow: auto;
+     height: 100%;
+     position: relative;
+     background-color: #fefefe;
+     margin: auto;
+     padding: 20px;
+     width: 50%; /* Could be more or less, depending on screen size */
+     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+     animation-name: animateTop;
+     animation-duration: 0.4s
+ }
+
+.modal_content_uploadCSV {
+    overflow: auto;
+    height: 100%;
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    width: 50%; /* Could be more or less, depending on screen size */
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    animation-name: animateTop;
+    animation-duration: 0.4s
+}
+
+.modal_header_addNewUser {
+    background-image:url("../img/modal_header.png");
+    background-repeat: no-repeat;
+    padding-top: 15px;
+    padding-left: 20px;
+    padding-right: 15px;
+    color: white;
+    height: 15%;
+}
+
+.modal_header_uploadCSV {
+    background-image:url("../img/modal_header.png");
+    background-repeat: no-repeat;
+    padding-top: 15px;
+    padding-left: 20px;
+    padding-right: 15px;
+    color: white;
+    height: 15%;
+}
+.close_addUser {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close_addUser:hover,
+.close_addUser:focus {
+    color: orangered;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+/*------------------------------------End Modal (AddUser)----------------------------------------------*/
+/*------------------------------------Start Modal (Upload CSV)----------------------------------------------*/
+#iFrame{
+    border: 1px solid #cccccc;
+    height: 300px;
+    width: 100%;
+    overflow: auto;
+}
+
+.close_uploadCsv {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close_uploadCsv:hover,
+.close_uploadCsv:focus {
+    color: orangered;
+    text-decoration: none;
+    cursor: pointer;
+}
+/*------------------------------------End Modal (Upload CSV)----------------------------------------------*/
+
+#lbl_role{
+    margin-right: 20px;
+}
+
+@keyframes animateTop {
+    from {top: -300px; opacity: 0}
+    to {top: 0; opacity: 1}
+}

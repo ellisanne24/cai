@@ -1,0 +1,29 @@
+table{
+    table-layout: auto;
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+th{
+    border: 1px solid #dddddd;
+    padding: 8px;
+    font-family: quicksandmedium;
+    font-size: 14px;
+    color: whitesmoke;
+    background-color: #3cabd0;
+    text-align: center;
+}
+td{
+    font-family: quicksandregular;
+    font-size: 12px;
+    color: #6f7071;
+    background-color: whitesmoke;
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}

@@ -1,0 +1,334 @@
+@font-face{
+    font-family: quicksandregular;
+    src:url(../fonts/quicksand-regular.ttf);
+}
+@font-face{
+    font-family: quicksandlight;
+    src:url(../fonts/quicksand-light.ttf);
+
+}
+@font-face{
+    font-family: quicksandmedium;
+    src:url(../fonts/quicksand-medium.ttf);
+
+}
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    position: relative;
+    background-color: #f0f2f2;
+}
+
+.wrapper{
+    position: relative;
+    /*border:1px solid red;*/
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    height: 640px;
+    background-color: whitesmoke;
+}
+
+.lessons_Container{
+    position: relative;
+    order: 1;
+    /*flex-grow: 1;*/
+    /*border: 1px solid blue;*/
+    display: flex;
+    flex-direction: column;
+}
+
+.lessons_label_Container {
+    order: 1;
+    height: 50px;
+    background-color: #f0f2f2;
+    border-top: 1px solid #aaaaaa;
+    border-bottom: 1px solid #dddddd;
+    position: relative;
+    padding-bottom: 5px;
+    padding-left: 10px;
+}
+
+.lessons_label{
+    font-family: quicksandregular;
+    font-size: 20px;
+    color: #6f7071;
+    position: absolute;
+    /*border: 1px solid green;*/
+    margin-top: 10px;
+    margin-left: 3px;
+}
+
+.lessons_contents_Container{
+    position: relative;
+    order: 2;
+    flex-grow: 5;
+    border: 1px solid green;
+}
+
+img{
+    width: 40px;
+    height: 40px;
+    margin-left: 5px;
+    margin-top: 5px;
+    margin-right: 5px;
+}
+
+.accordion_Container{
+    position: relative;
+    order: 3;
+    overflow-y: auto;
+}
+
+
+.btn_lessons{
+    border-style: none;
+    background-color: #fefefe;
+    font-family:quicksandmedium;
+    font-size: 18px;
+    color: #6f7071;
+    border-bottom: 1px solid #dddddd;
+    text-align: left;
+    padding: 16px;
+    width: 100%;
+    cursor: pointer;
+}
+
+.btn_lessons:hover{
+    background-color: inherit;
+}
+
+.btn_lessons_Accordion{
+    font-family: quicksandmedium;
+    background-color: #fefefe;
+    color: #6f7071;
+    cursor: pointer;
+    padding: 16px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    transition: 0.4s;
+    border-bottom: 1px solid #dddddd;
+    font-size: 14px;
+}
+
+.active, .btn_lessons_Accordion:hover {
+    background-color: #3cabd0;
+    color: whitesmoke;
+}
+
+.btn_lessons_Accordion:after {
+    content: '\025B8'; /* Unicode character for "plus" sign (+) */
+    color: whitesmoke;
+    float: right;
+    margin-left: 5px;
+
+}
+
+.active:after {
+    content: "\025BE"; /* Unicode character for "minus" sign (-) */
+    color: whitesmoke;
+    float: right;
+    margin-left: 5px;
+
+}
+
+.panel {
+    background-color: whitesmoke;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    display: flex;
+    flex-direction: column;
+    /*border: 1px solid red;*/
+}
+
+/*panel buttons*/
+/*VIDEO*/
+.video_Container{
+    order: 1;
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    width: 100%;
+    background-color:whitesmoke ;
+    padding-left: 12px;
+    /*flex-basis: 20px;*/
+    /*border: 1px solid black;*/
+    /*padding-top: 5px;*/
+    /*padding-bottom: 5px;*/
+ }
+
+.video_Container img{
+    order: 1;
+    width: 35px;
+    height: 35px;
+    /*border: 1px solid violet;*/
+    margin-bottom: 5px;
+
+
+}
+.btn_video{
+    order: 2;
+    font-family: quicksandmedium;
+    font-size: 15px;
+    background-color: whitesmoke;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    color: #6f7071;
+    cursor: pointer;
+    /*border: 1px solid yellow;*/
+
+}
+/*PPT*/
+.ppt_Container{
+    order: 2;
+    display: flex;
+    flex-direction: row;
+    /*flex-basis: 20px;*/
+    position: relative;
+    width: 100%;
+    background-color: whitesmoke;
+    /*border: 1px solid black;*/
+    /*padding-top: 6px;*/
+    padding-left: 12px;
+    /*padding-bottom: 6px;*/
+}
+
+.ppt_Container img {
+    order: 1;
+    width: 35px;
+    height: 35px;
+    margin-bottom: 5px;
+}
+
+.btn_textAndAudio{
+    order: 2;
+    font-family: quicksandmedium;
+    font-size: 15px;
+    background-color: whitesmoke;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    color: #6f7071;
+    cursor: pointer;
+}
+/*PRACTICE*/
+.practice_Container{
+    order: 3;
+    display: flex;
+    flex-direction: row;
+    /*flex-basis: 20px;*/
+    position: relative;
+    width: 100%;
+    background-color: whitesmoke;
+    /*border: 1px solid black;*/
+    /*padding-top: 6px;*/
+    padding-left: 12px;
+    /*padding-bottom: 6px;*/
+}
+
+.practice_Container img {
+    order: 1;
+    width: 35px;
+    height: 35px;
+    margin-bottom: 5px;
+}
+
+.btn_practice{
+    order: 3;
+    font-family: quicksandmedium;
+    font-size: 15px;
+    background-color: whitesmoke;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    color: #6f7071;
+    cursor: pointer;
+}
+
+/*ENRICHMENT*/
+.enrichment_Container{
+    order: 4;
+    display: flex;
+    flex-direction: row;
+    /*flex-basis: 20px;*/
+    position: relative;
+    width: 100%;
+    background-color: whitesmoke;
+    /*border: 1px solid black;*/
+    /*padding-top: 6px;*/
+    padding-left: 12px;
+    /*padding-bottom: 6px;*/
+}
+
+.enrichment_Container img {
+    order: 1;
+    width: 35px;
+    height: 35px;
+    margin-bottom: 5px;
+}
+
+.btn_enrichment{
+    order: 4;
+    font-family: quicksandmedium;
+    font-size: 15px;
+    background-color: whitesmoke;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    color: #6f7071;
+    cursor: pointer;
+
+}
+/*MINIQUIZ*/
+.miniquiz_Container{
+    order: 5;
+    display: flex;
+    flex-direction: row;
+    /*flex-basis: 20px;*/
+    position: relative;
+    width: 100%;
+    background-color: whitesmoke;
+    /*border: 1px solid black;*/
+    /*padding-top: 6px;*/
+    padding-left: 12px;
+    /*padding-bottom: 6px;*/
+}
+
+.miniquiz_Container img {
+    order: 1;
+    width: 35px;
+    height: 35px;
+    margin-bottom: 5px;
+}
+
+.btn_miniquiz{
+    order: 5;
+    font-family: quicksandmedium;
+    font-size: 15px;
+    background-color: whitesmoke;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    color: #6f7071;
+    cursor: pointer;
+
+}
+
+.progressBar{
+    width: 100%;
+    height: 20px;
+    background-color: lightgray;
+}
+
+

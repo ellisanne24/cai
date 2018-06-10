@@ -1,0 +1,223 @@
+@font-face{
+    font-family: quicksandlight;
+    src:url(../fonts/quicksand-light.ttf);
+
+}
+@font-face{
+    font-family: quicksandregular;
+    src:url(../fonts/quicksand-regular.ttf);
+
+}
+@font-face{
+    font-family: quicksandmedium;
+    src:url(../fonts/quicksand-medium.ttf);
+
+}
+body{
+    overflow: hidden;
+
+}
+
+.divtop_container{
+
+    height: 100%;
+    width: 100%;
+    margin-top: 0;
+    display:block;
+    position: absolute;
+    background-color:#fefefe;
+    border-top: 1px solid #aaaaaa;
+    overflow: hidden;
+    margin-right: 5px;
+    left: 1px;
+    transition: opacity 1s;
+    right: 10px;
+}
+.container_control{
+    width: 100%;
+    height: 10%;
+    display: inline-block;
+
+}
+.container_contents{
+    background-image: url(../img/cai_backdroptwo.png);
+    image-resolution: from-image;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    border-top: 1px solid #aaaaaa;
+
+}
+.container_lessons{
+    width: 25%;
+    height: 100%;
+    border:1px solid #fefefe;
+    overflow: scroll;
+    display: inline-block;
+
+}
+.container_media{
+    width: 75%;
+    height: 100%;
+    border-left:1px solid #ebebeb;
+
+}
+#icon_back{
+    font-size: 30px;
+    float: left;
+    margin-left: 20px;
+    margin-top: 20px;
+    color: #3cabd0;
+}
+
+.content_title{
+    padding-left: 20px;
+    float: left;
+    margin-top: 20px;
+    font-size: 25px;
+    font-family: quicksandregular;
+    color: #aaaaaa;
+}
+.button{
+    font-family: quicksandmedium;
+    height: 28px;
+    background-color: #3cabd0;
+    color:white;
+    border-style: none;
+    border-radius: 2px;
+    float: right;
+    margin-top: 30px;
+}
+ #btn_remove{
+margin-right: 30px;
+ }
+ #btn_edit{
+     margin-right: 5px;
+ }
+ #btn_createNewLesson{
+     margin-right: 5px;
+ }
+/*lesson contents*/
+.div_pretest{
+    height: 40px;
+    width: 100%;
+    background-color: #3cabd0;
+   position: static;
+    margin-top:0;
+    padding-top: 10px;
+    padding-left: 20px;
+}
+
+.lbl_pretest{
+    font-size: 25px;
+    color: whitesmoke;
+    font-family: quicksandregular;
+}
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 30%; /* Could be more or less, depending on screen size */
+    height: 50%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    animation-name: animateTop;
+    animation-duration: 0.4s
+}
+
+/* The Close Button */
+.close {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+.close:hover,
+.close:focus {
+    color: orangered;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+@keyframes animateTop {
+    from {top: -300px; opacity: 0}
+    to {top: 0; opacity: 1}
+}
+
+.modal-header {
+    padding: 2px 16px;
+    background-color:#3cabd0;
+    color: white;
+    height: 15%;
+}
+
+.modal-body {
+    padding: 2px 16px;
+    margin-top: 20px;
+}
+.modal-content button:hover{
+    background-color: #f7efb1;
+    color: #00809c;
+}
+
+.modal_lbl{
+    font-family: quicksandregular;
+    font-size: 18px;
+}
+.modal_input{
+    font-family: quicksandmedium;
+    font-size: 18px;
+    width: 100%;
+    height: 35px;
+    border: 1px solid #cccccc;
+    padding-left: 5px;
+}
+
+.modal-footer {
+    background-color: #3cabd0;
+    margin-top: 20px;
+    margin-bottom: 0;
+    height: 14%;
+
+}
+.modal_btn {
+    padding-top: 3px;
+    padding-bottom: 0;
+    font-size: 16px;
+    color: white;
+    font-family: quicksandmedium;
+    height: 49px;
+    background-color: #3cabd0;
+    border-style: none;
+    float: right;
+    width: 20%;
+}
+
+.lesson_holder{
+    height: 40px;
+    width: 100%;
+    background-color: #3cabd0;
+    border:1px
+
+
+    solid #392c20;
+
+}

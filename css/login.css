@@ -1,0 +1,81 @@
+body{
+	 background-image: url("../img/loginpage.png");
+	 background-position: center;
+	 background-attachment: fixed;
+
+}
+
+.login_container{
+padding-top: 230px;
+background-position: static;
+background-attachment: fixed;
+	
+}
+
+.lbl_username{
+font-family: Arial;
+font-size: 25px;
+margin-left: 24%;
+padding-left: 43%;
+padding-top: 60px;
+color: #00809c;
+
+}
+
+.lbl_password{
+font-family: Arial;
+font-size: 25px;
+margin-left: 24%;
+margin-top: 30%;
+padding-left: 43%;
+color: #00809c;
+
+}
+
+.tf_username{
+font-family: Arial;
+margin-left: 67%;
+height: 50px;
+border:1px;
+border-radius: 3px;
+color: #392c20;
+width: 272px;
+position: static;
+font-size: 20px;
+padding-left: 10px;
+}
+
+.tf_password{
+font-family: Arial;
+margin-left: 67%;
+height: 50px;
+border:1px;
+border-radius: 3px;
+color: #392c20;
+width: 272px;
+font-size: 20px;
+padding-left: 10px;
+position: static;
+}
+
+.loginbutton{
+font-family: Arial;
+margin-left: 67%;
+width: 283px;
+height: 50px;
+margin-top: 5px;
+font-size: 25px;
+border: 1px;
+background-color: #00809c;
+border-style: none;
+border-radius: 3px;
+color: #ffe423;
+position: static;
+margin-top: 20px;
+
+}
+
+.div_password{
+margin-top: 30px;
+
+}

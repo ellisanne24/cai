@@ -1,0 +1,611 @@
+@font-face{
+    font-family: quicksandlight;
+    src:url(../fonts/quicksand-light.ttf);
+}
+@font-face{
+    font-family: quicksandregular;
+    src:url(../fonts/quicksand-regular.ttf);
+}
+@font-face{
+    font-family: quicksandmedium;
+    src:url(../fonts/quicksand-medium.ttf);
+}
+
+html, body{
+    background-color: whitesmoke;
+    height: 100%;
+    width: 100%;
+
+}
+.wrapper{
+    position: relative;
+    margin: 0;
+    padding: 0;
+    /*border: 4px solid black;*/
+    height: 100%;
+    overflow: auto;
+}
+
+.tab {
+    position: relative;
+    float: left;
+    background-color: #f1f1f1;
+    /*width: 15%;*/
+    /*height:65px;*/
+    border-right: 1px solid #dddddd;
+}
+
+ /*Style the buttons that are used to open the tab content */
+.tab button {
+    display: block;
+    background-color: inherit;
+    color: #6f7071;
+    padding-left: 65px ;
+    width: 100%;
+    height:65px;
+    outline: none;
+    text-align: left;
+    cursor: pointer;
+    transition: 0.3s;
+    /*border: 4px solid blueviolet;*/
+    font-size: 20px;
+    font-family: quicksandregular;
+    border-style: none;
+
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+    background-color: #ddd;
+}
+
+/* Create an active/current "tab button" class */
+.tab button.active {
+    background-color: #ccc;
+}
+
+#Topics{
+    background-image: url("../img/topics.png");
+    background-repeat: no-repeat;
+    background-position: 20px 12px; /* X, Y */
+   background-size: 40px 40px;
+}
+
+#Videos{
+    background-image: url("../img/watchvideo.png");
+    background-repeat: no-repeat;
+    background-position: 20px 12px; /* X, Y */
+    background-size: 40px 40px;
+}
+
+#Powerpoint{
+    background-image: url("../img/ppt.png");
+    background-repeat: no-repeat;
+    background-position: 20px 12px; /* X, Y */
+    background-size: 40px 40px;
+}
+
+#Enrichment{
+    background-image: url("../img/enrichment.png");
+    background-repeat: no-repeat;
+    background-position: 20px 12px; /* X, Y */
+    background-size: 40px 40px;
+}
+#Games{
+    background-image: url("../img/game.png");
+    background-repeat: no-repeat;
+    background-position: 20px 12px; /* X, Y */
+    background-size: 40px 40px;
+}
+#Sections{
+    background-image: url("../img/section.png");
+    background-repeat: no-repeat;
+    background-position: 20px 12px; /* X, Y */
+    background-size: 40px 40px;
+}
+#Announcements{
+    background-image: url("../img/announcements.png");
+    background-repeat: no-repeat;
+    background-position: 20px 12px; /* X, Y */
+    background-size: 40px 40px;
+    font-size: 15px;
+}
+
+#Reviewer{
+    background-image: url("../img/reviewer.png");
+    background-repeat: no-repeat;
+    background-position: 20px 12px; /* X, Y */
+    background-size: 40px 40px;
+}
+
+#Account{
+    background-image: url("../img/settings.png");
+    background-repeat: no-repeat;
+    background-position: 20px 12px; /* X, Y */
+    background-size: 40px 40px;
+}
+
+#SchoolYear{
+    background-image: url("../img/schoolyear.png");
+    background-repeat: no-repeat;
+    background-position: 20px 12px; /* X, Y */
+    background-size: 40px 40px;
+}
+
+#btn_NewSchoolYear{
+    width: 200px;
+    margin-right: 20px;
+}
+
+/*End Sidebar Design*/
+
+.tabContent{
+    display: flex;
+    flex-direction: column;
+    /*border: 1px solid blue;*/
+    height: 100%;
+    overflow: auto;
+   background-color: #fefefe;
+}
+
+.wrapper_Control{
+    order: 1;
+    position: relative;
+    height: 82px;
+    border-bottom: 1px solid #ebebeb;
+    background-color: #f1f1f1;
+    padding-top: 25px;
+    padding-left: 20px;
+    color: #6f7071;
+    /*border: 1px solid black;*/
+}
+
+.wrapper_ContentDetails{
+    order: 2;
+    position: relative;
+    width: 100%;
+    height: 600px;
+    overflow: auto;
+    /*border: 1px solid red;*/
+    overflow-y: scroll ;
+}
+
+.close_uploadContent {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close_uploadContent:hover,
+.close_uploadContent:focus {
+    color: orangered;
+    text-decoration: none;
+    cursor: pointer;
+}
+#btn_Preview{
+    margin-right: 20px;
+}
+
+#btn_AddNewSection{
+    margin-right: 20px;
+}
+.close_addNewSection {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close_addNewSection:hover,
+.close_addNewSection:focus {
+    color: orangered;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.close_transfer {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close_transfer:hover,
+.close_transfer:focus {
+    color: orangered;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/*table 1*/
+.div_tableWrapper{
+    display: flex;
+    flex-direction: row;
+    height: 600px;
+    width: 100%;
+    /*border: 1px solid blue;*/
+
+}
+
+.div_table1Container{
+    order: 1;
+    height: 100%;
+    width: 45%;
+    /*border: 1px solid blueviolet;*/
+}
+
+.div_arrowsContainer{
+    order: 2;
+    height: 100%;
+    width: 10%;
+    /*border: 1px solid red;*/
+}
+.div_table2Container{
+    order: 3;
+    height: 100%;
+    width: 45%;
+    /*border: 1px solid green;*/
+}
+
+.modal_tableLabel{
+    font-family: quicksandregular;
+    font-size: 18px;
+    color: #6f7071;
+    padding: 8px;
+    position: static;
+}
+
+.column_Name {
+    text-align: left;
+    padding: 8px;
+    font-family: quicksandregular;
+    font-size: 18px;
+    border: 1px solid #cccccc;
+
+}
+
+.student_Data{
+    text-align: left;
+    padding: 8px;
+    font-family: quicksandregular;
+    font-size: 15px;
+    border: 1px solid #cccccc;
+    color: #6f7071;
+}
+
+/*arrows*/
+
+.div_arrowsContainer{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding: 25px;
+    justify-content: center;
+}
+
+.arrowRight {
+    order: 1;
+    background-image: url("../img/arrowRight.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: #3cabd0;
+    height: 70px;
+    width: 70px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 3%;
+}
+
+.arrowLeft {
+    order: 2;
+    background-image: url("../img/arrowLeft.png");
+    background-repeat: no-repeat;
+    height: 70px;
+    width: 70px;
+    background-position: center;
+    background-color: #3cabd0;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.arrowRight:hover{
+    background-color:#f7efb1 ;
+    background-image: url("../img/arrowRightblue.png");
+    background-repeat: no-repeat;
+
+}
+
+.arrowLeft:hover{
+    background-color:#f7efb1 ;
+    background-image: url("../img/arrowLeftblue.png");
+    background-repeat: no-repeat;
+}
+
+/*Add New Topic Modal*/
+.modal_content_addNewTopic{
+    overflow: auto;
+    height: 100%;
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    width: 50%; /* Could be more or less, depending on screen size */
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    animation-name: animateTop;
+    animation-duration: 0.4s
+}
+
+.modal_header_addNewTopic{
+    background-image:url("../img/modal_header.png");
+    background-repeat: no-repeat;
+    padding-top: 15px;
+    padding-left: 20px;
+    padding-right: 15px;
+    color: white;
+    height: 15%;
+}
+
+.close_addNewTopic {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close_addNewTopic:hover,
+.close_addNewTopic:focus {
+    color: orangered;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/*UploadContentModal*/
+
+.modal_content_uploadContent{
+    overflow: auto;
+    height: 100%;
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    width: 50%; /* Could be more or less, depending on screen size */
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    animation-name: animateTop;
+    animation-duration: 0.4s
+}
+.modal_header_uploadNewContent{
+    background-image:url("../img/modal_header.png");
+    background-repeat: no-repeat;
+    padding-top: 15px;
+    padding-left: 20px;
+    padding-right: 15px;
+    color: white;
+    height: 15%;
+}
+
+/*AddNewSectionModal*/
+.modal_content_addNewSection{
+    overflow: auto;
+    height: 100%;
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    width: 50%; /* Could be more or less, depending on screen size */
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    animation-name: animateTop;
+    animation-duration: 0.4s
+}
+
+.modal_header_addNewSection{
+    background-image:url("../img/modal_header.png");
+    background-repeat: no-repeat;
+    padding-top: 15px;
+    padding-left: 20px;
+    padding-right: 15px;
+    color: white;
+    height: 15%;
+}
+
+/*TransferModal*/
+.modal_content_transfer{
+    overflow: auto;
+    height: 100%;
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    width: 100%; /* Could be more or less, depending on screen size */
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    animation-name: animateTop;
+    animation-duration: 0.4s
+}
+
+.modal_header_transfer{
+    background-image:url("../img/modal_headerforTransfer.png");
+    background-repeat: no-repeat;
+    padding-top: 15px;
+    padding-left: 20px;
+    padding-right: 15px;
+    color: white;
+    height: 15%;
+}
+
+/*Reviewer*/
+#btn_NewReviewer{
+    width: 17%;
+    margin-right: 20px;
+}
+
+.modal_content_createNewReviewer{
+    overflow: auto;
+    height: 100%;
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    width: 40%; /* Could be more or less, depending on screen size */
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    animation-name: animateTop;
+    animation-duration: 0.4s
+}
+
+.modal_header_createNewReviewer{
+    background-image:url("../img/modal_headerw760.png");
+    background-repeat: no-repeat;
+    padding-top: 15px;
+    padding-left: 20px;
+    padding-right: 15px;
+    color: white;
+    height: 15%;
+}
+
+.close_createNewReviewer {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close_createNewReviewer:hover,
+.close_createNewReviewer:focus {
+    color: orangered;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#btn_pickQuestions{
+    width: 100%;
+    height: 50px;
+    outline: none;
+}
+
+.checkbox_Container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 15px;
+    color: #6f7071;
+}
+
+.checkbox_Container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+}
+
+.checkbox_Container:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+
+.checkbox_Container input:checked ~ .checkmark {
+    background-color: #2196F3;
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.checkbox_Container input:checked ~ .checkmark:after {
+    display: block;
+}
+
+.checkbox_Container .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    /*-webkit-transform: rotate(45deg);*/
+    /*-ms-transform: rotate(45deg);*/
+    transform: rotate(45deg);
+}
+
+/*School Year*/
+.modal_content_createNewSY{
+    overflow: auto;
+    height: 100%;
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    width: 40%; /* Could be more or less, depending on screen size */
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    animation-name: animateTop;
+    animation-duration: 0.4s
+}
+
+.modal_header_createNewSY{
+    background-image:url("../img/modal_headerw760.png");
+    background-repeat: no-repeat;
+    padding-top: 15px;
+    padding-left: 20px;
+    padding-right: 15px;
+    color: white;
+    height: 15%;
+}
+
+.close_createNewSY {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close_createNewSY:hover,
+.close_createNewSY:focus {
+    color: orangered;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#btn_uploadVideo{
+    margin-right: 20px;
+}
+
+#btn_UploadPPT{
+    margin-right: 20px;
+    width: 200px;
+}
+
+#btn_UploadEnrichment{
+    margin-right: 20px;
+    width: 200px;
+}
+
+#btn_uploadGame{
+    margin-right: 20px;
+}
+
+#btn_AddNewSection{
+    width: 180px;
+    margin-right: 5px;
+}
+
+#btn_ViewSectionDetails{
+    margin-right: 20px;
+}
+
+#btn_AddNewAnnouncement{
+    width: 200px;
+}
+#btn_RemoveAllAnnouncement{
+    margin-right: 20px;
+}

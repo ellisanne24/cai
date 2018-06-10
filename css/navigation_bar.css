@@ -1,0 +1,130 @@
+@font-face{
+    font-family: quicksandlight;
+    src:url(../fonts/quicksand-light.ttf);
+
+}
+@font-face{
+    font-family: quicksandregular;
+    src:url(../fonts/quicksand-regular.ttf);
+
+}
+@font-face{
+    font-family: quicksandmedium;
+    src:url(../fonts/quicksand-medium.ttf);
+
+}
+
+body {
+    margin: 0;
+    width: 100%;
+    overflow: hidden;
+}
+
+img{
+    position: relative;
+    float: left;
+    margin-left: 15px;
+    padding-right: 5px;
+}
+
+.nav_container{
+    overflow: hidden;
+    background-color:#3cabd0;
+    font-family: quicksandlight;
+    display: block;
+    /*padding-top: 5px;*/
+    padding-bottom: 0;
+    /*border-bottom: 1px solid #cccccc;*/
+
+}
+
+.nav_container a {
+    float: left;
+    /*display: block;*/
+    color: whitesmoke;
+    text-align: center;
+    padding: 12px;
+    text-decoration: none;
+    font-size: 17px;
+    /*border: 2px solid black;*/
+
+}
+
+.nav_container a:hover {
+    background-color: #f7efb1;
+    color: #00809c;
+}
+
+.nav_container a:active{
+     background-color: #f7efb1;
+     color: #00809c;
+ }
+.nav_container a:focus{
+    background-color: #f7efb1;
+    color: #00809c;
+}
+
+.nav_container .icon{
+    display: none;
+
+}
+
+@media screen and (max-width: 600px) {
+    .nav_container a:not(:first-child) {display: none;}
+    .nav_container a.icon {
+        float: right;
+        display: block;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .nav_container.responsive {position: relative;}
+    .nav_container.responsive .icon {
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+
+    .nav_container.responsive a {
+        float: none;
+        display: block;
+        text-align: left;
+    }
+
+
+#logout{
+    float: right;
+    padding-right: 20px;
+    padding-left: 20px;
+}
+
+#usernameLabel{
+    /*margin-left: 400px;*/
+    color: whitesmoke;
+    text-align: center;
+    padding: 12px;
+    /*text-decoration: none;*/
+    font-size: 17px;
+    /*border: 2px solid black;*/
+    font-family: quicksandmedium;
+    /*display: inherit;*/
+}
+}
+
+.display_content{
+    position: relative;
+    overflow:hidden;
+    height: 100%;
+    width: 100%;
+    border-bottom: 3px solid #aaaaaa;
+}
+
+.content_display > div {
+    display: none;
+
+}
+
+.content_display > div:target{
+
+    display: block;
+}

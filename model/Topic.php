@@ -30,8 +30,11 @@ class Topic implements JsonSerializable{
         return [
             'topicId' => $this->topicId,
             'topicTitle' => $this->topicTitle,
-
         ];
+    }
+
+    public function toJSON(){
+        return json_encode($this);
     }
 
 

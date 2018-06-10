@@ -1,7 +1,6 @@
 //DOCUMENT READY
 
 $(document).ready(function(){
-    alert("testto");
     loadAllTopicsToTable();
 });
 
@@ -193,43 +192,36 @@ function loadAllTopicsToTable(){
         type: 'POST',
         dataType: 'json',
         success: function(topicData){
-            alert("topicdatalength"+topicData.length);
+            console.log("Length: "+topicData.length);
             var len = topicData.length;
             $('#table_topic_record').find("tr:not(:first)").remove();
             for (var i = 0; i < len; i++) {
                 var topicId = topicData[i]['topicId'];
                 var topicTitle = topicData[i]['topicTitle'];
-                alert("topicid is:"+topicId);
-                alert("topictitle is:"+topicTitle);
-                //var topicLessons = '-'
-                //var topicVideos = '-';
-                //var topicPPT = '-';
-                //var topicPractice = '-';
-                //var topicEnrichment = '-';
-                //var topicMiniquiz = '-';
-                //var topicUnitTest = '-';
-                //var topicPretest = '-';
-                //var topicPosttest = '-';
-                //var topicDateCreated = '-';
-
 
                 $('#table_topic_record').append(
-                    "<tr>" +
-                    "<td>" + topicId + "</td>" +
+                    "<tr><td>" + topicId + "</td>" +
                     "<td>" + topicTitle + "</td>" +
-                    //"<td>" + topicLessons + "</td>" +
-                    //"<td>" + topicVideos + "</td>" +
-                    //"<td>" + topicPPT + "</td>" +
-                    //"<td>" + topicPractice + "</td>" +
-                    //"<td>" + topicEnrichment + "</td>" +
-                    //"<td>" + topicMiniquiz + "</td>" +
-                    //"<td>" + topicUnitTest + "</td>" +
-                    //"<td>" + topicPretest + "</td>" +
-                    //"<td>" + topicPosttest + "</td>" +
-                    //"<td>" + topicDateCreated + "</td>" +
+                    "<td>" + "-" + "</td>" +
+                    "<td>" + "-" + "</td>" +
+                    "<td>" + "-" + "</td>" +
+                    "<td>" + "-" + "</td>" +
+                    "<td>" + "-" + "</td>" +
+                    "<td>" + "-" + "</td>" +
+                    "<td>" + "-" + "</td>" +
+                    "<td>" + "-" + "</td>" +
+                    "<td>" + "-" + "</td>" +
+                    "<td>" + "-" + "</td>" +
+                    "<td>" + "<a id='"+topicId+"' class='edit' href=''>Edit</a>" + "</td>" +
+                    "<td>" + "<a id='' href='#'>" + "Delete" + "</a>" + "</td>" +
                     "</tr>"
                 );
             }
+            $('.edit').click(function(ev){
+                ev.preventDefault();
+                //do something with click
+                show_edit_user_modal(ev.target.id);
+            });
         },
         error: function (x, e) {
             if (x.status == 0) {

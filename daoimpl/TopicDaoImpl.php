@@ -60,26 +60,24 @@ class TopicDaoImpl implements TopicDao
 
     function getAllTopicRecord()
     {
-        $topicRecord = [];
+        $topicList = [];
         try{
-            $SQL = "CALL getAllTopicRecord() ";
-            $sp_getTopicRecord = $this->connection->prepare($SQL);
-            $sp_getTopicRecord->execute();
+            $SQL = "CALL `getAllTopicRecord`()";
+            $sp_getAllTopicRecord = $this->connection->prepare($SQL);
+            $sp_getAllTopicRecord->execute();
 
-            $resultSet = $sp_getTopicRecord->fetchAll(PDO::FETCH_ASSOC);
+            $resultSet = $sp_getAllTopicRecord->fetchAll(PDO::FETCH_ASSOC);
             foreach($resultSet as $row){
                 $topic = new Topic();
                 $topic->setTopicId($row['topic_id']);
                 $topic->setTopicTitle($row['topic_title']);
-                $topicRecord = $topic;
-            }
 
+                $topicList[] = $topic;
+            }
         }catch(PDOException $e){
             die($e->getMessage());
-
         }
-        return $topicRecord;
-
+        return $topicList;
     }
 
 

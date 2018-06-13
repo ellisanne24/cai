@@ -9,6 +9,8 @@ $topicTitle = $_POST['topictitle'];
 $topic->setTopicTitle($topicTitle);
 
 $isSuccessful= $topicDaoImpl->addNewTopic($topic);
-if($isSuccessful){
+if($isSuccessful == true){
     echo $isSuccessful;
+}else{
+    echo false;
 }

@@ -71,7 +71,7 @@ function showModal_addNewTopic(){
 $(document).on('click', '#btn_addNewTopicCreate', addNewTopic);
 
 function addNewTopic(){
-    console.log("clicked add");
+
     var topicTitle =$("#input_topicTitle").val();
     $.ajax({
         url:"controller/add_topic.php",
@@ -80,8 +80,8 @@ function addNewTopic(){
             topictitle:topicTitle
         },
         success: function(isSuccessful){
-            console.log("isSuccessful: "+isSuccessful);
-            alert("Successful added user.");
+            alert("isSuccessful: "+isSuccessful);
+            alert("Successfully added topic!.");
         },
         error: function (x, e) {
             if (x.status == 0) {

@@ -15,7 +15,7 @@ class TopicDaoImpl implements TopicDao
     {
         $isSuccessful = false;
 
-        $SQL = "CALL `add_new_topic`(?)";
+        $SQL = "CALL `addTopic`(?)";
         try {
             $sp_addNewTopic = $this->connection->prepare($SQL);
             $sp_addNewTopic->bindParam(1, $topic->getTopicTitle(), PDO::PARAM_STR);

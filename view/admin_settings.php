@@ -76,17 +76,17 @@ require_once '../core/init.php';
                     <tr>
                         <th>Topic ID</th>
                         <th>Topic Title</th>
-<!--                        <th>Lessons</th>-->
-<!--                        <th>Videos</th>-->
-<!--                        <th>PPT</th>-->
-<!--                        <th>Practice</th>-->
-<!--                        <th>Enrichment</th>-->
-<!--                        <th>Miniquiz</th>-->
-<!--                        <th>Unit Test</th>-->
-<!--                        <th>Pretest</th>-->
-<!--                        <th>Post Test</th>-->
-<!--                        <th>Date Created</th>-->
-<!--                        <th colspan="2">Action</th>-->
+                        <th>Lessons</th>
+                        <th>Videos</th>
+                        <th>PPT</th>
+                        <th>Practice</th>
+                        <th>Enrichment</th>
+                        <th>Miniquiz</th>
+                        <th>Unit Test</th>
+                        <th>Pretest</th>
+                        <th>Post Test</th>
+                        <th>Date Created</th>
+                        <th colspan="2">Action</th>
                     </tr>
                 </table>
             </div>

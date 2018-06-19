@@ -5,7 +5,7 @@ require_once "../core/init.php";
 
 $topicDaoImpl = new TopicDaoImpl($pdo);
 $topic = new Topic();
-$topicTitle = $_POST['topictitle'];
+$topicTitle = $_POST['modalInput_addTopicTitle'];
 $topic->setTopicTitle($topicTitle);
 
 $isSuccessful= $topicDaoImpl->addNewTopic($topic);

@@ -6,5 +6,6 @@ interface TopicDao {
     function getAllTopicTitle();
     function getAllTopicRecord();
     function deleteByIDTopic($topicId);
+    function getTopicById($topicId);
 }
 

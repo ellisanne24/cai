@@ -24,7 +24,6 @@ class Topic implements JsonSerializable{
         $this->topicTitle = $topicTitle;
     }
 
-
     function jsonSerialize()
     {
         return [

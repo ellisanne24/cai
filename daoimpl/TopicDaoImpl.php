@@ -10,7 +10,6 @@ class TopicDaoImpl implements TopicDao
         $this->connection = $pdo;
     }
 
-
     function addNewTopic(Topic $topic)
     {
         $isSuccessful = false;
@@ -31,7 +30,6 @@ class TopicDaoImpl implements TopicDao
     {
 
     }
-
 
     /**
      * For filling dropdown
@@ -80,11 +78,30 @@ class TopicDaoImpl implements TopicDao
         return $topicList;
     }
 
-
     function deleteByIDTopic($topicId)
     {
 
     }
 
+    function getTopicById($topicId)
+    {
+        $topic = new Topic();
+        try{
+            $SQL = "CALL `getTopicById`()";
+            $sp_getTopicById = $this->connection->prepare($SQL);
+            $sp_getTopicById->execute();
+
+            $resultSet = $sp_getTopicById->fetchAll(PDO::FETCH_ASSOC);
+            foreach($resultSet as $row) {
+
+                $topic->setTopicId((int)$row['topic_id']);
+                $topic->setTopicTitle($row['topic_title']);
+            }
+        }catch(PDOException $e){
+            die($e->getMessage());
+        }
+            return $topic;
+    }
 
 }
+

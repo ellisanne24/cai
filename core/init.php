@@ -14,10 +14,14 @@ spl_autoload_register(function($class_name){
     );
 
     foreach( $dirs as $dir ) {
-        if (file_exists($dir.strtolower($class_name).'.php')) {
-            require_once($dir.strtolower($class_name).'.php');
+        if (file_exists($dir.$class_name.'.php')) {
+            require_once($dir.$class_name.'.php');
             return;
         }
+//        if (file_exists($dir.strtolower($class_name).'.php')) {
+//            require_once($dir.strtolower($class_name).'.php');
+//            return;
+//        }
     }
 });
 

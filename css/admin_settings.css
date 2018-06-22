@@ -386,6 +386,47 @@ html, body{
     height: 15%;
 }
 
+.modal_content_uploadVideo{
+    overflow: auto;
+    height: 100%;
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    width: 50%; /* Could be more or less, depending on screen size */
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    animation-name: animateTop;
+    animation-duration: 0.4s
+}
+
+.modal_header_uploadNewVideo{
+    background-image:url("../img/modal_header.png");
+    background-repeat: no-repeat;
+    padding-top: 15px;
+    padding-left: 20px;
+    padding-right: 15px;
+    color: white;
+    height: 15%;
+}
+
+.close_uploadVideo {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close_uploadVideo:hover,
+.close_uploadVideo:focus {
+    color: orangered;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#modalLbl_fileNote{
+    color: darkviolet;
+}
+
 /*AddNewSectionModal*/
 .modal_content_addNewSection{
     overflow: auto;
@@ -648,6 +689,43 @@ html, body{
     cursor: pointer;
 }
 
+.modal_content_AddNewLesson{
+    overflow: auto;
+    height: 50%;
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    width: 40%; /* Could be more or less, depending on screen size */
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    animation-name: animateTop;
+    animation-duration: 0.4s
+}
+
+.modal_header_AddNewLesson{
+    background-image:url("../img/modal_headerforTransfer.png");
+    background-repeat: no-repeat;
+    padding-top: 15px;
+    padding-left: 20px;
+    padding-right: 15px;
+    color: white;
+    height: 15%;
+}
+
+.close_addNewLesson {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close_addNewLesson:hover,
+.close_addNewLesson:focus {
+    color: orangered;
+    text-decoration: none;
+    cursor: pointer;
+}
+
 .modal_label_medium{
     font-family: quicksandmedium;
     font-size: 25px;
@@ -655,21 +733,26 @@ html, body{
 }
 
 .material-icons{
-    position: relative;
-    color: #6f7071;
+    /*position: relative;*/
+    color: #3cabd0;
 }
+
+.material-icons:hover{
+    color: #f7efb1;
+}
+
 /*MEDIA TABS*/
-#container_mediaTabs{
+#container_lessonMediaTab{
     border: 1px solid darkred;
 }
 
-.container_mediaTabs{
+.container_lessonMediaTab{
     overflow: hidden;
     border: 1px solid #ccc;
     background-color: #f1f1f1;
 }
 
-.container_mediaTabs button {
+.container_lessonMediaTab button {
     background-color: inherit;
     float: left;
     border: none;
@@ -681,12 +764,12 @@ html, body{
 }
 
 /* Change background color of buttons on hover */
-.container_mediaTabs button:hover {
+.container_lessonMediaTab button:hover {
     background-color: #ddd;
 }
 
 /* Create an active/current tablink class */
-.container_mediaTabs  button.active {
+.container_lessonMediaTab  button.active {
     background-color: #ccc;
 }
 
@@ -696,4 +779,14 @@ html, body{
     padding: 6px 12px;
     border: 1px solid #ccc;
     border-top: none;
+}
+
+.modalContainer_filePreview{
+    border: 1px solid lightgray;
+    height: 200px;
+    width: 100%;
+}
+
+.container_media{
+    border: 1px solid blue;
 }

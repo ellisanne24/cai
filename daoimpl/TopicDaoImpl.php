@@ -87,8 +87,9 @@ class TopicDaoImpl implements TopicDao
     {
         $topic = new Topic();
         try{
-            $SQL = "CALL `getTopicById`()";
+            $SQL = "CALL `getTopicById`(?)";
             $sp_getTopicById = $this->connection->prepare($SQL);
+            $sp_getTopicById ->bindParam(1, $topicId, PDO::PARAM_INT);
             $sp_getTopicById->execute();
 
             $resultSet = $sp_getTopicById->fetchAll(PDO::FETCH_ASSOC);

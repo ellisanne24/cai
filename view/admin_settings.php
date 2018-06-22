@@ -152,6 +152,130 @@ require_once '../core/init.php';
     </div>
 </div>
 <!----------------------------------------------------------------------------------------------------------->
+<!--MODAL - OPEN TOPIC DETAILS-->
+<div class="modal" id="container_modalOpenTopicDetails" >
+    <div class="modal_content_openTopicDetails">
+
+        <div class="modal_header_openTopicDetails">
+            <span class="close_openTopicDetails">&times;</span>
+            <h4 class="modal_header_label">Topic Lessons</h4>
+        </div>
+
+        <div class="modal_body">
+            <form class="container_topicInfo" id="modalForm_openTopicDetails" action="" method="post">
+                <br>
+                <label class="modal_label" id="modalLbl_topicTitle">
+                    Topic Title
+                    <input class="modal_input_custom" id="modalInput_topicTitle" type="text"
+                           name="modalInputName_topicTitle">
+                </label>
+                    <i class="material-icons" id="modalIcon_edit">edit</i>
+                    <i class="material-icons" id="modalIcon_save">done</i>
+                    <i class="material-icons" id="modalIcon_cancel">highlight_off</i>
+                    <br>
+                <hr/>
+                </form>
+                <label class="modal_label_medium" id="modalLbl_lessonsList">Lessons List</label>&emsp; &emsp; &emsp;
+                <button class="button" id="modalBtn_addNewLesson" type="submit" name="modalBtnName_addNewLesson">
+                    Add New Lesson
+                </button>
+                <hr/>
+                <div class="container_topicInfo" id="container_lessonsTable"> <!--  THIS WILL BE INSERTED START-->
+                    <table class="modal_tableLabel" id="table_lessonsRecord">
+                        <tr>
+                            <th>Lesson No.</th>
+                            <th>Lesson Title</th>
+                            <th colspan="3">Action</th>
+                        </tr>
+                    </table>
+                 </div><!--  THIS WILL BE INSERTED END-->
+                    <hr/>
+                    <div class="container_media" id="container_media">
+                        <div class="container_lessonMediaTab" id="container_lessonMediaTabs">
+                            <button class="tabLinks_Media defaultTab" onclick="openMediaTab(event, 'Video')">
+                                Video
+                            </button>
+                            <button class="tabLinks_Media" onclick="openMediaTab(event, 'PPT')">
+                                PPT
+                            </button>
+                            <button class="tabLinks_Media"  onclick="openMediaTab(event, 'Enrich')">
+                                Enrichment
+                            </button>
+                        </div>
+
+                        <div class="tabContent_Media" id="Video" > <!-- Modal Tab Video Contents-->
+                            <h3>Video</h3>
+                            <p>Lesson Videos Displayed Here</p>
+                        </div>
+
+                        <div class="tabContent_Media" id="PPT" > <!--Modal Tab PPTContents-->
+                            <h3>PPT</h3>
+                            <p>PPTs Displayed here</p>
+                        </div>
+
+                        <div class="tabContent_Media" id="Enrich" > <!--Modal Tab PPTContents-->
+                            <h3>Enrichment</h3>
+                            <p>Enrichment Displayed here</p>
+                        </div>
+                </div>
+        </div>
+
+        <div class="modal_footer">
+            <button class="btn_modalFooter" id="btn_topicDetailsApplyChanges" type="submit" name="btn_applyChanges">
+                Apply Changes
+            </button>
+            <button class="btn_modalFooter" id="btn_topicDetailsCancel" type="submit" name="btn_cancel">
+                Cancel
+            </button>
+        </div>
+
+    </div>
+</div>
+<!----------------------------------------------------------------------------------------------------------->
+<!--MODAL - ADD NEW LESSON-->
+<div class="modal" id="container_modalAddNewLesson">
+    <div class="modal_content_AddNewLesson">
+        <div class="modal_header_AddNewLesson">
+            <span class="close_addNewLesson">&times;</span>
+            <h4 class="modal_header_label">Add New Lesson</h4>
+        </div>
+
+        <div class="modal_body">
+            <form class="container_lessonInfo" id="modalForm_addNewLesson"  method="post">
+                <label class="modal_label" id="modalLbl_lessonNumber">
+                    Lesson No.
+                    <input class="modal_inputbox" id="modalInput_lessonNumber" type="text"
+                           name="modalName_lessonNumber"><br>
+                </label>
+                <br>
+                <label class="modal_label" id="modalLbl_lessonTitle">
+                    Lesson Title
+                    <input class="modal_inputbox" id="modalInput_lessonTitle" type="text" name="modalName_lessonTitle">
+                </label>
+                <hr/>
+                <label class="modal_label" id="modalLbl_lessonStatus">
+                    Status
+                    <select class="dropDown" id="modalDrpDown_lessonStatus">
+                        <option value="Active" class="option">Active</option>
+                        <option value="Inactive" class="option">Inactive</option>
+                    </select><br>
+                </label><br>
+                <hr/>
+            </form>
+        </div>
+        <div class="modal_footer">
+            <button class="btn_modalFooter" id="modalBtn_addNewLesson_add" type="submit"
+                    name="modalBtnName_addNewLesson_add">
+                Add
+            </button>
+            <button class="btn_modalFooter" id="modalBtn_addNewLesson_cancel" type="submit"
+                    name="modalBtnName_addNewLesson_cancel">
+                Cancel
+            </button>
+        </div>
+    </div>
+</div>
+<!----------------------------------------------------------------------------------------------------------->
 <!--MODAL - UPLOAD NEW CONTENT-->
 <div class="modal" id="container_modalUploadContent" >
     <div class="modal_content_uploadContent">
@@ -237,15 +361,19 @@ require_once '../core/init.php';
     </div>
 </div>
 <!----------------------------------------------------------------------------------------------------------->
-
-<!--Start Contents for Videos-->
+<!--PAGE - VIDEO TAB-->
 <div class="tabContent" id="wrapperVideos">
     <div class="wrapper_Control">
-        <label class="control_label">Search Video :</label>
-        <input class="searchBox" id="searchBox_video" type="text" name="SearchBox">
-        <i class="fa fa-search" id="btn_SearchVideo"></i>
-        <i class="fa fa-refresh" id="btn_RefreshVideo"></i>
-        <button onclick="" class="button" id="btn_uploadVideo">
+        <label class="control_label" id ="pageLbl_searchVideo">
+            Search Video :
+            <input class="searchBox" id="searchBox_Video" type="text" name="searchBoxName_Video">
+        </label>
+        <i class="fa fa-search" id="pageIcon_searchVideo"></i>
+        <i class="fa fa-refresh" id="pageIcon_refreshTopic"></i>
+        <button class="button" id="pageBtn_uploadVideo">
+            Assign Video
+        </button>
+        <button class="button" id="pageBtn_uploadVideo">
             Upload Video
         </button>
     </div>
@@ -265,14 +393,82 @@ require_once '../core/init.php';
         </div>
     </div>
 </div>
-<!--Start Contents for Powerpoint-->
+<!----------------------------------------------------------------------------------------------------------->
+<!--MODAL - UPLOAD NEW VIDEO-->
+<div class="modal" id="container_modalUploadVideo" >
+    <div class="modal_content_uploadVideo">
+        <div class="modal_header_uploadNewVideo">
+            <span class="close_uploadVideo">&times;</span>
+            <h4 class="modal_header_label">Upload New Video</h4>
+        </div>
+
+        <div class="modal_body">
+            <form class="container_UserInfo" id="modalForm_uploadVideo" method="post">
+                <label class="modal_label" id="modalLbl_fileNote">
+                    Note : Video file must be in (.mp4) or (.avi) formats.
+                </label>
+                <hr />
+                <label class="modal_label" id="modalCB_url">
+                        <input type="checkbox" id="modalInputCB_pasteUrl">
+                        <span class="checkmark"></span>
+                        URL
+                </label><br>
+                <label class="modal_label" id="modalLbl_pasteURL">
+                    Paste Url here
+                    <input type="text" class="modal_inputbox" id="modalInput_pasteURL"/><br>
+                </label><br>
+                <label class="modal_label" id="modalCB_uploadFrmGallery">
+                        <input type="checkbox" id="modalInputCB_uploadFrmGallery">
+                        <span class="checkmark"></span>
+                        Upload from Gallery
+                </label><br>
+                <label class="modal_label" id="modalLbl_browseVideo">
+                        Browse Video
+                    <input type="file" class="modalbtn_browseFiles" id="modalBtn_browseVideo"  value="Browse Video"/><br>
+                </label>
+                <hr/>
+                <label class="modal_label" id="modalLbl_renameVideo">
+                    <input type="checkbox" id="modalInputCB_renameVideo">
+                    <span class="checkmark"></span>
+                    Rename this Video
+                    <input class="modal_inputbox" id="modalInput_renameVideo" type="text" name="modalInputName_renameVideo" placeholder="Optional"><br>
+                </label>
+                <hr />
+                <label class="modal_label" id="modalLbl_videoPreview">
+                    File Preview
+                </label>
+                <div class="modalContainer_filePreview" id="modalContainer_videoPreview">
+
+                </div>
+                <hr/>
+                <label class="modalLbl_errorMessage" id="modalLbl_uploadVideoError">
+                    <!-- Error Container-->
+                </label>
+            </form>
+        </div>
+
+        <div class="modal_footer">
+            <button class="btn_modalFooter" id="modalBtn_uploadVideo_upload" name="modalBtnName_uploadVideo_upload">
+                Upload
+            </button>
+            <button class="btn_modalFooter" id="modalBtn_uploadVideo_cancel" name="modalBtnName_uploadVideo_cancel">
+                Cancel
+            </button>
+        </div>
+    </div>
+</div>
+<!----------------------------------------------------------------------------------------------------------->
+
+<!--PAGE - PPT TAB-->
 <div class="tabContent" id="wrapperPPT">
     <div class="wrapper_Control">
-        <label class="control_label">Search Powerpoint :</label>
-        <input class="searchBox" id="searchBox_PPT" type="text" name="SearchBox">
-        <i class="fa fa-search" id="btn_SearchPPT"></i>
-        <i class="fa fa-refresh" id="btn_RefreshPPT"></i>
-        <button onclick="" class="button" id="btn_UploadPPT">
+        <label class="control_label" id="pageLbl_searchPPT">
+            Search Powerpoint :
+            <input class="searchBox" id="searchBox_PPT" type="text" name="SearchBoxName_PPT">
+        </label>
+        <i class="fa fa-search" id="pageIcon_searchPPT"></i>
+        <i class="fa fa-refresh" id="pageIcon_refreshPPT"></i>
+        <button class="button" id="pageBtn_uploadPPT">
             Upload Powerpoint
         </button>
     </div>
@@ -292,11 +488,15 @@ require_once '../core/init.php';
         </div>
     </div>
 </div>
+<!----------------------------------------------------------------------------------------------------------->
+
 <!--Start Contents for Enrichment-->
 <div class="tabContent" id="wrapperEnrichment">
     <div class="wrapper_Control">
-        <label class="control_label">Search Enrichment :</label>
-        <input class="searchBox" id="searchBox_Enrichment" type="text" name="SearchBox">
+        <label class="control_label">
+            Search Enrichment :
+            <input class="searchBox" id="searchBox_Enrichment" type="text" name="SearchBox">
+        </label>
         <i class="fa fa-search" id="btn_SearchEnrichment"></i>
         <i class="fa fa-refresh" id="btn_RefreshEnrichment"></i>
         <button onclick="" class="button" id="btn_UploadEnrichment">
@@ -323,8 +523,10 @@ require_once '../core/init.php';
 <!--Start Contents for Games-->
 <div id="wrapperGames" class="tabContent">
     <div class="wrapper_Control">
-        <label class="control_label">Search Game :</label>
-        <input id="searchBox_Games" type="text" name="SearchBox">
+        <label class="control_label">
+            Search Game :
+            <input id="searchBox_Games" type="text" name="SearchBox">
+        </label>
         <i class="fa fa-search" id="btn_SearchGame"></i>
         <i class="fa fa-refresh" id="btn_RefreshGame"></i>
         <button onclick="" class="button" id="btn_uploadGame">
@@ -350,8 +552,10 @@ require_once '../core/init.php';
 <!--Start Contents for Sections -->
 <div id="wrapperSections" class="tabContent">
     <div class="wrapper_Control">
-        <label class="control_label">Search Section :</label>
-        <input id="searchBox_Section" type="text" name="SearchBox">
+        <label class="control_label">
+            Search Section :
+            <input id="searchBox_Section" type="text" name="SearchBox">
+        </label>
         <i class="fa fa-search" id="btn_SearchSection"></i>
         <i class="fa fa-refresh" id="btn_RefreshSection"></i>
         <button onclick="" class="button" id="btn_ViewSectionDetails">
@@ -388,22 +592,29 @@ require_once '../core/init.php';
 
         <div class="modal_body">
             <form class="container_sectionInfo" action="" method="post">
-                <label class="modal_label">Section Name</label><br>
-                <input class="modal_inputbox" type="text" name="text_sectionName"><br>
+                <label class="modal_label">
+                    Section Name
+                    <input class="modal_inputbox" type="text" name="text_sectionName"><br>
+
+                </label><br>
                 <br>
-                <label class="modal_label">Teacher</label><br>
-                <select class="dropDown">
-                    <option value="Select" class="option">Select</option>
-                </select><br>
+                <label class="modal_label">
+                    Teacher
+                    <select class="dropDown">
+                        <option value="Select" class="option">Select</option>
+                    </select><br>
+                </label><br>
                 <hr/>
                 <label class="modal_label">Add Students via CSV</label><br>
                 <input type="file" id="browseFiles" class="modalbtn_browseFiles" value="Browse Files"/><br>
                 <hr/>
-                <label class="modal_label">Status</label><br>
-                <select class="dropDown">
-                    <option value="Active" class="option">Active</option>
-                    <option value="Inactive" class="option">Inactive</option>
-                </select><br>
+                <label class="modal_label">
+                    Status
+                    <select class="dropDown">
+                        <option value="Active" class="option">Active</option>
+                        <option value="Inactive" class="option">Inactive</option>
+                    </select><br>
+                </label><br>
                 <hr/>
                 <br>
                 <br>
@@ -429,15 +640,19 @@ require_once '../core/init.php';
 
         <div class="modal_body">
             <form class="container_trabsferInfo" action="" method="post">
-                <label class="modal_label">Transfer From</label><br>
-                <select class="dropDown">
-                    <option value="Select" class="option">Select</option>
-                </select><br>
+                <label class="modal_label">
+                    Transfer From
+                    <select class="dropDown">
+                        <option value="Select" class="option">Select</option>
+                    </select><br>
+                </label><br>
                 <br>
-                <label class="modal_label">Transfer To</label><br>
-                <select class="dropDown">
-                    <option value="Select" class="option">Select</option>
-                </select><br>
+                <label class="modal_label">
+                    Transfer To
+                    <select class="dropDown">
+                        <option value="Select" class="option">Select</option>
+                    </select><br>
+                </label><br>
                 <hr/>
                 <div class="div_tableWrapper" id="div_tableWrapper">
                     <div class="div_table1Container" id="div_table1Container">
@@ -487,8 +702,10 @@ require_once '../core/init.php';
 <!--Start Contents for Announcements -->
 <div id="wrapperBulletin" class="tabContent">
     <div class="wrapper_Control">
-        <label class="control_label">Search Announcement :</label>
-        <input id="searchBox_announcement" type="text" name="SearchBox">
+        <label class="control_label">
+            Search Announcement :
+            <input id="searchBox_announcement" type="text" name="SearchBox">
+        </label>
         <i class="fa fa-search" id="btn_SearchAnnouncement"></i>
         <i class="fa fa-refresh" id="btn_RefreshAnnouncement"></i>
         <button onclick="" class="button" id="btn_RemoveAllAnnouncement">
@@ -516,8 +733,10 @@ require_once '../core/init.php';
 <!--Start Contents for Reviewers -->
 <div id="wrapperReviewers" class="tabContent">
     <div class="wrapper_Control">
-        <label class="control_label">Find Reviewer :</label>
-        <input id="searchBox_Reviewer" type="text" name="SearchBox">
+        <label class="control_label">
+            Find Reviewer :
+            <input id="searchBox_Reviewer" type="text" name="SearchBox">
+        </label>
         <i class="fa fa-search" id="btn_SearchReviewer"></i>
         <i class="fa fa-refresh" id="btn_RefreshReviwer"></i>
         <button onclick="createNewReviewer()" class="button" id="btn_NewReviewer">
@@ -547,29 +766,35 @@ require_once '../core/init.php';
 
         <div class="modal_body">
             <form class="container_sectionInfo" action="" method="post">
-                <label class="modal_label">Kindly Select a Topic</label><br>
-                <select class="dropDown">
-                    <option value="Select" class="option">Select</option>
-                    <option value="Multiplication" class="option">Multiplication</option>
-                    <option value="Division" class="option">Division</option>
-                    <option value="Fractions" class="option">Fractions</option>
-                </select><br>
+                <label class="modal_label">
+                    Kindly Select a Topic
+                    <select class="dropDown">
+                        <option value="Select" class="option">Select</option>
+                        <option value="Multiplication" class="option">Multiplication</option>
+                        <option value="Division" class="option">Division</option>
+                        <option value="Fractions" class="option">Fractions</option>
+                    </select><br>
+                </label><br>
                 <hr/>
-                <label class="modal_label">Number of Items</label><br>
-                <select class="dropDown">
-                    <option value="Select" class="option">Select</option>
-                    <option value="30" class="option">30</option>
-                    <option value="50" class="option">50</option>
-                    <option value="100" class="option">100</option>
-                    <option value="150" class="option">150</option>
-                </select><br>
+                <label class="modal_label">
+                    Number of Items
+                    <select class="dropDown">
+                        <option value="Select" class="option">Select</option>
+                        <option value="30" class="option">30</option>
+                        <option value="50" class="option">50</option>
+                        <option value="100" class="option">100</option>
+                        <option value="150" class="option">150</option>
+                    </select><br>
+                </label><br>
                 <hr/>
-                <label class="modal_label">Select Question Type</label><br>
-                <select class="dropDown">
-                    <option value="Multiple Choice" class="option">Multiple Choice</option>
-                    <option value="Fill in the Box" class="option">Fill in the Box</option>
-                    <option value="Mixed" class="option">Mixed</option>
-                </select><br>
+                <label class="modal_label">
+                    <select class="dropDown">
+                        <option value="Multiple Choice" class="option">Multiple Choice</option>
+                        <option value="Fill in the Box" class="option">Fill in the Box</option>
+                        <option value="Mixed" class="option">Mixed</option>
+                    </select><br>
+                    Select Question Type
+                </label><br>
                 <hr/>
                 <label class="checkbox_Container">Random
                     <input type="checkbox">
@@ -596,8 +821,10 @@ require_once '../core/init.php';
 <!--Start Contents for  SchoolYear-->
 <div id="wrapperSchoolYear" class="tabContent">
     <div class="wrapper_Control">
-        <label class="control_label">Find School Year :</label>
-        <input id="searchBox_SchoolYear" type="text" name="SearchBox">
+        <label class="control_label">
+            Find School Year :
+            <input id="searchBox_SchoolYear" type="text" name="SearchBox">
+        </label>
         <i class="fa fa-search" id="btn_SearchSY"></i>
         <i class="fa fa-refresh" id="btn_RefreshSY"></i>
         <button onclick="createNewSY()" class="button" id="btn_NewSchoolYear">
@@ -672,156 +899,8 @@ require_once '../core/init.php';
     </div>
 </div>
 <!----------------------------------------------------------------------------------------------------------->
-<!--MODAL - OPEN TOPIC DETAILS-->
-<div class="modal" id="container_modalOpenTopicDetails" >
-    <div class="modal_content_openTopicDetails">
 
-        <div class="modal_header_openTopicDetails">
-            <span class="close_openTopicDetails">&times;</span>
-            <h4 class="modal_header_label">Topic Lessons</h4>
-        </div>
 
-        <div class="modal_body">
-            <form class="container_topicInfo" id="modalForm_openTopicDetails" action="" method="post">
-                <label class="modal_label" id="modalLbl_topicTitle">
-                    Topic Title
-                    <input class="modal_inputbox" id="modalInput_topicTitle" type="text"
-                           name="modalInputName_topicTitle">
-                </label>
-                <button class="button" id="modalBtn_topicTitle_save" type="submit" name="modalBtnName_topicTitle_save">
-                    Save
-                </button>
-                <button class="button" id="modalBtn_topicTitle_edit" type="submit" name="modalBtnName_topicTitle_edit">
-                    Edit
-                </button>
-                <br>
-                <br>
-                <br>
-                <hr/>
-                <label class="modal_label_medium" id="modalLbl_lessonsList">Lessons List</label>&emsp; &emsp; &emsp;
-                <button class="button" id="modalBtn_addNewLesson" type="submit" name="modalBtnName_addNewLesson">
-                    Add New Lesson
-                </button>
-                <hr/>
-                <div class="container_topicInfo" id="containerLessonInfo"> <!--  THIS WILL BE INSERTED START-->
-                    <label class="modal_label" id="modalLbl_lessonNo">
-                        Lesson No.
-                        <input class="modal_inputbox" id="modalInput_lessonNo" type="text"
-                               name="modalInputName_lessonNo">
-                    </label>
-                    <button class="button" id="modalBtn_lessonNo_save" type="submit" name="modalBtnName_lessonNo_save">
-                        Save
-                    </button>&emsp; &emsp; &emsp;
-                    <button class="button" id="modalBtn_lessonNo_edit" type="submit" name="modalBtnName_lessonNo_edit">
-                        Edit
-                    </button>
-                    <br>
-                    <br>
-                    <label class="modal_label" id="modalLbl_lessonTitle">
-                        Lesson Title
-                        <input class="modal_inputbox" id="modalInput_lessonTitle" type="text"
-                               name="modalInputName_lessonTitle">
-                    </label>
-                    <button class="button" id="modalBtn_lessonTitle_save" type="submit"
-                            name="modalBtnName_lessonTitle_save">
-                        Save
-                    </button>
-                    <button class="button" id="modalBtn_lessonTitle_edit" type="submit"
-                            name="modalBtnName_lessonTitle_edit">
-                        Edit
-                    </button>
-                    <br>
-                    <br>
-                    <br>
-                    <hr/>
-                    <div class="container_topicInfo" id="container_infoLabel">
-                        <label class="modal_label" id="modalLbl_lessonDisplay">
-                            Full Lesson number and title here
-                        </label>&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;
-                        <i class="material-icons" id="modalIcon_delete">delete</i>
-                    </div>
-                    <hr/>
-                    <div class="container_mediaTabs" id="container_mediaTabs">
-                        <button class="tabLinks_Media" id="modalTab_media_video" onclick="openMediaTab(event, 'Video')">
-                            Video
-                        </button>
-                        <button class="tabLinks_Media" id="modalTab_media_ppt" onclick="openMediaTab(event, 'PPT')">
-                            PPT
-                        </button>
-                        <button class="tabLinks_Media" id="modalTab_media_enrichment"
-                                onclick="openMediaTab(event, 'Enrichment')">
-                            Enrichment
-                        </button>
-                    </div>
-
-                    <div class="tabContent_Media" id="Videos" > <!-- Modal Tab Video Contents-->
-                        <h3>Video</h3>
-                        <p>Lesson Videos Displayed Here</p>
-                    </div>
-
-                    <div class="tabContent_Media" id="PPT" > <!--Modal Tab PPTContents-->
-                        <h3>PPT</h3>
-                        <p>PPTs Displayed here</p>
-                    </div>
-
-                    <div class="tabContent_Media" id="Enrichment" > <!--Modal Tab Enrichment-->
-                        <h3>Enrichment</h3>
-                        <p>Enrichment Displayed Here.</p>
-                    </div>
-                </div>
-            </form>
-        </div>
-
-        <div class="modal_footer">
-            <button class="btn_modalFooter" id="btn_topicDetailsApplyChanges" type="submit" name="btn_applyChanges">
-                Apply Changes
-            </button>
-            <button class="btn_modalFooter" id="btn_topicDetailsCancel" type="submit" name="btn_cancel">
-                Cancel
-            </button>
-        </div>
-
-    </div>
-</div>
-<!----------------------------------------------------------------------------------------------------------->
-<!--    ADD NEW LESSON MODAL START-->
-<div class="modal" id="container_modalAddNewLesson">
-    <div class="modal_content_AddNewLesson">
-        <div class="modal_header_AddNewLesson">
-            <span class="close_addNewLesson">&times;</span>
-            <h4 class="modal_header_label">Add New Lesson</h4>
-        </div>
-
-        <div class="modal_body">
-            <form class="container_lessonInfo" id="modalForm_addNewlesson" action="" method="post">
-                <label class="modal_label" id="modalLbl_lessonNumber">Lesson No.</label>
-                <input class="modal_inputbox" id="modalInput_lessonNumber" type="text"
-                       name="modalName_lessonNumber"><br>
-                <br>
-                <label class="modal_label" id="modalLbl_lessonTitle">Lesson Title</label>
-                <input class="modal_inputbox" id="modalInput_lessonTitle" type="text" name="modalName_lessonTitle">
-                <hr/>
-                <label class="modal_label" id="modalLbl_lessonStatus">Status</label><br>
-                <select class="dropDown" id="modalDrpDown_lessonStatus">
-                    <option value="Active" class="option">Active</option>
-                    <option value="Inactive" class="option">Inactive</option>
-                </select><br>
-                <hr/>
-            </form>
-        </div>
-        <div class="modal_footer">
-            <button class="btn_modalFooter" id="modalBtn_addNewLesson_add" type="submit"
-                    name="modalBtnName_addNewLesson_add">
-                Add
-            </button>
-            <button class="btn_modalFooter" id="modalBtn_addNewLesson_cancel" type="submit"
-                    name="modalBtnName_addNewLesson_cancel">
-                Cancel
-            </button>
-        </div>
-    </div>
-</div>
-<!--    ADD NEW LESSON MODAL START-->
 </div>
 <!--End WRAPPER-->
 

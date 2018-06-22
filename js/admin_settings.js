@@ -2,32 +2,99 @@
 $(document).ready(function(){
     var modalDrpDown_addTopicStatus = $('#modalDrpDown_addTopicStatus');
     var modalDrpDown_uploadFileStatus = $('#modalDrpDown_uploadFileStatus');
+    var container_mediaContentsID = $('#container_media');
+
     modalDrpDown_addTopicStatus.prop('disabled',true);
     modalDrpDown_addTopicStatus.css("background-color", "lightgrey");
     modalDrpDown_uploadFileStatus.prop('disabled',true);
     modalDrpDown_uploadFileStatus.css("background-color", "lightgrey");
+    container_mediaContentsID.hide();
 
     loadAllTopicsToTable();
     loadToDrpDown_assignToTopic();
 });
 
+//CHANGE LISTENERS
+$(document).on('click', '#modalInputCB_pasteUrl', function(){
+    var modalInputCB_pasteUrl = $('#modalInputCB_pasteUrl');
+    var modalInputCB_upload = $('#modalInputCB_uploadFrmGallery');
+    var modalInput_pasteURL = $('#modalInput_pasteURL');
+    var modalBtn_browseVideo = $('#modalBtn_browseVideo');
+
+    if(this.checked){
+        modalInput_pasteURL.prop('disabled', false);
+        modalInput_pasteURL.css("background-color", "white");
+        modalInputCB_upload.prop('checked', false);
+        modalBtn_browseVideo.prop('disabled', true);
+        modalBtn_browseVideo.css("background-color", "lightgrey");
+
+    }else if(!this.checked){
+        modalInput_pasteURL.prop('disabled', true);
+        modalInput_pasteURL.css("background-color", "lightgrey");
+        modalBtn_browseVideo.prop('disabled', true);
+        modalBtn_browseVideo.css("background-color", "lightgrey");
+
+    }
+
+})
+
+$(document).on('click', '#modalInputCB_uploadFrmGallery', function(){
+    var modalInputCB_pasteUrl = $('#modalInputCB_pasteUrl');
+    var modalInput_pasteURL = $('#modalInput_pasteURL');
+    var modalBtn_browseVideo = $('#modalBtn_browseVideo');
+
+    if(this.checked){
+        modalInputCB_pasteUrl.prop('checked', false);
+        modalInput_pasteURL.prop('disabled', true);
+        modalInput_pasteURL.css("background-color", "lightgrey");
+        modalBtn_browseVideo.prop('disabled', false);
+        modalBtn_browseVideo.css("background-color", "#3cabd0");
+
+    }else if(!this.checked){
+        modalInput_pasteURL.prop('disabled', true);
+        modalInput_pasteURL.css("background-color", "lightgrey");
+        modalBtn_browseVideo.prop('disabled', true);
+        modalBtn_browseVideo.css("background-color", "lightgrey");
+    }
+
+})
+
+$(document).on('click', '#modalInputCB_renameVideo', function(){
+    var modalInput_renameVideo = $('#modalInput_renameVideo');
+
+    if(this.checked){
+        modalInput_renameVideo.prop('disabled', false);
+        modalInput_renameVideo.css("background-color", "white");
+
+    }else if(!this.checked){
+        modalInput_renameVideo.prop('disabled', true);
+        modalInput_renameVideo.css("background-color", "lightgrey");
+    }
+
+})
+
 //SHOW MODAL CALL IN
 $(document).on('click','#pageBtn_addNewTopic',showModal_addNewTopic);
 $(document).on('click','#pageBtn_uploadContent',showModal_uploadContent);
+$(document).on('click', '#pageBtn_uploadVideo', showModal_uploadVideo);
+$(document).on('click', '#modalBtn_addNewLesson', showModal_addNewLesson);
 
 //CANCEL MODAL CALL IN
 $(document).on('click', '#modalBtn_addNewTopic_cancel', closeModal_addNewTopic);
 $(document).on('click', '#modalBtn_uploadFile_cancel', closeModal_uploadContent);
-
+$(document).on('click','#modalBtn_uploadVideo_cancel',closeModal_uploadVideo);
 
 
 //CLOSE MODAL CALL IN
 $(document).on('click', '.close_openTopicDetails', closeModal_openTopicDetails);
 $(document).on('click', '.close_addNewTopic', closeModal_addNewTopic);
 $(document).on('click','.close_uploadContent',closeModal_uploadContent);
+$(document).on('click','.close_uploadVideo',closeModal_uploadVideo);
 
 //ADD/CREATE CALL IN
 $(document).on('click', '#modalBtn_addNewTopic_add', validateAddNewTopic);
+$(document).on('click', '#modalBtn_uploadVideo_upload', validateUploadNewVideo);
+
 
 //EDIT CALL IN
 
@@ -47,24 +114,75 @@ $(document).on('click', '#modalBtn_addNewTopic_add', validateAddNewTopic);
 function showModal_addNewTopic(){
     $('#container_modalAddNewTopic').show();
 }
-
 function showModal_uploadContent() {
     $('#container_modalUploadContent').show();
 
 }
-
-//CANCEL MODAL FUNCTIONS
-function closeModal_addNewTopic(event){
-    $('#container_modalAddNewTopic').hide();
+function showModal_uploadVideo(){
+    $('#container_modalUploadVideo').show();
 }
+function showModal_OpenTopicLessons(pTopicId){
+    var intPtopicId = parseInt(pTopicId);
+    var modalInput_topicTitle = $('#modalInput_topicTitle');
+    var modalBtn_topicTitle_save = $('#modalBtn_topicTitle_save');
 
-function closeModal_uploadContent(){
-    $('#container_modalUploadContent').hide();
+    console.log(typeof intPtopicId);
+    $('#modal_header_label').text('Topic Details');
+    $.ajax({
+        url: 'controller/get_topic_by_id.php',
+        type: 'POST',
+        data : { id : intPtopicId },
+        dataType : 'json',
+        success: function (topic) {
+            console.log("test success");
+
+            var topicID = topic ['topicId'];
+            console.log(topicID);
+            var topicTitle = topic['topicTitle'];
+            console.log(topicTitle);
+
+            $("#modalInput_topicTitle").val(topicTitle);
+        },
+        error: function (x, e) {
+            if (x.status == 0) {
+                alert('You are offline!!\n Please Check Your Network.');
+            } else if (x.status == 404) {
+                alert('Requested URL not found.');
+            } else if (x.status == 500) {
+                alert('Internal Server Error.');
+            } else if (e == 'parsererror') {
+                alert('Error.\nParsing JSON Request failed.');
+            } else if (e == 'timeout') {
+                alert('Request Time out.');
+            } else {
+                alert('Unknown Error.\n' + x.responseText);
+            }
+        }
+
+    });
+    $('#container_modalOpenTopicDetails').show();
+    modalInput_topicTitle.prop('disabled', true);
+    modalInput_topicTitle.css("background-color", "lightgrey");
+    modalBtn_topicTitle_save.prop('disabled', true);
+    modalBtn_topicTitle_save.css("background-color", "lightgrey");
+    
+}
+function showModal_addNewLesson(){
+    $('#container_modalAddNewLesson').show();
 }
 
 //CLOSE MODAL FUNCTIONS
-function closeModal_openTopicDetails(event){
+function closeModal_addNewTopic(){
+    $('#container_modalAddNewTopic').hide();
+}
+function closeModal_uploadContent(){
+    $('#container_modalUploadContent').hide();
+}
+function closeModal_openTopicDetails(){
     $('#container_modalOpenTopicDetails').hide();
+}
+function closeModal_uploadVideo(){
+    $('#container_modalUploadVideo').hide();
 }
 
 //VALIDATIONS
@@ -75,6 +193,21 @@ function validateAddNewTopic(){
         addNewTopic();
     }
 }
+function validateUploadNewVideo(){
+    var modalInputCB_pasteUrl = $('#modalInputCB_pasteUrl');
+    var modalInputCB_uploadFrmGallery = $('#modalInputCB_uploadFrmGallery');
+
+    if(modalInputCB_pasteUrl.is(':checked') || modalInputCB_uploadFrmGallery.is(':checked') ){
+        $('#modalLbl_uploadVideoError').text(" ");
+        uploadNewVideo();
+    }else{
+        $('#modalLbl_uploadVideoError').text("Please select a video origin.");
+    }
+}
+function validateTopicLessons(){
+
+}
+
 
 //ADD/CREATE/UPLOAD FUNCTIONS
 function addNewTopic(){
@@ -108,9 +241,17 @@ function addNewTopic(){
         }
     });
 }
-
+function uploadNewVideo(){
+    alert('MAY CHECK ANG ISA');
+}
 
 //EDIT FUNCTIONS
+function edit_TopicTitle(){
+    var modalInput_topicTitle = $('#modalInput_topicTitle');
+    var btn_edit = $('#modalBtn_topicTitle_edit');
+    var btn_save = $('#modalBtn_topicTitle_save');
+
+}
 
 //GET FUNCTIONS
 function getTopicByID(topicId){
@@ -249,6 +390,7 @@ document.getElementById("Topics").click();
 
 //LOAD TOPIC RECORDS TO TABLE
 function loadAllTopicsToTable(){
+    var loadTopicsToTable = $('#table_topic_record');
     $.ajax({
         url: 'controller/get_all_topic_record.php',
         type: 'POST',
@@ -256,7 +398,7 @@ function loadAllTopicsToTable(){
         success: function(topicData){
             console.log("Length: "+topicData.length);
             var len = topicData.length;
-            $('#table_topic_record').find("tr:not(:first)").remove();
+            loadTopicsToTable.find("tr:not(:first)").remove();
             for (var i = 0; i < len; i++) {
                 var topicId = topicData[i]['topicId'];
                 var topicTitle = topicData[i]['topicTitle'];
@@ -282,7 +424,7 @@ function loadAllTopicsToTable(){
             $('.open').click(function(ev){
                 ev.preventDefault();
                 //do something with click
-                modal_showOpenTopicDetails(ev.target.id);
+                showModal_OpenTopicLessons(ev.target.id);
             });
         },
         error: function (x, e) {
@@ -303,47 +445,6 @@ function loadAllTopicsToTable(){
     });
 }
 
-//OPEN SHOW MODAL, EDIT TOPIC TITLE AND LESSON DETAILS
-function modal_showOpenTopicDetails(pTopicId){
-
-    var intPtopicId = parseInt(pTopicId);
-    console.log(typeof intPtopicId);
-    $('#modal_header_label').text('Topic Details');
-    $.ajax({
-        url: 'controller/get_topic_by_id.php',
-        type: 'POST',
-        data : { id : intPtopicId },
-        dataType : 'json',
-        success: function (topic) {
-            console.log("test success");
-
-            var topicID = topic ['topicId'];
-            console.log(topicID);
-            var topicTitle = topic['topicTitle'];
-            console.log(topicTitle);
-
-            $("#modalInput_topicTitle").val(topicTitle);
-        },
-        error: function (x, e) {
-            if (x.status == 0) {
-                alert('You are offline!!\n Please Check Your Network.');
-            } else if (x.status == 404) {
-                alert('Requested URL not found.');
-            } else if (x.status == 500) {
-                alert('Internal Server Error.');
-            } else if (e == 'parsererror') {
-                alert('Error.\nParsing JSON Request failed.');
-            } else if (e == 'timeout') {
-                alert('Request Time out.');
-            } else {
-                alert('Unknown Error.\n' + x.responseText);
-            }
-        }
-
-    });
-    $('#container_modalOpenTopicDetails').show();
-}
-
 //REFRESH TOPIC RECORDS ON TABLE
 function refreshTopicRecord(){
     $.ajax({
@@ -361,7 +462,6 @@ function searchTopic(){
 function deleteTopic(){
 
 }
-
 
 //CHOOSE FILE TO BE UPLOADED
 function uploadFile(input) {
@@ -454,18 +554,17 @@ $( function() {
 } );
 
 function openMediaTab(evt, mediaName) {
-    var i, tabcontent, tablinks;
-    tabcontent = document.getElementsByClassName("tabContent_Media");
-    for (i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].style.display = "none";
+    var i, tabContent_Media, tabLinks_Media;
+    tabContent_Media = document.getElementsByClassName("tabContent_Media");
+    for (i = 0; i < tabContent_Media.length; i++) {
+        tabContent_Media[i].style.display = "none";
     }
-    tablinks = document.getElementsByClassName("tabLinks_Media");
-    for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    tabLinks_Media = document.getElementsByClassName("tabLinks_Media");
+    for (i = 0; i < tabLinks_Media.length; i++) {
+        tabLinks_Media[i].className = tabLinks_Media[i].className.replace(" active"," ");
     }
     document.getElementById(mediaName).style.display = "block";
     evt.currentTarget.className += " active";
-
-    document.getElementById("defaultOpen_Media").click();
 }
+
 

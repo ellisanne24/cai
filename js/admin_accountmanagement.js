@@ -4,6 +4,50 @@ $(document).on('click', '#btn_AddUser', show_add_user_modal);
 $(document).on('click', '.close_addUser', close_add_user_modal);
 $(document).on('click', '#button_save', addUser);
 
+$('#csv_file_input').on('change', function (e) {
+    var ext = $("#csv_file_input").val().split(".").pop().toLowerCase(); //csv
+    if (e.target.files != undefined) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            var csvval = e.target.result.split("\n");
+            var jsonObj = [];
+            var headers  = csvval[0].split(",");
+            for(var i = 1; i <csvval.length; i++){
+                var data = csvval[i].split(',');
+                var obj = {};
+                for(var j = 0; j < data.length; j++) {
+                    obj[headers[j].trim()] = data[j].trim();
+                }
+                jsonObj.push(obj);
+            }
+            var jsonData = JSON.stringify(jsonObj);
+            addDataToTable(jsonData);
+        };
+        reader.readAsText(e.target.files.item(0));
+    }
+    return false;
+});
+
+function addDataToTable(jsonObjArr){
+    var json = JSON.parse(jsonObjArr);
+    console.log(json);
+    console.log(typeof json);
+    var tbl = $("#data_preview");
+    for(var i = 0; i < json.length-1; i++){
+        var studentId = json[i]['studentId'];
+        var firstName = json[i]['firstname'];
+        var lastName = json[i]['lastname'];
+        var middle = json[i]['middle'];
+        tbl.append(
+            "<tr><td>" + studentId + "</td>" +
+            "<td>" + firstName + "</td>" +
+            "<td>" + lastName + "</td>" +
+            "<td>" + middle + "</td>" +
+            "</tr>"
+        );
+    }
+}
+
 $('#roledropdown').on('change', function() {
     var roleId = this.value;
     var roleName = $("#roledropdown option:selected").text();

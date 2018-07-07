@@ -142,10 +142,19 @@ require_once '../core/init.php';
                 </select>
                 <br>
                 <br>
-                <input type="file" id="addimage" class="modalbtn_browseFiles" value="Add Image"/><br>
+                <input type="file" id="csv_file_input" class="modalbtn_browseFiles" value="Add Image"/><br>
                 <hr/>
                 <label class="modal_label">Data Preview</label><br>
-                <iframe id="iFrame" ></iframe>
+                <div>
+                    <table id="data_preview">
+                        <tr>
+                            <th>Student Id</th>
+                            <th>Lastname</th>
+                            <th>Firstname</th>
+                            <th>Middle Initial</th>
+                        </tr>
+                    </table>
+                </div>
             </form>
         </div>
         <div class="modal_footer">

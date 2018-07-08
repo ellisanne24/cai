@@ -14,14 +14,52 @@ $(document).ready(function(){
     loadToDrpDown_assignToTopic();
 });
 
+
+function getYoutubeVideoId(url) {
+    var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+    var match = url.match(regExp);
+    if (match && match[2].length == 11) {
+        return match[2];
+    } else {
+        return 'error';
+    }
+}
+
+$('#modalInput_pasteURL').on('input',function(e){
+    var videoUrl = $('#modalInput_pasteURL').val().trim();
+    var videoId = getYoutubeVideoId(videoUrl);
+    $('#modalContainer_videoPreview').html('<iframe width="510" height="200" src="//www.youtube.com/embed/' + videoId + '" frameborder="0" allowfullscreen></iframe>');
+});
+
+$("#modalBtn_choose_video_file").on('change',function(event){
+    $('#modalInput_pasteURL').val('');
+    var fileInput = document.getElementById('modalBtn_choose_video_file');
+    var fileUrl = window.URL.createObjectURL(fileInput.files[0]);
+    //console.log("Video URL: "+fileUrl);
+    //$(".video").attr("src", fileUrl);
+    var video = $('<video />', {
+        id: 'video',
+        src: fileUrl,
+        controls: true,
+        width: 510,
+        height: 200
+    });
+
+    $('#modalContainer_videoPreview').html(video);
+});
+
 //CHANGE LISTENERS
 $(document).on('click', '#modalInputCB_pasteUrl', function(){
     var modalInputCB_pasteUrl = $('#modalInputCB_pasteUrl');
     var modalInputCB_upload = $('#modalInputCB_uploadFrmGallery');
     var modalInput_pasteURL = $('#modalInput_pasteURL');
     var modalBtn_browseVideo = $('#modalBtn_browseVideo');
+    var modalBtn_choose_video_file = $('#modalBtn_choose_video_file');
+    var videoPreviewDivContainer = $('#modalContainer_videoPreview');
 
     if(this.checked){
+        videoPreviewDivContainer.html('');
+        modalBtn_choose_video_file.val('');
         modalInput_pasteURL.prop('disabled', false);
         modalInput_pasteURL.css("background-color", "white");
         modalInputCB_upload.prop('checked', false);
@@ -33,7 +71,6 @@ $(document).on('click', '#modalInputCB_pasteUrl', function(){
         modalInput_pasteURL.css("background-color", "lightgrey");
         modalBtn_browseVideo.prop('disabled', true);
         modalBtn_browseVideo.css("background-color", "lightgrey");
-
     }
 
 })
@@ -42,8 +79,12 @@ $(document).on('click', '#modalInputCB_uploadFrmGallery', function(){
     var modalInputCB_pasteUrl = $('#modalInputCB_pasteUrl');
     var modalInput_pasteURL = $('#modalInput_pasteURL');
     var modalBtn_browseVideo = $('#modalBtn_browseVideo');
+    var modalInput_pasteURL = $('#modalInput_pasteURL');
+    var videoPreviewDivContainer = $('#modalContainer_videoPreview');
 
     if(this.checked){
+        videoPreviewDivContainer.html('');
+        modalInput_pasteURL.val('');
         modalInputCB_pasteUrl.prop('checked', false);
         modalInput_pasteURL.prop('disabled', true);
         modalInput_pasteURL.css("background-color", "lightgrey");
@@ -70,8 +111,7 @@ $(document).on('click', '#modalInputCB_renameVideo', function(){
         modalInput_renameVideo.prop('disabled', true);
         modalInput_renameVideo.css("background-color", "lightgrey");
     }
-
-})
+});
 
 //SHOW MODAL CALL IN
 $(document).on('click','#pageBtn_addNewTopic',showModal_addNewTopic);
@@ -95,7 +135,20 @@ $(document).on('click','.close_uploadVideo',closeModal_uploadVideo);
 $(document).on('click', '#modalBtn_addNewTopic_add', validateAddNewTopic);
 $(document).on('click', '#modalBtn_uploadVideo_upload', validateUploadNewVideo);
 
-
+function resetModalForm(){
+    var modalInput_pasteURL = $('#modalInput_pasteURL');
+    var videoPreviewDivContainer = $('#modalContainer_videoPreview');
+    var modalBtn_choose_video_file = $('#modalBtn_choose_video_file');
+    var cbPasteUrl = $('#modalInputCB_pasteUrl');
+    var cbRenameVideo = $('#modalInputCB_renameVideo');
+    var cbUploadFromGaller = $('#modalInputCB_uploadFrmGallery');
+    cbPasteUrl.prop('checked',false);
+    cbRenameVideo.prop('checked',false);
+    cbUploadFromGaller.prop('checked',false);
+    modalInput_pasteURL.val('');
+    videoPreviewDivContainer.html('');
+    modalBtn_choose_video_file.val('');
+}
 //EDIT CALL IN
 
 //DELETE CALL IN
@@ -183,6 +236,7 @@ function closeModal_openTopicDetails(){
 }
 function closeModal_uploadVideo(){
     $('#container_modalUploadVideo').hide();
+    resetModalForm();
 }
 
 //VALIDATIONS

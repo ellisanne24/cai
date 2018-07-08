@@ -423,8 +423,8 @@ require_once '../core/init.php';
                         Upload from Gallery
                 </label><br>
                 <label class="modal_label" id="modalLbl_browseVideo">
-                        Browse Video
-                    <input type="file" class="modalbtn_browseFiles" id="modalBtn_browseVideo"  value="Browse Video"/><br>
+                        Select Video
+                    <input type="file" class="modalbtn_browseFiles" id="modalBtn_choose_video_file"  value="Browse Video" accept="video/*"/><br>
                 </label>
                 <hr/>
                 <label class="modal_label" id="modalLbl_renameVideo">

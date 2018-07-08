@@ -18,6 +18,7 @@ body {
     margin: 0;
     width: 100%;
     overflow: hidden;
+    padding: 0;
 }
 
 img{
@@ -31,9 +32,11 @@ img{
     overflow: hidden;
     background-color:#3cabd0;
     font-family: quicksandlight;
-    display: block;
-    /*padding-top: 5px;*/
-    padding-bottom: 0;
+    display: flex;
+    flex-direction: row;
+    /*border-top:1px solid #aaaaaa;*/
+    /*border-bottom: 1px solid #dddddd;*/
+
     /*border-bottom: 1px solid #cccccc;*/
 
 }
@@ -42,11 +45,11 @@ img{
     float: left;
     /*display: block;*/
     color: whitesmoke;
-    text-align: center;
+    /*text-align: center;*/
     padding: 12px;
     text-decoration: none;
     font-size: 17px;
-    /*border: 2px solid black;*/
+    /*border: 1px solid black;*/
 
 }
 
@@ -69,7 +72,7 @@ img{
 
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 700px) {
     .nav_container a:not(:first-child) {display: none;}
     .nav_container a.icon {
         float: right;
@@ -78,7 +81,10 @@ img{
 }
 
 @media screen and (max-width: 600px) {
-    .nav_container.responsive {position: relative;}
+    .nav_container.responsive {
+        position: relative;
+    }
+
     .nav_container.responsive .icon {
         position: absolute;
         right: 0;
@@ -90,18 +96,15 @@ img{
         display: block;
         text-align: left;
     }
-
-
-#logout{
-    float: right;
-    padding-right: 20px;
-    padding-left: 20px;
 }
 
+
 #usernameLabel{
-    /*margin-left: 400px;*/
+    margin-left: 440px;
+    /*margin-right: 10px;*/
     color: whitesmoke;
     text-align: center;
+    margin-top: 2px;
     padding: 12px;
     /*text-decoration: none;*/
     font-size: 17px;
@@ -109,14 +112,14 @@ img{
     font-family: quicksandmedium;
     /*display: inherit;*/
 }
-}
+
 
 .display_content{
     position: relative;
     overflow:hidden;
     height: 100%;
     width: 100%;
-    border-bottom: 3px solid #aaaaaa;
+    /*border-bottom: 3px solid #aaaaaa;*/
 }
 
 .content_display > div {
@@ -127,4 +130,10 @@ img{
 .content_display > div:target{
 
     display: block;
+}
+
+#logout{
+    padding-left: 22px;
+    padding-right: 22px;
+    margin-left: 1%;
 }

@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <?php include '../../view/view_navi/navbar.php';?>
 
 </head>
 <body>
 
-
+<h4>TEACHER MY STUDENTS</h4>
 </body>
 </html>

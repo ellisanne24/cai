@@ -1,0 +1,207 @@
+@font-face{
+    font-family: quicksandlight;
+    src:url(../fonts/quicksand-light.ttf);
+}
+@font-face{
+    font-family: quicksandregular;
+    src:url(../fonts/quicksand-regular.ttf);
+}
+@font-face{
+    font-family: quicksandmedium;
+    src:url(../fonts/quicksand-medium.ttf);
+}
+
+html, body{
+    background-color: whitesmoke;
+    height: 100%;
+    width: 100%;
+
+}
+.wrapper{
+    position: relative;
+    margin: 0;
+    padding: 0;
+    /*border: 4px solid black;*/
+    height: 100%;
+    overflow: auto;
+}
+
+.tab {
+    position: relative;
+    float: left;
+    background-color: #f1f1f1;
+    /*width: 15%;*/
+    /*height:65px;*/
+    border-right: 1px solid #dddddd;
+}
+
+/*Style the buttons that are used to open the tab content */
+.tab button {
+    display: block;
+    background-color: inherit;
+    color: #6f7071;
+    padding-left: 70px ;
+    width: 100%;
+    height:82px;
+    outline: none;
+    text-align: left;
+    cursor: pointer;
+    transition: 0.3s;
+    /*border: 4px solid blueviolet;*/
+    font-size: 20px;
+    font-family: quicksandregular;
+    border-style: none;
+
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+    background-color: #ddd;
+}
+
+/* Create an active/current "tab button" class */
+.tab button.active {
+    background-color: #ccc;
+}
+
+#Topics{
+    background-image: url("../img/topics.png");
+    background-repeat: no-repeat;
+    background-position: 20px 20px; /* X, Y */
+    background-size: 40px 40px;
+}
+
+#Files{
+    background-image: url("../img/watchvideo.png");
+    background-repeat: no-repeat;
+    background-position: 20px 20px; /* X, Y */
+    background-size: 40px 40px;
+}
+
+#Account{
+    background-image: url("../img/settings.png");
+    background-repeat: no-repeat;
+    background-position: 20px 20px; /* X, Y */
+    background-size: 40px 40px;
+}
+
+
+/*End Sidebar Design*/
+
+.tabContent{
+    display: flex;
+    flex-direction: column;
+    /*border: 1px solid blue;*/
+    height: 100%;
+    overflow: auto;
+    background-color: #fefefe;
+}
+
+.wrapper_Control{
+    order: 1;
+    position: relative;
+    height: 82px;
+    border-bottom: 1px solid #ebebeb;
+    background-color: #f1f1f1;
+    padding-top: 25px;
+    padding-left: 20px;
+    color: #6f7071;
+    /*border: 1px solid black;*/
+}
+
+.wrapper_ContentDetails{
+    order: 2;
+    position: relative;
+    width: 100%;
+    height: 600px;
+    overflow: auto;
+    /*border: 1px solid red;*/
+    overflow-y: scroll ;
+}
+
+
+/*Upload File Modal*/
+
+.modal_content_uploadFile{
+    overflow: auto;
+    height: 100%;
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    width: 50%; /* Could be more or less, depending on screen size */
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    animation-name: animateTop;
+    animation-duration: 0.4s
+}
+
+.modal_header_uploadNewFile{
+    background-image:url("../img/modal_header.png");
+    background-repeat: no-repeat;
+    padding-top: 15px;
+    padding-left: 20px;
+    padding-right: 15px;
+    color: white;
+    height: 15%;
+}
+
+
+.close_uploadFile {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close_uploadFile:hover,
+.close_uploadFile:focus {
+    color: orangered;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#pageBtn_topicsPreview{
+    margin-right: 20px;
+}
+
+#pageBtn_publishFile{
+    margin-right: 20px;
+}
+
+.modal_content_publishFile{
+    overflow: auto;
+    height: 100%;
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    width: 50%; /* Could be more or less, depending on screen size */
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    animation-name: animateTop;
+    animation-duration: 0.4s
+}
+
+.modal_header_publishFile{
+    background-image:url("../img/modal_headerforTransfer.png");
+    background-repeat: no-repeat;
+    padding-top: 15px;
+    padding-left: 20px;
+    padding-right: 15px;
+    color: white;
+    height: 15%;
+}
+
+
+.close_publishFile {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close_publishFile:hover,
+.close_publishFile:focus {
+    color: orangered;
+    text-decoration: none;
+    cursor: pointer;
+}

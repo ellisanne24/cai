@@ -33,7 +33,7 @@ $role->setRolename($_SESSION['rolename']);
             </a>
         <?php endif; ?>
 
-        <?php if ($role->getRolename() === 'Administrator' || $role->getRolename() === 'Teacher') : ?>
+        <?php if ($role->getRolename() === 'Administrator') : ?>
             <a class="nav_tab" id="admin_quizzes" href="#">
                 Quizzes
             </a>
@@ -45,17 +45,37 @@ $role->setRolename($_SESSION['rolename']);
             </a>
         <?php endif; ?>
 
-        <?php if ($role->getRolename() === 'Administrator' || $role->getRolename() === 'Teacher') : ?>
+        <?php if ($role->getRolename() === 'Administrator') : ?>
             <a class="nav_tab" id="admin_reports" href="#">
                 Reports
             </a>
         <?php endif; ?>
+
         <!--Teacher  Modules-->
-        <?php if ($role->getRolename() === 'Teacher') : ?>
-            <a class="nav_tab" id="teacher_mystudents" href="#">
-                My Students
-            </a>
-        <?php endif; ?>
+
+    <?php if ($role->getRolename() === 'Teacher') : ?>
+        <a class="nav_tab" id="teacher_myStudents" href="#">
+            My Students
+        </a>
+    <?php endif; ?>
+
+    <?php if ($role->getRolename() === 'Teacher') : ?>
+        <a class="nav_tab" id="teacher_myQuizzes" href="#">
+            My Quizzes
+        </a>
+    <?php endif; ?>
+
+    <?php if ($role->getRolename() === 'Teacher') : ?>
+        <a class="nav_tab" id="teacher_settings" href="#">
+            Settings
+        </a>
+    <?php endif; ?>
+
+    <?php if ($role->getRolename() === 'Teacher') : ?>
+        <a class="nav_tab" id="teacher_reports" href="#">
+            Reports
+        </a>
+    <?php endif; ?>
 
 
         <!--Student  Modules-->
@@ -71,7 +91,7 @@ $role->setRolename($_SESSION['rolename']);
             </a>
         <?php endif; ?>
 
-        <label id="usernameLabel">Hello,&nbsp; <?php echo $user->getFirstname(); ?></label>
+        <label id="usernameLabel">Hello,&nbsp; <?php echo $user->getFirstname()."!"; ?></label>
         <a class="nav_tab" id="logout" href="">
             Logout
         </a>

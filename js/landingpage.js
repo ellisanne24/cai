@@ -1,10 +1,17 @@
 /* GLOBAL VARIABLES WITHIN THIS DOCUMENT*/
 var div_content_container = $("#content_container");
 var navitem_dashboard = $("#admin_dashboard");
-var navitem_admin_account_management = $("#admin_accountmanagement");
+var navitem_admin_accountManagement = $("#admin_accountmanagement");
 var navitem_admin_quizzes = $("#admin_quizzes");
 var navitem_admin_settings = $("#admin_settings");
 var navitem_admin_reports = $("#admin_reports");
+
+var navitem_teacher_myStudents = $("#teacher_myStudents");
+var navitem_teacher_myQuizzes = $("#teacher_myQuizzes");
+var navitem_teacher_settings = $("#teacher_settings");
+var navitem_teacher_reports = $("#teacher_reports");
+
+
 
 var roleObj = JSON.parse(role);
 var logout = $('#logout');
@@ -14,10 +21,16 @@ $(document).ready(function () {
     loadDashboard();
     logout.on("click", logoutUser);
     navitem_dashboard.on("click", loadDashboard);
-    navitem_admin_account_management.on("click", loadAccountManagement);
-    navitem_admin_quizzes.on('click',loadQuizzes);
-    navitem_admin_settings.on("click", loadSettings);
-    navitem_admin_reports.on("click", loadReports);
+    navitem_admin_accountManagement.on("click", loadAccountManagement);
+    navitem_admin_quizzes.on('click', load_adminQuizzes);
+    navitem_admin_settings.on("click", load_adminSettings);
+    navitem_admin_reports.on("click", load_adminReports);
+
+    navitem_teacher_myStudents.on('click', load_teacherMyStudents);
+    navitem_teacher_myQuizzes.on('click', load_teacherMyQuizzes);
+    navitem_teacher_settings.on('click', load_teacherSettings);
+    navitem_teacher_reports.on('click', load_teacherReports);
+
 });
 
 function logoutUser() {
@@ -54,10 +67,13 @@ function loadDashboard() {
         div_content_container.html('');
         if (roleObj.rolename === 'Administrator') {
             div_content_container.load(url_admin_dashboard);
+
         } else if (roleObj.rolename === 'Teacher') {
             div_content_container.load(url_teacher_dashboard);
+
         } else if (roleObj.rolename === 'Student') {
             div_content_container.load(url_student_dashboard);
+
         }
     }catch (err){
         console.log("Error: "+err.message);
@@ -74,40 +90,82 @@ function loadAccountManagement() {
     }
 }
 
-function loadQuizzes() {
-
+function load_adminQuizzes() {
     var url_admin_quizzes = 'view/admin_quizzes_view.php';
-    var url_teacher_quizzes = 'view/teacher_quizzes.php';
 
     try{
         div_content_container.html('');
-        if (roleObj.rolename === 'Administrator') {
-            div_content_container.load(url_admin_quizzes);
-        } else if (roleObj.rolename === 'Teacher') {
-            div_content_container.load(url_teacher_quizzes);
-        }
+        div_content_container.load(url_admin_quizzes);
     }catch (err){
-        console.log("Error: "+err.message);
-    }
-
-}
-
-function loadSettings() {
-    var url = 'view/admin_settings.php';
-    try{
-        div_content_container.html('');
-        div_content_container.load(url);
-    }catch(err){
         console.log(err.message);
     }
 
 }
 
-function loadReports() {
-    var url = 'view/admin_reports';
+function load_adminSettings() {
+    var url_admin_settings = 'view/admin_settings.php';
+
     try{
         div_content_container.html('');
-        div_content_container.load(url);
+        div_content_container.load(url_admin_settings);
+    }catch (err){
+        console.log(err.message);
+    }
+
+}
+
+function load_adminReports() {
+    var url_admin_reports = 'view/admin_reports.ph';
+    try{
+        div_content_container.html('');
+        div_content_container.load(url_admin_reports);
+    }catch (err){
+        console.log(err.message);
+    }
+}
+
+//TEACHER FUNCTIONS
+
+function load_teacherMyStudents(){
+    var url_teacher_myStudents = 'view/teacher_mystudents.php';
+
+    try{
+        div_content_container.html('');
+        div_content_container.load(url_teacher_myStudents);
+    }catch (err){
+        console.log(err.message);
+    }
+
+}
+
+function load_teacherMyQuizzes(){
+    var url_teacher_myQuizzes = 'view/teacher_quizzes.php';
+
+    try{
+        div_content_container.html('');
+        div_content_container.load(url_teacher_myQuizzes);
+    }catch (err){
+        console.log(err.message);
+    }
+}
+
+function load_teacherSettings(){
+    var url_teacher_settings = 'view/teacher_settings.php';
+
+    try{
+        div_content_container.html('');
+        div_content_container.load(url_teacher_settings);
+    }catch (err){
+        console.log(err.message);
+    }
+}
+
+function load_teacherReports(){
+    var url_teacher_reports = 'view/teacher_reports.php';
+
+    try{
+        div_content_container.html('');
+        div_content_container.load(url_teacher_reports);
     }catch (err){
         console.log(err.message);
     }

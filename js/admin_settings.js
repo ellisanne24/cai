@@ -1,11 +1,11 @@
 
 $(document).ready(function(){
-    var modalDrpDown_addTopicStatus = $('#modalDrpDown_addTopicStatus');
+    var topic_modal_add_topic_status = $('#modalDrpDown_addTopicStatus');
     var modalDrpDown_uploadFileStatus = $('#modalDrpDown_uploadFileStatus');
     var container_mediaContentsID = $('#container_media');
 
-    modalDrpDown_addTopicStatus.prop('disabled',true);
-    modalDrpDown_addTopicStatus.css("background-color", "lightgrey");
+    topic_modal_add_topic_status.prop('disabled',true);
+    topic_modal_add_topic_status.css("background-color", "lightgrey");
     modalDrpDown_uploadFileStatus.prop('disabled',true);
     modalDrpDown_uploadFileStatus.css("background-color", "lightgrey");
     container_mediaContentsID.hide();
@@ -44,9 +44,108 @@ $("#modalBtn_choose_video_file").on('change',function(event){
         width: 510,
         height: 200
     });
-
     $('#modalContainer_videoPreview').html(video);
 });
+
+
+function hasInputFileLoaded(){
+    var hasYoutubeURLInput = $('#modalInput_pasteURL').val().trim().length > 0;
+    var hasFileInputLoaded = (document.getElementById("modalBtn_choose_video_file").files.length > 0 );
+    if(hasYoutubeURLInput || hasFileInputLoaded){
+        return true;
+    }else{
+        return false;
+    }
+}
+
+function isYoutubeUrl(){
+    return $('#modalInputCB_pasteUrl').is(':checked');
+}
+
+function isVideoUpload(){
+    return $('#modalInputCB_uploadFrmGallery').is(':checked');
+}
+
+$('#modalBtn_uploadVideo_upload').on('click',function(event){
+    event.preventDefault();
+    var errorMessageLabel = $('#modalLbl_uploadVideoError');
+    if(hasInputFileLoaded()){
+        errorMessageLabel.text('');
+        if(isYoutubeUrl()){
+            uploadYoutubeUrl();
+        }else if(isVideoUpload()){
+            uploadVideo();
+        }
+    }else{
+        errorMessageLabel.text("Please select a video to upload or supply a youtube URL.");
+    }
+});
+
+function uploadYoutubeUrl(){
+    var successMessageLabel = $('#modalLbl_uploadVideoSuccess');
+    var youtubeUrl = $('#modalInput_pasteURL').val().trim();
+    var youtubeVideoId = getYoutubeVideoId(youtubeUrl);
+    var youtubeEmbedUrl = "www.youtube.com/embed/";
+    var completeYoutubeUrl = (youtubeEmbedUrl + youtubeVideoId);
+    var youtubeVideoTitle = $('#youtube_video_title').val().trim();
+    console.log('Youtube Embed URL: '+completeYoutubeUrl);
+
+    var formData = new FormData();
+    formData.append('completeYoutubeUrl',completeYoutubeUrl);
+    formData.append('youtubeVideoTitle',youtubeVideoTitle);
+    $.ajax({
+        url: 'controller/upload_youtube_video.php',
+        type: 'POST',
+        data: formData,
+        processData: false,
+        contentType: false,
+        success: function(response){
+            successMessageLabel.text(response);
+        },
+        error: function(x,e){
+            handleError(x,e);
+        }
+    });
+}
+
+function uploadVideo() {
+    var successMessageLabel = $('#modalLbl_uploadVideoSuccess');
+    var videoTitle = $('#modalInput_renameVideo').val().trim();
+    var videoFile = $('#modalBtn_choose_video_file')[0].files[0];
+    var formData = new FormData();
+    formData.append('file', videoFile);
+    formData.append('videoTitle',videoTitle);
+
+    $.ajax({
+        url: 'controller/upload_video.php',
+        type: 'POST',
+        data: formData,
+        processData: false,  // tell jQuery not to process the data
+        contentType: false,  // tell jQuery not to set contentType
+        success: function (response) {
+            successMessageLabel.text(response);
+        },
+        error: function (x, e) {
+            handleError(x,e);
+        }
+    });
+}
+
+function handleError(x,e){
+    if (x.status == 0) {
+        alert('You are offline!!\n Please Check Your Network.');
+    } else if (x.status == 404) {
+        alert('Requested URL not found.');
+    } else if (x.status == 500) {
+        alert('Internal Server Error.');
+    } else if (e == 'parsererror') {
+        alert('Error.\nParsing JSON Request failed.');
+    } else if (e == 'timeout') {
+        alert('Request Time out.');
+    } else {
+        alert('Unknown Error.\n' + x.responseText);
+    }
+}
 
 //CHANGE LISTENERS
 $(document).on('click', '#modalInputCB_pasteUrl', function(){
@@ -72,8 +171,7 @@ $(document).on('click', '#modalInputCB_pasteUrl', function(){
         modalBtn_browseVideo.prop('disabled', true);
         modalBtn_browseVideo.css("background-color", "lightgrey");
     }
-
-})
+});
 
 $(document).on('click', '#modalInputCB_uploadFrmGallery', function(){
     var modalInputCB_pasteUrl = $('#modalInputCB_pasteUrl');
@@ -133,7 +231,7 @@ $(document).on('click','.close_uploadVideo',closeModal_uploadVideo);
 
 //ADD/CREATE CALL IN
 $(document).on('click', '#modalBtn_addNewTopic_add', validateAddNewTopic);
-$(document).on('click', '#modalBtn_uploadVideo_upload', validateUploadNewVideo);
+
 
 function resetModalForm(){
     var modalInput_pasteURL = $('#modalInput_pasteURL');
@@ -247,21 +345,6 @@ function validateAddNewTopic(){
         addNewTopic();
     }
 }
-function validateUploadNewVideo(){
-    var modalInputCB_pasteUrl = $('#modalInputCB_pasteUrl');
-    var modalInputCB_uploadFrmGallery = $('#modalInputCB_uploadFrmGallery');
-
-    if(modalInputCB_pasteUrl.is(':checked') || modalInputCB_uploadFrmGallery.is(':checked') ){
-        $('#modalLbl_uploadVideoError').text(" ");
-        uploadNewVideo();
-    }else{
-        $('#modalLbl_uploadVideoError').text("Please select a video origin.");
-    }
-}
-function validateTopicLessons(){
-
-}
-
 
 //ADD/CREATE/UPLOAD FUNCTIONS
 function addNewTopic(){
@@ -294,9 +377,6 @@ function addNewTopic(){
             }
         }
     });
-}
-function uploadNewVideo(){
-    alert('MAY CHECK ANG ISA');
 }
 
 //EDIT FUNCTIONS
@@ -369,11 +449,8 @@ function getTopicByID(topicId){
                 alert('Unknown Error.\n' + x.responseText);
             }
         }
-
-
     });
     $('#container_modalAddNewUser').show();
-
 }
 
 //DELETE FUNCTIONS
@@ -504,7 +581,6 @@ function refreshTopicRecord(){
     $.ajax({
 
     });
-
 }
 
 //SEARCH TOPIC

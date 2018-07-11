@@ -17,6 +17,7 @@ require_once '../core/init.php';
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="//resources/demos/style.css">
+    <link href="http://hayageek.github.io/jQuery-Upload-File/4.0.11/uploadfile.css" rel="stylesheet">
 </head>
 
 <body>
@@ -395,68 +396,84 @@ require_once '../core/init.php';
 </div>
 <!----------------------------------------------------------------------------------------------------------->
 <!--MODAL - UPLOAD NEW VIDEO-->
-<div class="modal" id="container_modalUploadVideo" >
-    <div class="modal_content_uploadVideo">
-        <div class="modal_header_uploadNewVideo">
-            <span class="close_uploadVideo">&times;</span>
-            <h4 class="modal_header_label">Upload New Video</h4>
-        </div>
+    <div class="modal" id="container_modalUploadVideo">
+        <div class="modal_content_uploadVideo">
+            <div class="modal_header_uploadNewVideo">
+                <span class="close_uploadVideo">&times;</span>
+                <h4 class="modal_header_label">Upload New Video</h4>
+            </div>
 
-        <div class="modal_body">
-            <form class="container_UserInfo" id="modalForm_uploadVideo" method="post">
-                <label class="modal_label" id="modalLbl_fileNote">
-                    Note : Video file must be in (.mp4) or (.avi) formats.
-                </label>
-                <hr />
-                <label class="modal_label" id="modalCB_url">
+            <div class="modal_body">
+                <form class="container_UserInfo" id="modalForm_uploadVideo"
+                      enctype="multipart/form-data" method="post">
+                    <label class="modal_label" id="modalLbl_fileNote">
+                        Note : Video file must be in (.mp4) format.
+                    </label>
+                    <hr/>
+                    <label class="modal_label" id="modalCB_url">
                         <input type="checkbox" id="modalInputCB_pasteUrl">
                         <span class="checkmark"></span>
                         URL
-                </label><br>
-                <label class="modal_label" id="modalLbl_pasteURL">
-                    Paste Url here
-                    <input type="text" class="modal_inputbox" id="modalInput_pasteURL"/><br>
-                </label><br>
-                <label class="modal_label" id="modalCB_uploadFrmGallery">
+                    </label><br>
+                    <label class="modal_label" id="modalLbl_youtubeUrlTitle">
+                        Youtube Video Title
+                    </label>
+                    <input type="text" id="youtube_video_title" class="modal_inputbox" />
+                    <label class="modal_label" id="modalLbl_pasteURL">
+                        Paste Url here
+                        <input type="text" class="modal_inputbox" id="modalInput_pasteURL"/><br>
+                    </label><br>
+                    <label class="modal_label" id="modalCB_uploadFrmGallery">
                         <input type="checkbox" id="modalInputCB_uploadFrmGallery">
                         <span class="checkmark"></span>
                         Upload from Gallery
-                </label><br>
-                <label class="modal_label" id="modalLbl_browseVideo">
+                    </label><br>
+                    <label class="modal_label" id="modalLbl_browseVideo">
                         Select Video
-                    <input type="file" class="modalbtn_browseFiles" id="modalBtn_choose_video_file"  value="Browse Video" accept="video/*"/><br>
-                </label>
-                <hr/>
-                <label class="modal_label" id="modalLbl_renameVideo">
-                    <input type="checkbox" id="modalInputCB_renameVideo">
-                    <span class="checkmark"></span>
-                    Rename this Video
-                    <input class="modal_inputbox" id="modalInput_renameVideo" type="text" name="modalInputName_renameVideo" placeholder="Optional"><br>
-                </label>
-                <hr />
-                <label class="modal_label" id="modalLbl_videoPreview">
-                    File Preview
-                </label>
-                <div class="modalContainer_filePreview" id="modalContainer_videoPreview">
+                        <input type="file" name="file" class="modalbtn_browseFiles" id="modalBtn_choose_video_file"
+                               value="Select Video" accept="video/*"/><br>
+                    </label>
+                    <hr/>
+                    <label class="modal_label" id="modalLbl_renameVideo">
+                        <input type="checkbox" id="modalInputCB_renameVideo">
+                        <span class="checkmark"></span>
+                        Video Title
+                        <input class="modal_inputbox" id="modalInput_renameVideo" type="text"
+                               name="modalInputName_renameVideo" placeholder="Enter video title for selected video file"><br>
+                    </label>
+                    <hr/>
+                    <label class="modal_label" id="modalLbl_videoPreview">
+                        File Preview
+                    </label>
 
-                </div>
-                <hr/>
-                <label class="modalLbl_errorMessage" id="modalLbl_uploadVideoError">
-                    <!-- Error Container-->
-                </label>
-            </form>
-        </div>
+                    <div class="modalContainer_filePreview" id="modalContainer_videoPreview"></div>
+                    <hr/>
+                    <label class="modalLbl_errorMessage" id="modalLbl_uploadVideoError">
+                        <!-- Error Container-->
+                    </label>
+                    <label class="modalLbl_successMessage" id="modalLbl_uploadVideoSuccess">
+                        <!-- Success Message Container-->
+                    </label>
 
-        <div class="modal_footer">
-            <button class="btn_modalFooter" id="modalBtn_uploadVideo_upload" name="modalBtnName_uploadVideo_upload">
-                Upload
-            </button>
-            <button class="btn_modalFooter" id="modalBtn_uploadVideo_cancel" name="modalBtnName_uploadVideo_cancel">
-                Cancel
-            </button>
+                    <div class="modal_footer">
+                        <button class="btn_modalFooter" id="modalBtn_uploadVideo_upload"
+                                name="modalBtnName_uploadVideo_upload">
+                            Upload
+                        </button>
+                        <button class="btn_modalFooter" id="modalBtn_uploadVideo_cancel"
+                                name="modalBtnName_uploadVideo_cancel">
+                            Cancel
+                        </button>
+                    </div>
+                </form>
+
+
+
+
+            </div>
+
         </div>
     </div>
-</div>
 <!----------------------------------------------------------------------------------------------------------->
 
 <!--PAGE - PPT TAB-->
@@ -905,8 +922,8 @@ require_once '../core/init.php';
 <!--End WRAPPER-->
 
 <script>
-    var url = "js/admin_settings.js";
-    $.getScript(url);
+    var url1 = "js/admin_settings.js";
+    $.getScript(url1);
 </script>
 
 </body>

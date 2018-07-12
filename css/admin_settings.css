@@ -103,13 +103,6 @@ html, body{
     background-position: 20px 12px; /* X, Y */
     background-size: 40px 40px;
 }
-#Bulletin{
-    background-image: url("../img/announcements.png");
-    background-repeat: no-repeat;
-    background-position: 20px 12px; /* X, Y */
-    background-size: 40px 40px;
-
-}
 
 #Reviewer{
     background-image: url("../img/reviewer.png");
@@ -621,14 +614,18 @@ html, body{
     margin-right: 20px;
 }
 
-#btn_UploadPPT{
+#btn_uploadPPT{
     margin-right: 20px;
     width: 200px;
 }
 
-#btn_UploadEnrichment{
+#btn_uploadEnrichment{
+    height: 55px;
+}
+
+#btn_publishEnrichment{
+    height: 55px;
     margin-right: 20px;
-    width: 200px;
 }
 
 #btn_uploadGame{

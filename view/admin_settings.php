@@ -42,9 +42,6 @@ require_once '../core/init.php';
     <button id="Sections" class="tabLinks" onclick="openTab(event, 'wrapperSections')">
         Sections
     </button>
-    <button id="Bulletin" class="tabLinks" onclick="openTab(event, 'wrapperBulletin')">
-        Bulletin
-    </button>
     <button id="Reviewer" class="tabLinks" onclick="openTab(event, 'wrapperReviewers')">
         Reviewers
     </button>
@@ -371,8 +368,8 @@ require_once '../core/init.php';
         </label>
         <i class="fa fa-search" id="pageIcon_searchVideo"></i>
         <i class="fa fa-refresh" id="pageIcon_refreshTopic"></i>
-        <button class="button" id="pageBtn_uploadVideo">
-            Assign Video
+        <button class="button" id="pageBtn_publishVideo">
+            Publish Video
         </button>
         <button class="button" id="pageBtn_uploadVideo">
             Upload Video
@@ -418,7 +415,7 @@ require_once '../core/init.php';
                     <label class="modal_label" id="modalLbl_youtubeUrlTitle">
                         Youtube Video Title
                     </label>
-                    <input type="text" id="youtube_video_title" class="modal_inputbox" />
+                        <input type="text" id="youtube_video_title" class="modal_inputbox" />
                     <label class="modal_label" id="modalLbl_pasteURL">
                         Paste Url here
                         <input type="text" class="modal_inputbox" id="modalInput_pasteURL"/><br>
@@ -475,7 +472,6 @@ require_once '../core/init.php';
         </div>
     </div>
 <!----------------------------------------------------------------------------------------------------------->
-
 <!--PAGE - PPT TAB-->
 <div class="tabContent" id="wrapperPPT">
     <div class="wrapper_Control">
@@ -485,8 +481,11 @@ require_once '../core/init.php';
         </label>
         <i class="fa fa-search" id="pageIcon_searchPPT"></i>
         <i class="fa fa-refresh" id="pageIcon_refreshPPT"></i>
+        <button class="button" id="pageBtn_publishPPT">
+            Publish PPT
+        </button>
         <button class="button" id="pageBtn_uploadPPT">
-            Upload Powerpoint
+            Upload PPT
         </button>
     </div>
     <div class="wrapper_ContentDetails">
@@ -506,7 +505,6 @@ require_once '../core/init.php';
     </div>
 </div>
 <!----------------------------------------------------------------------------------------------------------->
-
 <!--Start Contents for Enrichment-->
 <div class="tabContent" id="wrapperEnrichment">
     <div class="wrapper_Control">
@@ -516,7 +514,10 @@ require_once '../core/init.php';
         </label>
         <i class="fa fa-search" id="btn_SearchEnrichment"></i>
         <i class="fa fa-refresh" id="btn_RefreshEnrichment"></i>
-        <button onclick="" class="button" id="btn_UploadEnrichment">
+        <button onclick="" class="button" id="btn_publishEnrichment">
+            Publish Enrichment
+        </button>
+        <button onclick="" class="button" id="btn_uploadEnrichment">
             Upload Enrichment
         </button>
     </div>
@@ -536,7 +537,7 @@ require_once '../core/init.php';
         </div>
     </div>
 </div>
-<!--End Contents for Enrichment-->
+<!----------------------------------------------------------------------------------------------------------->
 <!--Start Contents for Games-->
 <div id="wrapperGames" class="tabContent">
     <div class="wrapper_Control">
@@ -546,6 +547,9 @@ require_once '../core/init.php';
         </label>
         <i class="fa fa-search" id="btn_SearchGame"></i>
         <i class="fa fa-refresh" id="btn_RefreshGame"></i>
+        <button onclick="" class="button" id="btn_assignGame">
+            Assign Game
+        </button>
         <button onclick="" class="button" id="btn_uploadGame">
             Upload Game
         </button>
@@ -565,7 +569,7 @@ require_once '../core/init.php';
         </div>
     </div>
 </div>
-<!--End Contents for Games -->
+<!----------------------------------------------------------------------------------------------------------->
 <!--Start Contents for Sections -->
 <div id="wrapperSections" class="tabContent">
     <div class="wrapper_Control">
@@ -646,7 +650,7 @@ require_once '../core/init.php';
         </div>
     </div>
 </div>
-<!-- EndAddNewSectionModal-->
+<!--------------------------------------------------------------------------------------------------------->
 <!--StartTransferModal-->
 <div id="container_modalTransfer" class="modal">
     <div class="modal_content_transfer">
@@ -714,39 +718,7 @@ require_once '../core/init.php';
         </div>
     </div>
 </div>
-<!--EndTransferModal-->
-<!--End Contents for Sections -->
-<!--Start Contents for Announcements -->
-<div id="wrapperBulletin" class="tabContent">
-    <div class="wrapper_Control">
-        <label class="control_label">
-            Search Announcement :
-            <input id="searchBox_announcement" type="text" name="SearchBox">
-        </label>
-        <i class="fa fa-search" id="btn_SearchAnnouncement"></i>
-        <i class="fa fa-refresh" id="btn_RefreshAnnouncement"></i>
-        <button onclick="" class="button" id="btn_RemoveAllAnnouncement">
-            Delete All
-        </button>
-        <button onclick="" class="button" id="btn_AddNewAnnouncement">
-            Create Announcement
-        </button>
-    </div>
-    <div class="wrapper_ContentDetails">
-        <div class="table_wrapper" id="table_wrapper">
-            <table id="table_announcement_record">
-                <tr>
-                    <th>Announcement ID</th>
-                    <th>Title</th>
-                    <th>Created By</th>
-                    <th>Date</th>
-                    <th colspan="2">Action</th>
-                </tr>
-            </table>
-        </div>
-    </div>
-</div>
-<!--End Contents for Announcements -->
+--------------------------------------------------------------------------------------------------------->
 <!--Start Contents for Reviewers -->
 <div id="wrapperReviewers" class="tabContent">
     <div class="wrapper_Control">
@@ -755,8 +727,11 @@ require_once '../core/init.php';
             <input id="searchBox_Reviewer" type="text" name="SearchBox">
         </label>
         <i class="fa fa-search" id="btn_SearchReviewer"></i>
-        <i class="fa fa-refresh" id="btn_RefreshReviwer"></i>
-        <button onclick="createNewReviewer()" class="button" id="btn_NewReviewer">
+        <i class="fa fa-refresh" id="btn_RefreshReviewer"></i>
+        <button  class="button" id="btn_publishReviewer">
+            Publish Reviewer
+        </button>
+        <button  class="button" id="btn_createNewReviewer">
             Create New Reviewer
         </button>
     </div>

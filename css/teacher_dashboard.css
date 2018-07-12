@@ -22,7 +22,9 @@ body{
     /*border: 1px solid black;*/
     display: flex;
     flex-direction: column;
-
+    overflow: scroll;
+    height: 768px;
+    width: 1366px;
 }
 
 .wrapper_schoolName{
@@ -68,6 +70,19 @@ body{
     padding-top: 20px;
     padding-bottom: 20px;
     flex-direction: row;
+
+}
+
+.wrapper_studentsStanding{
+    order: 3;
+    height: 180px;
+    border: 1px solid blue;
+    background-color: #fafbfb;
+    box-shadow: 1px 5px #f0f2f2;
+    margin-left: 25px;
+    margin-right: 25px;
+    padding-top: 20px;
+    padding-bottom: 20px;
 
 }
 
@@ -125,7 +140,7 @@ body{
 
 }
 
-#menuTileImg_teacherCount{
+#menuTileImg_quizCount{
     position: relative;
     background-image: url("../img/teacher_white.png");
     background-repeat: no-repeat;
@@ -216,6 +231,6 @@ body{
 }
 
 .pageLine{
-   margin-left: 20px;
-   margin-right: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
 }

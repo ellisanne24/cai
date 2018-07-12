@@ -1,0 +1,15 @@
+@font-face{
+    font-family: quicksandlight;
+    src:url(../fonts/quicksand-light.ttf);
+
+}
+@font-face{
+    font-family: quicksandregular;
+    src:url(../fonts/quicksand-regular.ttf);
+
+}
+@font-face{
+    font-family: quicksandmedium;
+    src:url(../fonts/quicksand-medium.ttf);
+
+}

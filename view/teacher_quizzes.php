@@ -18,11 +18,11 @@
                 </label>
                 <i class="fa fa-search" id="btn_Search"></i>
                 <i class="fa fa-refresh" id="btn_Refresh"></i>
-                <button onclick="showModalCreateNewTest()" class="button" id="pageBtn_createNewTest">
-                    Create New Test
-                </button>
                 <button onclick="showModalPublishTest()" class="button" id="pageBtn_publishTest">
                     Publish Test
+                </button>
+                <button onclick="showModalCreateNewTest()" class="button" id="pageBtn_createNewTest">
+                    Create New Test
                 </button>
             </div>
         </div>

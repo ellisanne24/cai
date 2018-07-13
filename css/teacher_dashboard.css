@@ -18,13 +18,33 @@ body{
     background-color: #f0f2f2;
 }
 
-.mainWrapper{
+.divDashboard_schoolName{
+    order: 1;
     /*border: 1px solid black;*/
+    flex-grow: 1;
+}
+
+.divDashboard_sy{
+    order: 2;
+    /*border: 1px solid black;*/
+    flex-grow: 1;
+}
+
+
+.mainWrapper{
     display: flex;
     flex-direction: column;
+    height: 100%;
+
+}
+
+.subWrapper{
+    position: relative;
+    order: 2;
+    /*border: 1px solid black;*/
     overflow: scroll;
-    height: 768px;
-    width: 1366px;
+    height: 600px;
+    overflow-x: hidden;
 }
 
 .wrapper_schoolName{
@@ -38,23 +58,28 @@ body{
     font-family: quicksandregular;
 }
 
-.divDashboard_schoolName{
-    order: 1;
-    /*border: 1px solid black;*/
-    flex-grow: 1;
-}
-
-.divDashboard_sy{
-    order: 2;
-    /*border: 1px solid black;*/
-    flex-grow: 1;
-
-}
-
 #pageLbl_Dashboard{
     float: right;
 }
 
+
+.dashboardLbl_count{
+    position: relative;
+    font-family: quicksandregular;
+    font-size: 50px;
+    margin-top: 10px;
+    margin-left: 20px;
+}
+
+.dashboardLbl_name{
+
+    font-family: quicksandlight;
+    color: white;
+    font-size: 40px;
+    /*border: 1px solid red;*/
+    margin-top: 70px;
+    /*margin-left: -60px;*/
+}
 
 /*------------------------------------------------------------*/
 .wrapper_menuTiles{
@@ -75,14 +100,15 @@ body{
 
 .wrapper_studentsStanding{
     order: 3;
-    height: 180px;
-    border: 1px solid blue;
+    height: 300px;
+    /*border: 1px solid blue;*/
     background-color: #fafbfb;
     box-shadow: 1px 5px #f0f2f2;
     margin-left: 25px;
     margin-right: 25px;
     padding-top: 20px;
     padding-bottom: 20px;
+    margin-top: 15px;
 
 }
 
@@ -95,49 +121,42 @@ body{
     margin-left: 10px;
 }
 
+.divDashboard_sectionCount{
+    order: 2;
+    flex-basis: 23%;
+    background-color: #ffd066;
+    color: white;
+}
+
+.divDashboard_quizCount{
+    order: 3;
+    flex-basis: 23%;
+    background-color: #ff8b85;
+    color: white;
+}
+
+.divDashboard_finisherCount{
+    order: 4;
+    flex-basis: 23%;
+    /*border: 1px solid darkgray;*/
+    background-color: #f7cac9;
+    color: white;
+    margin-right: 10px;
+}
 
 #menuTileImg_studentCount{
-    position: relative;
+    /*position: relative;*/
     background-image: url("../img/students_white.png");
     background-repeat: no-repeat;
     background-position: right;
     /*border: 1px solid black;*/
     height: 120px;
     width: 120px;
-    background-size: 80px 80px;
+    background-size: 60px 60px;
     float: right;
-    margin-top: 50px;
-    margin-right: 20px;
+    margin-top: 30px;
+    margin-right: 25px;
     /*border: 1px solid black;*/
-}
-
-
-.dashboardLbl_count{
-    position: absolute;
-    font-family: quicksandregular;
-    font-size: 65px;
-    margin-top: 15px;
-    margin-left: 20px;
-}
-
-.dashboardLbl_name{
-    position: absolute;
-    font-family: quicksandlight;
-    color: white;
-    font-size: 40px;
-    margin-top: 100px;
-    margin-left: 20px;
-}
-
-
-/*-------------------------------------------------------------*/
-.divDashboard_teacherCount{
-    order: 2;
-    flex-basis: 23%;
-    /*border: 1px solid darkblue;*/
-    background-color: #ffd066;
-    color: white;
-
 }
 
 #menuTileImg_quizCount{
@@ -148,19 +167,11 @@ body{
     /*border: 1px solid black;*/
     height: 120px;
     width: 120px;
-    background-size: 80px 80px;
+    background-size: 60px 60px;
     float: right;
-    margin-top: 50px;
-    margin-right: 20px;
+    margin-top: 20px;
+    margin-right: 25px;
     /*border: 1px solid black;*/
-}
-/*-------------------------------------------------------------*/
-.divDashboard_sectionCount{
-    order: 3;
-    flex-basis: 23%;
-    /*border: 1px solid darkolivegreen;*/
-    background-color: #ff8b85;
-    color: white;
 }
 
 #menuTileImg_sectionCount{
@@ -171,22 +182,14 @@ body{
     /*border: 1px solid black;*/
     height: 120px;
     width: 120px;
-    background-size: 80px 80px;
+    background-size: 60px 60px;
     float: right;
-    margin-top: 50px;
-    margin-right: 20px;
+    margin-top: 20px;
+    margin-right: 25px;
     /*border: 1px solid black;*/
 }
 
-/*-------------------------------------------------------------*/
-.divDashboard_finisherCount{
-    order: 4;
-    flex-basis: 23%;
-    /*border: 1px solid darkgray;*/
-    background-color: #f7cac9;
-    margin-right: 10px;
-    color: white;
-}
+
 #menuTileImg_finisherCount{
     position: relative;
     background-image: url("../img/finisher_white.png");
@@ -195,9 +198,9 @@ body{
     /*border: 1px solid black;*/
     height: 120px;
     width: 120px;
-    background-size: 80px 80px;
+    background-size: 60px 60px;
     float: right;
-    margin-top: 50px;
+    margin-top: 10px;
     margin-right: 20px;
     /*border: 1px solid black;*/
 }
@@ -218,6 +221,7 @@ body{
     /*border: 1px solid darkgoldenrod;*/
     margin-left: 20px;
     margin-right: 20px;
+
 }
 
 .pageLbl_divTitle{
@@ -225,7 +229,6 @@ body{
     font-size: 16px;
     color: #6f7071;
     position: relative;
-
     margin-left: 20px;
     /*border: 1px solid black;*/
 }

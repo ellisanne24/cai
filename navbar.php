@@ -20,7 +20,8 @@ $role->setRolename($_SESSION['rolename']);
     <link rel="stylesheet" href="css/navigation_bar.css">
 </head>
 
-<nav class="nav_container" id="topnav_Menu">
+<div class="mainWrapper">
+    <nav class="nav_container" id="topnav_Menu">
         <img src="img/logo.png">
         <!--Admin  Modules-->
         <a class="nav_tab" id="admin_dashboard" href="#">
@@ -95,7 +96,7 @@ $role->setRolename($_SESSION['rolename']);
         <a class="nav_tab" id="logout" href="">
             Logout
         </a>
-</nav>
-
+    </nav>
+</div>
 </html>
 

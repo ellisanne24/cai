@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>   <title>Teacher | Dashboard</title>
     <link rel="stylesheet" href="css/teacher_dashboard.css" >
     <link rel="stylesheet" href="css/modal.css">
@@ -8,6 +9,7 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
+
 <body>
 <div class="mainWrapper" id="mainWrapper">
 
@@ -22,7 +24,7 @@
             <!--            <h4 id="pageLbl_sy">SY: 2019-2020</h4>-->
         </div>
     </div>
-
+    <div class="subWrapper">
     <div class="wrapper_menuTiles" id="wrapper_menuTiles">
         <div class="divDashboard_studentCount" id="divDashboard_studentCount">
             <label class="dashboardLbl_count" id="dashboardLbl_studentCount">
@@ -95,6 +97,7 @@
         <div class="wrapper_graph" id="wrapper_studentStandingGraph">
 
         </div>
+    </div>
     </div>
 
 </div>

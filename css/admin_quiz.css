@@ -29,7 +29,7 @@
     background-color: #fefefe;
     margin: auto;
     padding: 20px;
-    width: 60%; /* Could be more or less, depending on screen size */
+    width: 55%; /* Could be more or less, depending on screen size */
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
     animation-name: animateTop;
     animation-duration: 0.4s
@@ -60,7 +60,7 @@
 
 .coverage_wrapper{
     height: 500px;
-    width: 670px;
+    width: 600px;
     position: relative;
     border: 1px solid #cccccc;
     overflow-y: scroll;

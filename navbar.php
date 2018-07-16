@@ -84,10 +84,13 @@ $role->setRolename($_SESSION['rolename']);
             <a class="nav_tab" id="student_learn" href="#">
                 Learn
             </a>
-            <a class="nav_tab" id="admin_reports" href="#">
+            <a class="nav_tab" id="student_quizzes" href="#">
+                My Quizzes
+            </a>
+            <a class="nav_tab" id="student_play" href="#">
                 Play
             </a>
-            <a class="nav_tab" id="admin_reports" href="#">
+            <a class="nav_tab" id="student_review" href="#">
                 Review
             </a>
         <?php endif; ?>

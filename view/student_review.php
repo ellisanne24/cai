@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <?php include '../../view/view_navi/navbar.php';?>
+
 
 </head>
 <body>
 
-
+<p>THIS IS STUDENT REVIEW</p>
 </body>
 </html>

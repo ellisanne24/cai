@@ -14,15 +14,17 @@
 <div class="wrapper">
     <div class="div_Control_Container">
         <div class = "form_container">
-            <label class="control_label">Search Test :</label>
-            <input class="searchBox" type="text" name="SearchBox">
+            <label class="control_label">
+                Search Test :
+                <input class="searchBox" id="pageInput_searchTest" type="text" name="SearchBox">
+            </label>
             <i class="fa fa-search" id="btn_Search"></i>
             <i class="fa fa-refresh" id="btn_Refresh"></i>
-            <button onclick="showModalCreateNewTest()" class="button" id="btn_CreateNewTest">
-                Create New Test
-            </button>
-            <button onclick="showModalPublishTest()" class="button" id="btn_PublishTest">
+            <button class="button" id="pageBtn_PublishTest">
                 Publish Test
+            </button>
+            <button class="button" id="pageBtn_CreateNewTest">
+                Create New Test
             </button>
         </div>
     </div>
@@ -50,72 +52,104 @@
             </div>
 
             <div class="modal_body">
-                <form class="container_UserInfo" id="modal_form" action="" method="post">
-                    <label class="modal_label">Select Test</label><br>
-                    <select class="dropDown" id="selectTestDropdown">
-                        <option value="Select" class="option">Select</option>
-                        <option value="Pretest" class="option">Pretest</option>
-                        <option value="PostTest" class="option">PostTest</option>
-                        <option value="Practice" class="option">Practice</option>
-                        <option value="Mini-quiz" class="option">Mini-quiz</option>
-                        <option value="Unit Test" class="option">Unit Test</option>
-                        <option value="Custom" class="option">Custom</option>
-                    </select><br>
+                <form class="container_UserInfo" id="modalForm_createNewTest" action="" method="post">
+                    <label class="modal_label">
+                        Select Test
+                        <select class="dropDown" id="modalDrpDown_selectTest">
+                            <option value="Select" class="option">Select</option>
+                            <option value="Pretest" class="option">Pretest</option>
+                            <option value="PostTest" class="option">PostTest</option>
+                            <option value="Practice" class="option">Practice</option>
+                            <option value="Mini-quiz" class="option">Mini-quiz</option>
+                            <option value="Unit Test" class="option">Unit Test</option>
+                            <option value="Custom" class="option">Custom</option>
+                        </select><br>
+                    </label>
                     <br>
-                    <label class="modal_label">Test Name</label><br>
-                    <input class="modal_inputbox" id="inputTestName" type="text" name="text_testName"><br>
+                    <label class="modal_label">
+                        Test Name
+                        <input class="modal_inputbox" id="modalInput_testName" type="text" name="modalInputName_testName"><br>
+                    </label>
                     <br>
-                    <label class="modal_label">Test Type</label><br>
-                    <select class="dropDown" id="testTypeDropdown">
-                        <option value="Select" class="option">Select</option>
-                        <option value="Multiple Choice" class="option">Multiple Choice</option>
-                        <option value="Fill in the Box" class="option">Fill in the Box</option>
-                    </select><br>
+                    <label class="modal_label">
+                        Test Type
+                        <select class="dropDown" id="modalDrpDown_testType">
+                            <option value="Select" class="option">Select</option>
+                            <option value="Multiple Choice" class="option">Multiple Choice</option>
+                            <option value="Fill in the Box" class="option">Fill in the Box</option>
+                        </select><br>
+                    </label>
                     <hr />
-                    <label class="modal_label">Number of Items</label><br>
-                    <input class="modal_inputbox" id="input_itemsNumber" type="text" name="text_noOfItems"><br>
+                    <label class="modal_label">
+                        Number of Items
+                        <input class="modal_inputbox" id="modalInput_numberOfItems" type="text" name="modalInputName_numberOfItems"><br>
+                    </label>
                     <hr />
-                    <div id="cb_divContainer">
-                    <input class="modal_checkbox" id="cb_difficulty_custom" type="checkbox" name="cBox_difficulty_custom">
-                    <label class="modal_label">Custom</label>
-                    <input class="modal_checkbox" id="cb_difficulty_easy" type="checkbox" name="cBox_difficulty_easy">
-                    <label class="modal_label">All Easy</label>
-                    <input class="modal_checkbox" id="cb_difficulty_intermediate" type="checkbox" name="cBox_difficulty_intermediate">
-                    <label class="modal_label">All Intermediate</label>
-                    <input class="modal_checkbox" id="cb_difficulty_advanced" type="checkbox" name="cBox_difficulty_advanced">
-                    <label class="modal_label">All Advanced</label>
+                    <div id="modalContainer_difficulty">
+                        <label class="modal_label">
+                            <input class="modal_checkbox" id="modalCB_difficulty_custom" type="checkbox" name="cBox_difficulty_custom">
+                            Custom
+                        </label>
+                        <label class="modal_label">
+                            <input class="modal_checkbox" id="modalCB_difficulty_easy" type="checkbox" name="cBox_difficulty_easy">
+                            All Easy
+                        </label>
+                        <label class="modal_label">
+                            <input class="modal_checkbox" id="modalCB_difficulty_intermediate" type="checkbox" name="cBox_difficulty_intermediate">
+                            All Intermediate
+                        </label>
+                        <label class="modal_label">
+                            <input class="modal_checkbox" id="modalCB_difficulty_advanced" type="checkbox" name="cBox_difficulty_advanced">
+                            All Advanced
+                        </label>
                      </div>
                     <hr />
-                    <label class="modal_label">Number of Easy Questions</label><br>
-                    <input class="modal_inputbox" id="input_easyQ" type="text" name="text_easyQuestions"><br>
+                    <label class="modal_label">
+                        Number of Easy Questions
+                        <input class="modal_inputbox" id="modalInput_noOfEasy" type="text" name="modalInputName_noOfEasy"><br>
+                    </label>
                     <br>
-                    <label class="modal_label">Number of Intermediate Questions</label><br>
-                    <input class="modal_inputbox" id="input_interQ" type="text" name="text_intermediateQuestions"><br>
+                    <label class="modal_label">
+                        Number of Intermediate Questions
+                        <input class="modal_inputbox" id="modalInput_noOfIntermediate" type="text" name="modalInputName_noOfIntermediate"><br>
+                    </label>
                     <br>
-                    <label class="modal_label">Number of Advanced Questions</label><br>
-                    <input class="modal_inputbox" id="input_advancedQ" type="text" name="text_advancedQuestions"><br>
+                    <label class="modal_label">
+                        Number of Advanced Questions
+                        <input class="modal_inputbox" id="modalInput_noOfAdvanced" type="text" name="modalInputName_noOfAdvanced"><br>
+                    </label>
                     <br>
-                    <label class="modal_label">Passing Score</label><br>
-                    <input class="modal_inputbox" id="input_passingScore" type="text" name="text_passingScore"><br>
+                    <label class="modal_label">
+                        Passing Score
+                        <input class="modal_inputbox" id="modalInput_passingScore" type="text" name="modalInputName_passingScore"><br>
+                    </label>
                     <hr />
-                    <div id="coverage_Container">
-                    <input class="modal_checkbox" id="cb_coverage" type="checkbox" name="cBox_coverage">
-                    <label class="modal_label">Coverage</label><br>
+                    <div id="modalContainer_coverage">
+                        <label class="modal_label">
+                            <input class="modal_checkbox" id="modalCB_coverage" type="checkbox" name="modalCBName_coverage">
+                            Coverage
+                        </label>
                     </div>
                     <hr />
-                    <label class="modal_label">Please select your coverage below.</label><br>
-                         <div class="coverage_wrapper" id="coverage_menu">
+                    <label class="modal_label" id="modalLbl_selectCoverage">
+                        Please select your coverage below.
+                    </label>
+                         <div class="coverage_wrapper" id="modalContainer_selectCoverage">
 
                         </div>
                     <hr />
-                    <label class="modal_label_errorMessage" id="modal_errorMessage"></label>
+                    <label class="modalLbl_errorDisplay" id="modal_errorMessage"></label>
                     <hr />
                 </form>
             </div>
 
             <div class="modal_footer">
-                <button  class="btn_modalFooter" id="btn_modalCreateNewTest" type="submit" name="btn_create">Create</button>
-                <button  class="btn_modalFooter" type="submit" name="btn_cancel">Cancel</button>
+                <button  class="btn_modalFooter" id="modalBtn_createNewTest_create" type="submit" name="modalBtnName_createNewTest_create">
+                    Create
+                </button>
+                <button  class="btn_modalFooter" id="modalBtn_createNewTest_cancel" name="modalBtnName_createNewTest_cancel">
+                    Cancel
+                </button>
             </div>
         </div>
     </div>
@@ -128,49 +162,65 @@
             </div>
 
             <div class="modal_body">
-                <form class="container_TestInfo" action="" method="post">
-                    <label class="modal_label">Select Created Test</label><br>
-                    <select class="dropDown">
-                        <option value="Select" class="option">Select</option>
-                    </select><br>
+                <form class="container_TestInfo" method="post">
+                    <label class="modal_label">
+                        Select Created Test
+                        <select class="dropDown" id="modalDrpDown_selectCreatedTest">
+                            <option value="Select" class="option">Select</option>
+                        </select><br>
+                    </label>
                     <hr />
-                    <label class="modal_label">Assign to Topic and/or Lesson</label><br>
+                    <label class="modal_label">
+                        Assign to Topic and/or Lesson
+                    </label>
                     <br>
-                    <label class="modal_label">Topic </label>
-                    <select class="dropDown">
-                        <option value="Select" class="option">Select</option>
-                        <option value="All" class="option">All</option>
-                        <option value="Multiplication" class="option">Multiplication</option>
-                        <option value="Division" class="option">Division</option>
-                        <option value="Fractions" class="option">Fractions</option>
-                    </select><br>
+                    <label class="modal_label">
+                        Topic
+                        <select class="dropDown" id="modalDrpDown_selectTopic">
+                            <option value="Select" class="option">Select</option>
+                            <option value="All" class="option">All</option>
+                            <option value="Multiplication" class="option">Multiplication</option>
+                            <option value="Division" class="option">Division</option>
+                            <option value="Fractions" class="option">Fractions</option>
+                        </select><br>
+                    </label>
                     <br>
-                    <label class="modal_label">Lesson </label>
-                    <select class="dropDown">
-                        <option value="Select" class="option">Select</option>
-                        <option value="All" class="option">All</option>
-                    </select><br>
+                    <label class="modal_label" id="modalDrpDown_selectLesson">
+                        Lesson
+                        <select class="dropDown">
+                            <option value="Select" class="option">Select</option>
+                            <option value="All" class="option">All</option>
+                        </select><br>
+                    </label>
                     <hr />
                     <label class="modal_label">Assign to Section and/or Student</label><br>
                     <br>
-                    <label class="modal_label">Section </label>
-                    <select class="dropDown">
-                        <option value="Select" class="option">Select</option>
-                        <option value="All" class="option">All</option>
-                    </select><br>
+                    <label class="modal_label">
+                        Section
+                        <select class="dropDown" id="modalDrpDown_selectSection">
+                            <option value="Select" class="option">Select</option>
+                            <option value="All" class="option">All</option>
+                        </select><br>
+                    </label>
                     <br>
-                    <label class="modal_label">Student </label>
-                    <select class="dropDown">
-                        <option value="Select" class="option">Select</option>
-                    </select><br>
+                    <label class="modal_label">
+                        Student
+                        <select class="dropDown" id="modalDrpDown_selectStudent">
+                            <option value="Select" class="option">Select</option>
+                        </select><br>
+                    </label>
                     <hr />
                 </form>
             </div>
 
 
             <div class="modal_footer">
-                <button  class="btn_modalFooter" type="submit" name="btn_publish">Publish</button>
-                <button  class="btn_modalFooter" type="submit" name="btn_cancel">Cancel</button>
+                <button  class="btn_modalFooter" id="modalBtn_publishTest_publish"  name="modalBtnName_publishTest_publish">
+                    Publish
+                </button>
+                <button  class="btn_modalFooter" id="modalBtn_publishTest_cancel" name="modalBtnName_publishTest_cancel">
+                    Cancel
+                </button>
             </div>
 </div>
 

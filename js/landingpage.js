@@ -11,7 +11,10 @@ var navitem_teacher_myQuizzes = $("#teacher_myQuizzes");
 var navitem_teacher_settings = $("#teacher_settings");
 var navitem_teacher_reports = $("#teacher_reports");
 
-
+var navitem_student_learn = $("#student_learn");
+var navitem_student_quizzes = $("#student_quizzes");
+var navitem_student_play = $("#student_play");
+var navitem_student_review = $("#student_review");
 
 var roleObj = JSON.parse(role);
 var logout = $('#logout');
@@ -31,6 +34,10 @@ $(document).ready(function () {
     navitem_teacher_settings.on('click', load_teacherSettings);
     navitem_teacher_reports.on('click', load_teacherReports);
 
+    navitem_student_learn.on('click', load_studentLearn);
+    navitem_student_quizzes.on('click', load_student_quizzes);
+    navitem_student_play.on('click', load_studentPlay);
+    navitem_student_review.on('click', load_student_review);
 });
 
 function logoutUser() {
@@ -166,6 +173,50 @@ function load_teacherReports(){
     try{
         div_content_container.html('');
         div_content_container.load(url_teacher_reports);
+    }catch (err){
+        console.log(err.message);
+    }
+}
+
+function load_studentLearn(){
+    var url_student_learn = 'view/student_learn.php';
+
+    try{
+        div_content_container.html('');
+        div_content_container.load(url_student_learn);
+    }catch (err){
+        console.log(err.message);
+    }
+}
+
+function load_studentPlay(){
+    var url_student_play = "view/student_play.php";
+
+    try{
+        div_content_container.html('');
+        div_content_container.load(url_student_play);
+    }catch (err){
+        console.log(err.message);
+    }
+}
+
+function load_student_quizzes(){
+    var url_student_quizzes = "view/student_quizzes.php";
+
+    try{
+        div_content_container.html('');
+        div_content_container.load(url_student_quizzes);
+    }catch (err){
+        console.log(err.message);
+    }
+}
+
+function load_student_review(){
+    var url_student_review = "view/student_review.php";
+
+    try{
+        div_content_container.html('');
+        div_content_container.load(url_student_review);
     }catch (err){
         console.log(err.message);
     }

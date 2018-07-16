@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Admin | Dashboard</title>
+    <title>CHCS | Realistic Math</title>
     <link rel="stylesheet" href="css/admin_dashboard.css" >
 </head>
 <body>

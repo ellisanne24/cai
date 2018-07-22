@@ -1,11 +1,53 @@
 console.log('admin_accountmanagement.js is loaded');
+$(document).ready(function(){
+    loadRolesToDropDown();
+    //setInterval(function(){
+    //    loadAllUsersToTable();
+    //},1000);
+    loadAllUsersToTable();
+    searchUser();
+});
 
-$(document).on('click', '#btn_AddUser', show_add_user_modal);
-$(document).on('click', '.close_addUser', close_add_user_modal);
-$(document).on('click', '#button_save', addUser);
+$('#modalDrpDown_selectRole').on('change', function() {
+    var roleId = this.value;
+    var roleName = $("#modalDrpDown_selectRole option:selected").text();
+    var note = $("#modalLbl_addNewUserNote")
 
-$('#csv_file_input').on('change', function (e) {
-    var ext = $("#csv_file_input").val().split(".").pop().toLowerCase(); //csv
+    if(roleName === 'Administrator'){
+        console.log(roleName);
+        $("#modalInput_studentID").prop("disabled", true); //disable the dropdown
+        $("#modalInput_studentID").css("background-color","lightgrey"); //color the textfield grey
+        $("#modalDrpDown_addNewUser_status").prop("disabled", true);
+        $("#modalDrpDown_addNewUser_status").css("background-color","lightgrey"); //color the textfield grey
+        $("#modalDrpDown_section").prop("disabled", true); //disable the dropdown
+        $("#modalDrpDown_section").css("background-color","lightgrey"); //color the dropdown grey
+        $("#modalDrpDown_teacher").prop("disabled", true); //disable the dropdown
+        $("#modalDrpDown_teacher").css("background-color","lightgrey"); //color the dropdown grey
+    } else  if (roleName === 'Teacher'){
+        console.log(roleName);
+        $("#modalInput_studentID").prop("disabled", true); //disable the dropdown
+        $("#modalInput_studentID").css("background-color","lightgrey"); //color the textfield grey
+        $("#modalDrpDown_addNewUser_status").prop("disabled", true);
+        $("#modalDrpDown_addNewUser_status").css("background-color","lightgrey"); //color the textfield grey
+        $("#modalDrpDown_section").prop("disabled", false);
+        $("#modalDrpDown_section").css("background-color","white"); //color the dropdown white
+        $("#modalDrpDown_teacher").prop("disabled", true); //disable the dropdown
+        $("#modalDrpDown_teacher").css("background-color","lightgrey"); //color the dropdown grey
+    } else{
+        note.text("Teacher and Section must exist in the system to successfully enroll Student.");
+        $("#modalInput_studentID").prop("disabled", false); //enable dropdown
+        $("#modalDrpDown_section").prop("disabled",false); //enable the dropdown
+        $("#modalDrpDown_teacher").prop("disabled",false); //enable the dropdown
+        $("#modalDrpDown_addNewUser_status").prop("disabled", true);
+        $("#modalDrpDown_addNewUser_status").css("background-color", "lightgrey");
+        $("#modalInput_studentID").css("background-color","white"); //color the textfield white
+        $("#modalDrpDown_section").css("background-color","white"); //color the dropdown white
+        $("#modalDrpDown_teacher").css("background-color","white"); //color the dropdown white
+    }
+})
+
+$('#modalInput_browseFiles').on('change', function (e) {
+    var ext = $("#modalInput_browseFiles").val().split(".").pop().toLowerCase(); //csv
     if (e.target.files != undefined) {
         var reader = new FileReader();
         reader.onload = function (e) {
@@ -28,165 +70,53 @@ $('#csv_file_input').on('change', function (e) {
     return false;
 });
 
-function addDataToTable(jsonObjArr){
-    var json = JSON.parse(jsonObjArr);
-    console.log(json);
-    console.log(typeof json);
-    var tbl = $("#data_preview");
-    for(var i = 0; i < json.length-1; i++){
-        var studentId = json[i]['studentId'];
-        var firstName = json[i]['firstname'];
-        var lastName = json[i]['lastname'];
-        var middle = json[i]['middle'];
-        tbl.append(
-            "<tr><td>" + studentId + "</td>" +
-            "<td>" + firstName + "</td>" +
-            "<td>" + lastName + "</td>" +
-            "<td>" + middle + "</td>" +
-            "</tr>"
-        );
-    }
-}
-
-$('#roledropdown').on('change', function() {
-    var roleId = this.value;
-    var roleName = $("#roledropdown option:selected").text();
-    if(roleName === 'Administrator'){
-        console.log(roleName);
-        $("#input_studentid").prop("disabled", true); //disable the dropdown
-        $("#section_dropdown").prop("disabled", true); //disable the dropdown
-        $("#teacher_dropdown").prop("disabled", true); //disable the dropdown
-
-        $("#input_studentid").css("background-color","lightgrey"); //color the textfield grey
-        $("#section_dropdown").css("background-color","lightgrey"); //color the dropdown grey
-        $("#teacher_dropdown").css("background-color","lightgrey"); //color the dropdown grey
-    }else{
-        $("#input_studentid").prop("disabled", false); //enable dropdown
-        $("#section_dropdown").prop("disabled",false); //enable the dropdown
-        $("#teacher_dropdown").prop("disabled",false); //enable the dropdown
-        $("#input_studentid").css("background-color","white"); //color the textfield white
-        $("#section_dropdown").css("background-color","white"); //color the dropdown white
-        $("#teacher_dropdown").css("background-color","white"); //color the dropdown white
-    }
-})
-
-$(document).ready(function(){
-    loadRolesToDropDown();
-    //setInterval(function(){
-    //    loadAllUsersToTable();
-    //},1000);
-    loadAllUsersToTable();
-});
-
-
 function reset_form(){
-    $("#roledropdown").val($("#roledropdown option:first").val());
-    $("#section_dropdown").prop($("#section_dropdown option:first").val());
-    $("#teacher_dropdown").prop($("#teacher_dropdown option:first").val());
-    $("#section_dropdown").prop("disabled",false);
-    $("#teacher_dropdown").prop("disabled",false);
-    $("#input_studentid").val("");
-    $("#input_username").val("");
-    $("#input_password").val("");
-    $("#input_confirm_password").val("");
-    $("#input_lastname").val("");
-    $("#input_firstname").val("");
-    $("#input_middleinitial").val("");
+    $("#modalDrpDown_selectRole").val($("#modalDrpDown_selectRole option:first").val());
+    $("#modalDrpDown_section").prop($("#modalDrpDown_section option:first").val());
+    $("#modalDrpDown_teacher").prop($("#modalDrpDown_teacher option:first").val());
+    $("#modalDrpDown_section").prop("disabled",false);
+    $("#modalDrpDown_teacher").prop("disabled",false);
+    $("#modalInput_studentID").val("");
+    $("#modalInput_userName").val("");
+    $("#modalInput_password").val("");
+    $("#modalInput_cPassword").val("");
+    $("#modalInput_lastName").val("");
+    $("#modalInput_firstName").val("");
+    $("#modalInput_middleInitial").val("");
 }
 
-function show_edit_user_modal(pUserId){
-    $('#modal_header').text('Edit User');
-    $.ajax({
-        url: 'controller/get_user_by_id.php',
-        type: 'POST',
-        data:{id: parseInt(pUserId)},
-        dataType: 'json',
-        success: function (user) {
-            console.log(user);
-            var userId = user['id'];
-            var userName = user['username'];
-            var password = user['password'];
-            var lastName = user['lastname'];
-            var firstName = user['firstname']
-            var middleInitial = user['middleinitial'];
-            var roleId = user['roleId']
-            var roleName = user['roleName'];
-            var isActive = user['isactive'] === 1? "Active" : "Inactive";
-            if(roleName.trim() === 'Administrator'){
-                $('#input_studentid').val('');
-                $("#input_studentid").prop("disabled", true); //disable the dropdown
-                $("#section_dropdown").prop("disabled", true); //disable the dropdown
-                $("#teacher_dropdown").prop("disabled", true); //disable the dropdown
-                $("#input_studentid").css("background-color","lightgrey"); //color the textfield grey
-                $("#section_dropdown").css("background-color","lightgrey"); //color the dropdown grey
-                $("#teacher_dropdown").css("background-color","lightgrey"); //color the dropdown grey
-                $("#section_dropdown").val($("#section_dropdown option:first").val());
-                $("#teacher_dropdown").val($("#teacher_dropdown option:first").val());
-            }else if(roleName.trim() === 'Teacher'){
-                $('#input_studentid').val('');
-                $("#input_studentid").prop("disabled", true); //disable the dropdown
-                $("#teacher_dropdown").css("background-color","lightgrey"); //color the dropdown grey
-                $("#teacher_dropdown").val($("#teacher_dropdown option:first").val());
-                $("#teacher_dropdown").prop("disabled", true); //disable the dropdown
-                $("#section_dropdown").prop("disabled", false); //disable the dropdown
-            }else if(roleName.trim() === 'Student'){
-                $("#section_dropdown").prop("disabled", false); //disable the dropdown
-            }
-            $("#roledropdown").val(roleId);
-            $("#user_status_dropdown").val(isActive);
-            $('#input_username').val(userName);
-            $('#input_password').val(password);
-            $('#input_confirm_password').val(password);
-            $('#input_lastname').val(lastName);
-            $('#input_firstname').val(firstName);
-            $('#input_middleinitial').val(middleInitial);
-        },
-        error: function (x, e) {
-            if (x.status == 0) {
-                alert('You are offline!!\n Please Check Your Network.');
-            } else if (x.status == 404) {
-                alert('Requested URL not found.');
-            } else if (x.status == 500) {
-                alert('Internal Server Error.');
-            } else if (e == 'parsererror') {
-                alert('Error.\nParsing JSON Request failed.');
-            } else if (e == 'timeout') {
-                alert('Request Time out.');
-            } else {
-                alert('Unknown Error.\n' + x.responseText);
-            }
-        }
+//REFRESH TABLE
+$(document).on('click', '#pageBtn_refreshPage', refreshTable);
 
+//SHOW MODAL CALL IN
+$(document).on('click', '#pageBtn_addNewUser', showModal_addNewUser);
+$(document).on('click', '#pageBtn_uploadCSV', showModal_uploadCSV);
 
-    });
-    $('#container_modalAddNewUser').show();
-}
+//CLOSE MODAL CALL IN
+$(document).on('click', '.close_addUser', closeModal_addNewUser);
+$(document).on('click', '.close_uploadCSV', closeModal_uploadCSV);
 
-function show_add_user_modal(event) {
-    reset_form();
-    $('#active_dropdown :nth-child(1)').prop('selected', true);
-    $('#active_dropdown').prop('disabled',true);
-    $('#active_dropdown').css("background-color","lightgrey");
+//CANCEL MODAL CALL IN
+$(document).on('click', '#modalBtn_addNewUser_cancel', closeModal_addNewUser);
+$(document).on('click', '#modalBtn_uploadCSV_cancel', closeModal_uploadCSV);
 
-    $('#container_modalAddNewUser').show();
-}
-function close_add_user_modal(event){
-    $('#container_modalAddNewUser').hide();
-}
+//ADD/UPLOAD CALL IN
+$(document).on('click', '#modalBtn_addNewUser_save', addUser);
 
+//ADD/UPLOAD FUNCTION
 function addUser(){
     var validation_div = $('#modal_input_validation_container');
-    var lastName = $('#input_lastname').val().trim();
-    var firstName = $('#input_firstname').val().trim();
-    var middleInitial = $('#input_middleinitial').val().trim();
-    var userName  = $('#input_username').val().trim();
-    var password = $('#input_password').val().trim();
-    var confirmPassword = $('#input_confirm_password').val().trim();
-    var roleId = $('#roledropdown option:selected').val();
-    var roleName = $("#roledropdown option:selected").text();
+    var lastName = $('#modalInput_lastName').val().trim();
+    var firstName = $('#modalInput_firstName').val().trim();
+    var middleInitial = $('#modalInput_middleInitial').val().trim();
+    var userName  = $('#modalInput_userName').val().trim();
+    var password = $('#modalInput_password').val().trim();
+    var confirmPassword = $('#modalInput_cPassword').val().trim();
+    var roleId = $('#modalDrpDown_selectRole option:selected').val();
+    var roleName = $("#modalDrpDown_selectRole option:selected").text();
 
     var hasSpecialCharacters = (/^[a-zA-Z0-9- ]*$/.test(password) == false) ||
-                                    (/^[a-zA-Z0-9- ]*$/.test(confirmPassword) == false);
+        (/^[a-zA-Z0-9- ]*$/.test(confirmPassword) == false);
 
     if(hasSpecialCharacters) {
         validation_div.html('');
@@ -233,10 +163,22 @@ function addUser(){
     }
 }
 
-$('#edit_link').click(function () {
-    alert("test")
-});
+//SEARCH FUNCTION
+function searchUser() {
+    $("#pageInput_searchUser").on("keyup", function () {
+        var value = $(this).val().toLowerCase();
+        $("#table_users_record tr").filter(function () {
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+    });
+}
 
+//REFRESH FUNCTION
+function refreshTable(){
+
+}
+
+//LOAD TO TABLE FUNCTION
 function loadAllUsersToTable(){
     $.ajax({
         url: 'controller/get_all_users.php',
@@ -270,7 +212,7 @@ function loadAllUsersToTable(){
             $('.edit').click(function(ev){
                 ev.preventDefault();
                 //do something with click
-                show_edit_user_modal(ev.target.id);
+                showModal_editUser(ev.target.id);
             });
         },
         error: function (x, e) {
@@ -290,21 +232,27 @@ function loadAllUsersToTable(){
         }
     });
 }
-
-function loadSectionsToDropDown() {
-    $.ajax({
-        url: 'controller/get_all_sections.php',
-        type: 'POST',
-        dataType: 'json',
-        success: function (sections) {
-            var len = sections.length;
-            for(var index = 0; i<len; i++){
-
-            }
-        }
-    });
+function addDataToTable(jsonObjArr){
+    var json = JSON.parse(jsonObjArr);
+    console.log(json);
+    console.log(typeof json);
+    var tbl = $("#modalTable_dataPreview");
+    for(var i = 0; i < json.length-1; i++){
+        var studentId = json[i]['studentId'];
+        var firstName = json[i]['firstname'];
+        var lastName = json[i]['lastname'];
+        var middle = json[i]['middle'];
+        tbl.append(
+            "<tr><td>" + studentId + "</td>" +
+            "<td>" + firstName + "</td>" +
+            "<td>" + lastName + "</td>" +
+            "<td>" + middle + "</td>" +
+            "</tr>"
+        );
+    }
 }
 
+//LOAD TO DROPDOWN FUNCTIONS
 function loadRolesToDropDown() {
     $.ajax({
         url: 'controller/get_all_roles.php',
@@ -313,12 +261,12 @@ function loadRolesToDropDown() {
         success: function (data) {
             //alert("Successful retrieved JSON from PHP.");
             var len = data.length;
-            //$("#roledropdown").empty();
+            //$("#modalDrpDown_selectRole").empty();
             for (var i = 0; i < len; i++) {
                 console.log(data[i]['id']+", "+data[i]['rolename']);
                 var roleId = data[i]['id'];
                 var roleName = data[i]['rolename'];
-                $('#roledropdown').append("<option value='" + roleId + "'>" + roleName + "</option>");
+                $('#modalDrpDown_selectRole').append("<option value='" + roleId + "'>" + roleName + "</option>");
             }
         },
         error: function (x, e) {
@@ -338,23 +286,108 @@ function loadRolesToDropDown() {
         }
     });
 }
+function loadSectionsToDropDown() {
+    $.ajax({
+        url: 'controller/get_all_sections.php',
+        type: 'POST',
+        dataType: 'json',
+        success: function (sections) {
+            var len = sections.length;
+            for(var index = 0; i<len; i++){
 
-//UPLOAD CSV MODAL
-
-function uploadCsv(){
-    var modal = document.getElementById('container_modal_uploadCsv');
-    var btn = document.getElementById("btn_Upload");
-    var span = document.getElementsByClassName("close_uploadCsv")[0];
-
-    modal.style.display = "block";
-
-    span.onclick = function () {
-        modal.style.display = "none";
-    }
-
-    window.onclick = function (event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
+            }
         }
-    }
+    });
 }
+
+
+//SHOW MODAL FUNCTIONS
+function showModal_addNewUser(){
+    $('#container_modalAddNewUser').show();
+}
+function showModal_editUser(pUserId){
+    $('#modal_header').text('Edit User');
+    $.ajax({
+        url: 'controller/get_user_by_id.php',
+        type: 'POST',
+        data:{id: parseInt(pUserId)},
+        dataType: 'json',
+        success: function (user) {
+            console.log(user);
+            var userId = user['id'];
+            var userName = user['username'];
+            var password = user['password'];
+            var lastName = user['lastname'];
+            var firstName = user['firstname']
+            var middleInitial = user['middleinitial'];
+            var roleId = user['roleId']
+            var roleName = user['roleName'];
+            var isActive = user['isactive'] === 1? "Active" : "Inactive";
+            if(roleName.trim() === 'Administrator'){
+                $('#modalInput_studentID').val('');
+                $("#modalInput_studentID").prop("disabled", true); //disable the dropdown
+                $("#modalDrpDown_section").prop("disabled", true); //disable the dropdown
+                $("#modalDrpDown_teacher").prop("disabled", true); //disable the dropdown
+                $("#modalInput_studentID").css("background-color","lightgrey"); //color the textfield grey
+                $("#modalDrpDown_section").css("background-color","lightgrey"); //color the dropdown grey
+                $("#modalDrpDown_teacher").css("background-color","lightgrey"); //color the dropdown grey
+                $("#modalDrpDown_section").val($("#modalDrpDown_section option:first").val());
+                $("#modalDrpDown_teacher").val($("#modalDrpDown_teacher option:first").val());
+            }else if(roleName.trim() === 'Teacher'){
+                $('#modalInput_studentID').val('');
+                $("#modalInput_studentID").prop("disabled", true); //disable the dropdown
+                $("#modalDrpDown_teacher").css("background-color","lightgrey"); //color the dropdown grey
+                $("#modalDrpDown_teacher").val($("#modalDrpDown_teacher option:first").val());
+                $("#modalDrpDown_teacher").prop("disabled", true); //disable the dropdown
+                $("#modalDrpDown_section").prop("disabled", false); //disable the dropdown
+            }else if(roleName.trim() === 'Student'){
+                $("#modalDrpDown_section").prop("disabled", false); //disable the dropdown
+            }
+            $("#modalDrpDown_selectRole").val(roleId);
+            $("#modalDrpDown_addNewUser_status").val(isActive);
+            $('#modalInput_userName').val(userName);
+            $('#modalInput_password').val(password);
+            $('#modalInput_cPassword').val(password);
+            $('#modalInput_lastName').val(lastName);
+            $('#modalInput_firstName').val(firstName);
+            $('#modalInput_middleInitial').val(middleInitial);
+        },
+        error: function (x, e) {
+            if (x.status == 0) {
+                alert('You are offline!!\n Please Check Your Network.');
+            } else if (x.status == 404) {
+                alert('Requested URL not found.');
+            } else if (x.status == 500) {
+                alert('Internal Server Error.');
+            } else if (e == 'parsererror') {
+                alert('Error.\nParsing JSON Request failed.');
+            } else if (e == 'timeout') {
+                alert('Request Time out.');
+            } else {
+                alert('Unknown Error.\n' + x.responseText);
+            }
+        }
+    });
+    $('#container_modalAddNewUser').show();
+}
+function showModal_uploadCSV(){
+    $('#container_modalUploadCSV').show();
+}
+
+//CLOSE MODAL FUNCTIONS
+function closeModal_addNewUser(){
+    $('#container_modalAddNewUser').hide();
+}
+function closeModal_uploadCSV(){
+    $('#container_modalUploadCSV').hide();
+}
+
+//VALIDATION FUNCTIONS
+function validate_addNewUser(){
+
+}
+
+
+
+
+

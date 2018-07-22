@@ -16,28 +16,36 @@ require_once '../core/init.php';
 </head>
 
 <body>
-<div class="wrapper_admin_account_management">
+<div class="mainWrapper">
     <div class="div_Control_Container">
         <div class="form_container">
-            <label class="control_label">Find User :</label>
-            <input id="searchBox" type="text" name="SearchBox">
-            <i class="fa fa-search" id="btn_Search"></i>
-            <i class="fa fa-refresh" id="btn_Refresh"></i>
-            <label class="control_label" id="show"> Show :</label>
-            <select class="selection">
-                <option value="all" class="option">All</option>
-                <option value="admin" class="option">Admin</option>
-                <option value="teacher" class="option">Teachers</option>
-                <option value="student" class="option">Students</option>
-            </select>
-            <label class="control_label" id="section"> Section :</label>
-            <select class="selection">
-                <option value="all" class="option">All</option>
-            </select>
-            <button class="button" id="btn_AddUser">
+            <label class="control_label">
+                Find User :
+                <input class="searchBox" id="pageInput_searchUser" type="text" name="SearchBox">
+            </label>
+            <i class="fa fa-search" id="pageBtn_searchUser"></i>
+            <i class="fa fa-refresh" id="pageBtn_refreshPage"></i>
+            <label class="control_label" id="show">
+                Show Role:
+                <select class="selection" id="pageDrpDown_showRole">
+                    <option value="all" class="option">All</option>
+                    <option value="admin" class="option">Admin</option>
+                    <option value="teacher" class="option">Teachers</option>
+                    <option value="student" class="option">Students</option>
+                </select>
+            </label>
+
+            <label class="control_label" id="section">
+                Section :
+                <select class="selection" id="pageDrpDown_showSection">
+                    <option value="all" class="option">All</option>
+                </select>
+            </label>
+
+            <button class="button" id="pageBtn_addNewUser">
                 Add New User
             </button>
-            <button onclick="uploadCsv()" class="button" id="btn_Upload">
+            <button  class="button" id="pageBtn_uploadCSV">
                 Upload CSV
             </button>
         </div>
@@ -57,96 +65,131 @@ require_once '../core/init.php';
         </table>
     </div>
 </div>
-<!--Start AddNewUser Modal-->
+<!--ADD NEW USER MODAL-->
 <div id="container_modalAddNewUser" class="modal">
     <div class="modal_content_addNewUser">
         <div class="modal_header_addNewUser">
             <span class="close_addUser">&times;</span>
-            <h4 class="modal_header_label" id="modal_header">Add New User</h4>
+            <h4 class="modal_header_label" id="modal_header">
+                Add New User
+            </h4>
         </div>
 
         <div class="modal_body">
             <form class="container_UserInfo" action="" method="post">
-                <label class="modal_label">Select Role</label><br>
-                <select class="dropDown" id="roledropdown">
-                    <option value="Select">Select</option>
-                </select><br>
+                <label class="modal_label">
+                    Select Role
+                    <select class="dropDown" id="modalDrpDown_selectRole">
+                        <option value="Select">Select</option>
+                    </select>
+                </label><br>
+                <label class="modalLbl_note" id="modalLbl_addNewUserNote">
+<!--                    NOTE-->
+                </label><br>
                 <br>
-                <label class="modal_label">Student ID</label><br>
-                <input class="modal_inputbox" id="input_studentid" type="text" name="text_fname"><br>
+                <label class="modal_label">
+                    Student ID
+                    <input class="modal_inputbox" id="modalInput_studentID" type="text" name="modalInputName_studentID">
+                </label><br>
                 <br>
-                <label class="modal_label" id="user_status_dropdown">Status</label><br>
-                <select class="dropDown" id="active_dropdown">
-                    <option value="Active" class="option">Active</option>
-                    <option value="Inactive" class="option">Inactive</option>
-                </select><br>
+                <label class="modal_label">
+                    Status
+                    <select class="dropDown" id="modalDrpDown_addNewUser_status">
+                        <option value="Active" class="option">Active</option>
+                        <option value="Inactive" class="option">Inactive</option>
+                    </select>
+                </label><br>
                 <hr/>
-                <label class="modal_label">Last Name</label><br>
-                <input class="modal_inputbox" id="input_lastname" type="text" name="text_lname"><br>
+                <label class="modal_label">
+                    Last Name
+                    <input class="modal_inputbox" id="modalInput_lastName" type="text" name="modalInputName_lastName">
+                    </label><br>
                 <br>
-                <label class="modal_label">First Name</label><br>
-                <input class="modal_inputbox" id="input_firstname" type="text" name="text_fname"><br>
+                <label class="modal_label">
+                    First Name
+                    <input class="modal_inputbox" id="modalInput_firstName" type="text" name="modalInputName_firstName">
+                </label><br>
                 <br>
-                <label class="modal_label">Middle Initial (Optional)</label><br>
-                <input class="modal_inputbox" id="input_middleinitial" type="text" name="text_midname"><br>
+                <label class="modal_label">
+                    Middle Initial (Optional)
+                    <input class="modal_inputbox" id="modalInput_middleInitial" type="text" name="modalInputName_middleInitial"
+                </label><br>
                 <hr/>
-                <label class="modal_label">Username</label><br>
-                <input class="modal_inputbox" id="input_username" type="text" name="text_username"><br>
+                <label class="modal_label">
+                    Username
+                    <input class="modal_inputbox" id="modalInput_userName" type="text" name="modalInputName_userName">
+                </label>
                 <br>
-                <label class="modal_label">Password</label><br>
-                <input class="modal_inputbox" id="input_password" type="password" name="text_password"><br>
+                <label class="modal_label">
+                    Password
+                    <input class="modal_inputbox" id="modalInput_password" type="password" name="modalInputName_password">
+                </label>
                 <br>
-                <label class="modal_label">Confirm Password</label><br>
-                <input class="modal_inputbox" id="input_confirm_password" type="password" name="text_cpassword"><br>
+                <label class="modal_label">
+                    Confirm Password
+                    <input class="modal_inputbox" id="modalInput_cPassword" type="password" name="modalInputName_cPassword">
+                </label>
                 <hr/>
-                <label class="modal_label">Section</label><br>
-                <select class="dropDown" id="section_dropdown">
-                    <option value="Select" class="option">Select</option>
-                </select><br>
+                <label class="modal_label">
+                    Section
+                    <select class="dropDown" id="modalDrpDown_section">
+                        <option value="Select" class="option">Select</option>
+                    </select>
+                </label><br>
                 <br>
-                <label class="modal_label">Teacher</label><br>
-                <select class="dropDown" id="teacher_dropdown">
-                    <option value="Select" class="option">Select</option>
-                </select>
+                <label class="modal_label">
+                    Teacher
+                    <select class="dropDown" id="modalDrpDown_teacher">
+                        <option value="Select" class="option">Select</option>
+                    </select>
+                </label>
                 <hr/>
                 <div id="modal_input_validation_container"><!-- modal input validation container--></div>
             </form>
         </div>
 
         <div class="modal_footer">
-            <button class="btn_modalFooter" id="button_save" type="submit" name="btn_save">Save</button>
-            <button class="btn_modalFooter" type="submit" name="btn_cancel">Cancel</button>
+            <button class="btn_modalFooter" id="modalBtn_addNewUser_save" name="modalBtnName_addNewUser_save">
+                Save
+            </button>
+            <button class="btn_modalFooter" id="modalBtn_addNewUser_cancel" name="modalBtnName_addNewUser_cancel">
+                Cancel
+            </button>
         </div>
     </div>
 </div>
-<!--End AddNewUser Modal-->
-
-<!--Start UploadCSV Modal-->
-<div id="container_modal_uploadCsv" class="modal">
+<!--------------------------------------------------------------------------------------->
+<!--UPLOAD CSV MODAL-->
+<div id="container_modalUploadCSV" class="modal">
     <div class="modal_content_uploadCSV">
         <div class="modal_header_uploadCSV">
-            <span class="close_uploadCsv">&times;</span>
-
+            <span class="close_uploadCSV">&times;</span>
             <h2>Upload CSV</h2>
         </div>
         <div class="modal_body">
             <form>
-                <label class="modal_label">Section</label><br>
-                <select class="dropDown">
-                    <option value="Select" class="option">Select</option>
-                </select><br>
+                <label class="modal_label">
+                    Section
+                    <select class="dropDown" id="modalDrpDown_section">
+                        <option value="Select" class="option">Select</option>
+                    </select>
+                </label><br>
                 <br>
-                <label class="modal_label">Teacher</label><br>
-                <select class="dropDown">
-                    <option value="Select" class="option">Select</option>
-                </select>
+                <label class="modal_label">
+                    Teacher
+                    <select class="dropDown">
+                        <option value="Select" class="option">Select</option>
+                    </select>
+                </label><br>
                 <br>
                 <br>
-                <input type="file" id="csv_file_input" class="modalbtn_browseFiles" value="Add Image"/><br>
+                <input type="file" id="modalInput_browseFiles" class="modalbtn_browseFiles" value="Add Image"/><br>
                 <hr/>
-                <label class="modal_label">Data Preview</label><br>
+                <label class="modal_label">
+                    Data Preview
+                </label><br>
                 <div>
-                    <table id="data_preview">
+                    <table id="modalTable_dataPreview">
                         <tr>
                             <th>Student Id</th>
                             <th>Lastname</th>
@@ -158,13 +201,16 @@ require_once '../core/init.php';
             </form>
         </div>
         <div class="modal_footer">
-            <button class="btn_modalFooter" id="modal_save">Upload</button>
-            <button class="btn_modalFooter">Cancel</button>
+            <button class="btn_modalFooter" id="modalBtn_uploadCSV_upload">
+                Upload
+            </button>
+            <button class="btn_modalFooter" id="modalBtn_uploadCSV_cancel">
+                Cancel
+            </button>
         </div>
     </div>
 </div>
-<!--End UploadCSV Modal-->
-
+<!--------------------------------------------------------------------------------------->
 
 <script>
     var url = "js/admin_accountmanagement.js";

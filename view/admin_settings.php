@@ -58,14 +58,14 @@ require_once '../core/init.php';
     <div class="wrapper_Control">
         <label class="control_label" id="pageLbl_searchTopic">
             Search Topic :
-            <input class="searchBox_Topics" id="pageInput_searchTopic" type="text" name="pageInputName_searchTopic">
+            <input class="searchBox" id="pageInput_searchTopic" type="text" name="pageInputName_searchTopic">
         </label>
         <i class="fa fa-search" id="pageIcon_searchTopic"></i>
         <i class="fa fa-refresh" id="pageIcon_searchTopic"></i>
-        <button onclick="" class="button" id="pageBtn_topicsPreview">
+        <button  class="button" id="pageBtn_topicsPreview">
             Preview
         </button>
-        <button onclick="showModal_uploadContent()" class="button" id="pageBtn_uploadContent">
+        <button class="button" id="pageBtn_uploadContent">
             Upload Content
         </button>
         <button class="button" id="pageBtn_addNewTopic">
@@ -74,7 +74,7 @@ require_once '../core/init.php';
     </div>
     <div class="wrapper_ContentDetails">
         <div class="table_wrapper" id="table_wrapper">
-            <table id="table_topic_record">
+            <table id="pageTable_topicRecord">
                 <tr>
                     <th>Topic ID</th>
                     <th>Topic Title</th>
@@ -364,7 +364,7 @@ require_once '../core/init.php';
     <div class="wrapper_Control">
         <label class="control_label" id ="pageLbl_searchVideo">
             Search Video :
-            <input class="searchBox" id="searchBox_Video" type="text" name="searchBoxName_Video">
+            <input class="searchBox" id="pageInput_searchVideo" type="text" name="searchBoxName_Video">
         </label>
         <i class="fa fa-search" id="pageIcon_searchVideo"></i>
         <i class="fa fa-refresh" id="pageIcon_refreshTopic"></i>
@@ -377,10 +377,11 @@ require_once '../core/init.php';
     </div>
     <div class="wrapper_ContentDetails">
         <div class="table_wrapper" id="table_wrapper">
-            <table id="table_video_record">
+            <table id="pageTable_videoRecord">
                 <tr>
                     <th>Video ID</th>
                     <th>Video Title</th>
+                    <th>Category</th>
                     <th>Pin on Topic</th>
                     <th>Pin on Lesson</th>
                     <th>Views</th>
@@ -407,6 +408,14 @@ require_once '../core/init.php';
                         Note : Video file must be in (.mp4) format.
                     </label>
                     <hr/>
+                    <label class="modal_label" id="modalLbl_videoCategory">
+                        Category
+                        <select class="dropDown" id="modalDrpDown_selectVideoCategory">
+                            <option value="Standard" class="option">Standard</option>
+                            <option value="Video File" class="option">Custom</option>
+                        </select>
+                    </label>
+                    <hr />
                     <label class="modal_label" id="modalCB_url">
                         <input type="checkbox" id="modalInputCB_pasteUrl">
                         <span class="checkmark"></span>
@@ -414,8 +423,8 @@ require_once '../core/init.php';
                     </label><br>
                     <label class="modal_label" id="modalLbl_youtubeUrlTitle">
                         Youtube Video Title
-                    </label>
                         <input type="text" id="youtube_video_title" class="modal_inputbox" />
+                    </label>
                     <label class="modal_label" id="modalLbl_pasteURL">
                         Paste Url here
                         <input type="text" class="modal_inputbox" id="modalInput_pasteURL"/><br>
@@ -463,24 +472,91 @@ require_once '../core/init.php';
                         </button>
                     </div>
                 </form>
-
-
-
-
             </div>
 
         </div>
     </div>
+<!--MODAL - PUBLISH VIDEO-->
+    <div class="modal" id="container_modalPublishVideo">
+    <div class="modal_content_publishVideo">
+        <div class="modal_header_publishVideo">
+            <span class="close_publishVideo">&times;</span>
+            <h4 class="modal_header_label">Publish Video</h4>
+        </div>
+
+        <div class="modal_body">
+            <form class="container_UserInfo" id="modalForm_publishVideo">
+                <label class="modalLbl_note" id="modalLbl_fileNote">
+                    Custom - Videos that are uploaded by Teachers. Can be downloaded by students only.<br>
+                    Standard - Videos that are uploaded for CAI's use only.
+                </label>
+                <hr/>
+                <label class="modal_label" id="modalLbl_selectVideo">
+                    Select Video
+                    <select class="dropDown" id="modalDrpDown_selectVideo">
+                        <option value="Select" class="option">Select</option>
+                    </select><br>
+                </label>
+                <br>
+                <label class="modal_label" id="modalLbl_videoCategory">
+                    Category:
+                </label>
+                <hr />
+                <div class="modalDiv_pinOnTopicContainer" id="modalDiv_pinOnTopicContainer">
+                    <label class="modal_label">
+                        Pin on Topic
+                        <select class="dropDown" id="modalDrpDown_pinOnTopic">
+                            <option value="Select" class="option">Select</option>
+                        </select>
+                    </label><br>
+                    <br>
+                    <label class="modal_label">
+                        Pin on Lesson
+                        <select class="dropDown" id="modalDrpDown_pinOnLesson">
+                            <option value="Select" class="option">Select</option>
+                        </select>
+                    </label>
+                </div>
+                <hr />
+                <div class="modalDiv_pinOnSectionContainer" id="modalDiv_pinOnSectionContainer">
+                    <label class="modal_label">
+                        Assign to Section
+                        <select class="dropDown" id="modalDrpDown_assignToSection">
+                            <option value="Select" class="option">Select</option>
+                        </select>
+                    </label>
+                </div>
+                <hr />
+                <label class="modalLbl_successMessage" id="modalLbl_publishVideoSuccess">
+                    <!-- Success Message Container-->
+                </label>
+
+                <div class="modal_footer">
+                    <button class="btn_modalFooter" id="modalBtn_publishVideo_publish"
+                            name="modalBtnName_publishVideo_publish">
+                        Publish
+                    </button>
+                    <button class="btn_modalFooter" id="modalBtn_publishVideo_cancel"
+                            name="modalBtnName_publishVideo_cancel">
+                        Cancel
+                    </button>
+                </div>
+            </form>
+
+        </div>
+
+    </div>
+</div>
 <!----------------------------------------------------------------------------------------------------------->
 <!--PAGE - PPT TAB-->
 <div class="tabContent" id="wrapperPPT">
     <div class="wrapper_Control">
         <label class="control_label" id="pageLbl_searchPPT">
             Search Powerpoint :
-            <input class="searchBox" id="searchBox_PPT" type="text" name="SearchBoxName_PPT">
+            <input class="searchBox" id="pageInput_searchPPT" type="text" name="pageInputName_searchPPT">
         </label>
-        <i class="fa fa-search" id="pageIcon_searchPPT"></i>
-        <i class="fa fa-refresh" id="pageIcon_refreshPPT"></i>
+        <i class="fa fa-search" id="pageBtn_searchPPT"></i>
+        <i class="fa fa-refresh" id="pageBtn_refreshPPT"></i>
         <button class="button" id="pageBtn_publishPPT">
             Publish PPT
         </button>
@@ -490,10 +566,11 @@ require_once '../core/init.php';
     </div>
     <div class="wrapper_ContentDetails">
         <div class="table_wrapper" id="table_wrapper">
-            <table id="table_ppt_record">
+            <table id="pageTable_pptRecord">
                 <tr>
                     <th>PPT ID</th>
                     <th>PPT Title</th>
+                    <th>Category</th>
                     <th>Pin on Topic</th>
                     <th>Pin on Lesson</th>
                     <th>Views</th>
@@ -504,13 +581,138 @@ require_once '../core/init.php';
         </div>
     </div>
 </div>
+<!--MODAL - UPLOAD PPT-->
+<div class="modal" id="container_modalUploadPPT">
+    <div class="modal_content_uploadPPT">
+        <div class="modal_header_uploadPPT">
+            <span class="close_uploadPPT">&times;</span>
+            <h4 class="modal_header_label">Upload New PPT</h4>
+        </div>
+
+        <div class="modal_body">
+            <form class="container_UserInfo" id="modalForm_uploadPPT" method="post">
+                <label class="modal_label" id="modalLbl_pptCategory">
+                    Category
+                    <select class="dropDown" id="modalDrpDown_selectPPTCategory">
+                        <option value="Standard" class="option">Standard</option>
+                        <option value="Video File" class="option">Custom</option>
+                    </select>
+                </label>
+                <hr />
+                <label class="modal_label" id="modalLbl_browsePPT">
+                    <input type="file" name="file" class="modalbtn_browseFiles" id="modalBtn_choose_ppt_file"
+                           value="Browse File" accept="ppt/*"/><br>
+                </label>
+                <hr/>
+                <label class="modal_label" id="modalLbl_renamePPT">
+                    <input type="checkbox" id="modalInputCB_renamePPT">
+                    <span class="checkmark"></span>
+                    Powerpoint Presentation Title
+                    <input class="modal_inputbox" id="modalInput_renamePPT" type="text"
+                           name="modalInputName_renamePPT" placeholder="Enter title for selected PPT file"><br>
+                </label>
+                <hr/>
+                <label class="modal_label" id="modalLbl_PPTPreview">
+                    File Preview
+                </label>
+
+                <div class="modalContainer_filePreview" id="modalContainer_PPTPreview"></div>
+                <hr/>
+                <label class="modalLbl_errorMessage" id="modalLbl_uploadPPTError">
+                    <!-- Error Container-->
+                </label>
+                <label class="modalLbl_successMessage" id="modalLbl_uploadPPTSuccess">
+                    <!-- Success Message Container-->
+                </label>
+
+                <div class="modal_footer">
+                    <button class="btn_modalFooter" id="modalBtn_uploadPPT_upload"
+                            name="modalBtnName_uploadPPT_upload">
+                        Upload
+                    </button>
+                    <button class="btn_modalFooter" id="modalBtn_uploadPPT_cancel"
+                            name="modalBtnName_uploadPPT_cancel">
+                        Cancel
+                    </button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
+<!--MODAL - PUBLISH POWERPOINT-->
+<div class="modal" id="container_modalPublishPPT">
+    <div class="modal_content_publishPPT">
+        <div class="modal_header_publishPPT">
+            <span class="close_publishPPT">&times;</span>
+            <h4 class="modal_header_label">Publish Powerpoint Presentation</h4>
+        </div>
+
+        <div class="modal_body">
+            <form class="container_UserInfo" id="modalForm_publishPPT">
+                <label class="modal_label" id="modalLbl_selectPPT">
+                    Select PPT
+                    <select class="dropDown" id="modalDrpDown_selectPPT">
+                        <option value="Select" class="option">Select</option>
+                    </select><br>
+                </label>
+                <br>
+                <label class="modal_label" id="modalLbl_PPTCategory">
+                    Category:
+                </label>
+                <hr />
+                <div class="modalDiv_pinOnTopicContainer" id="modalDiv_pinPPTOnTopicContainer">
+                    <label class="modal_label">
+                        Pin on Topic
+                        <select class="dropDown" id="modalDrpDown_pinPPTOnTopic">
+                            <option value="Select" class="option">Select</option>
+                        </select>
+                    </label><br>
+                    <br>
+                    <label class="modal_label">
+                        Pin on Lesson
+                        <select class="dropDown" id="modalDrpDown_pinPPTOnLesson">
+                            <option value="Select" class="option">Select</option>
+                        </select>
+                    </label>
+                </div>
+                <hr />
+                <div class="modalDiv_pinOnSectionContainer" id="modalDiv_pinPPTOnSectionContainer">
+                    <label class="modal_label">
+                        Assign to Section
+                        <select class="dropDown" id="modalDrpDown_assignPPTToSection">
+                            <option value="Select" class="option">Select</option>
+                        </select>
+                    </label>
+                </div>
+                <hr />
+                <label class="modalLbl_successMessage" id="modalLbl_publishPPTSuccess">
+                    <!-- Success Message Container-->
+                </label>
+
+                <div class="modal_footer">
+                    <button class="btn_modalFooter" id="modalBtn_publishPPT_publish"
+                            name="modalBtnName_publishPPT_publish">
+                        Publish
+                    </button>
+                    <button class="btn_modalFooter" id="modalBtn_publishPPT_cancel"
+                            name="modalBtnName_publishPPT_cancel">
+                        Cancel
+                    </button>
+                </div>
+            </form>
+
+        </div>
+
+    </div>
+</div>
 <!----------------------------------------------------------------------------------------------------------->
 <!--Start Contents for Enrichment-->
 <div class="tabContent" id="wrapperEnrichment">
     <div class="wrapper_Control">
         <label class="control_label">
             Search Enrichment :
-            <input class="searchBox" id="searchBox_Enrichment" type="text" name="SearchBox">
+            <input class="searchBox" id="pageInput_searchEnrichment" type="text" name="pageInputName_searchEnrichment">
         </label>
         <i class="fa fa-search" id="btn_SearchEnrichment"></i>
         <i class="fa fa-refresh" id="btn_RefreshEnrichment"></i>
@@ -523,10 +725,10 @@ require_once '../core/init.php';
     </div>
     <div class="wrapper_ContentDetails">
         <div class="table_wrapper" id="table_wrapper">
-            <table id="table_enrichment_record">
+            <table id="pageTable_enrichmentRecord">
                 <tr>
-                    <th>Enrichment ID</th>
-                    <th>Title</th>
+                    <th>ID</th>
+                    <th>Enrichment Title</th>
                     <th>Pin on Topic</th>
                     <th>Pin on Lesson</th>
                     <th>Views</th>
@@ -543,11 +745,11 @@ require_once '../core/init.php';
     <div class="wrapper_Control">
         <label class="control_label">
             Search Game :
-            <input id="searchBox_Games" type="text" name="SearchBox">
+            <input class="searchBox" id="pageInput_searchGame" type="text" name="pageInputName_searchGame">
         </label>
-        <i class="fa fa-search" id="btn_SearchGame"></i>
-        <i class="fa fa-refresh" id="btn_RefreshGame"></i>
-        <button onclick="" class="button" id="btn_assignGame">
+        <i class="fa fa-search" id="pageBtn_SearchGame"></i>
+        <i class="fa fa-refresh" id="pageBtn_RefreshGame"></i>
+        <button class="button" id="pageBtn_assignGame">
             Assign Game
         </button>
         <button onclick="" class="button" id="btn_uploadGame">
@@ -556,7 +758,7 @@ require_once '../core/init.php';
     </div>
     <div class="wrapper_ContentDetails">
         <div class="table_wrapper" id="table_wrapper">
-            <table id="table_game_record">
+            <table id="pageTable_gameRecord">
                 <tr>
                     <th>Game ID</th>
                     <th>Game Title</th>
@@ -575,23 +777,23 @@ require_once '../core/init.php';
     <div class="wrapper_Control">
         <label class="control_label">
             Search Section :
-            <input id="searchBox_Section" type="text" name="SearchBox">
+            <input class="searchBox" id="pageInput_searchSection" type="text" name="pageInputName_searchSection">
         </label>
         <i class="fa fa-search" id="btn_SearchSection"></i>
         <i class="fa fa-refresh" id="btn_RefreshSection"></i>
         <button onclick="" class="button" id="btn_ViewSectionDetails">
             Section Details
         </button>
-        <button onclick="transferSection()" class="button" id="btn_Transfer">
+        <button  class="button" id="pageBtn_transfer">
             Transfer
         </button>
-        <button onclick="" class="button" id="btn_AddNewSection">
-            Create New Section
+        <button  class="button" id="pageBtn_addNewSection">
+            Add New Section
         </button>
     </div>
     <div class="wrapper_ContentDetails">
         <div class="table_wrapper" id="table_wrapper">
-            <table id="table_section_record">
+            <table id="pageTable_sectionRecord">
                 <tr>
                     <th>Section ID</th>
                     <th>Section Name</th>
@@ -612,41 +814,44 @@ require_once '../core/init.php';
         </div>
 
         <div class="modal_body">
-            <form class="container_sectionInfo" action="" method="post">
+            <form class="container_sectionInfo"  method="post">
+                <label class="modalLbl_note">
+                    Note: Teacher must be enrolled in the system, or exist in the (.csv) file to successfully add Section.
+                </label>
+                <hr />
                 <label class="modal_label">
                     Section Name
                     <input class="modal_inputbox" type="text" name="text_sectionName"><br>
-
-                </label><br>
+                </label>
                 <br>
                 <label class="modal_label">
                     Teacher
-                    <select class="dropDown">
+                    <select class="dropDown" id="modalDrpDown_selectSectionTeacher">
                         <option value="Select" class="option">Select</option>
                     </select><br>
-                </label><br>
+                </label>
                 <hr/>
                 <label class="modal_label">Add Students via CSV</label><br>
                 <input type="file" id="browseFiles" class="modalbtn_browseFiles" value="Browse Files"/><br>
                 <hr/>
                 <label class="modal_label">
                     Status
-                    <select class="dropDown">
+                    <select class="dropDown" id="modalDrpDown_sectionStatus">
                         <option value="Active" class="option">Active</option>
                         <option value="Inactive" class="option">Inactive</option>
                     </select><br>
                 </label><br>
                 <hr/>
-                <br>
-                <br>
-                <br>
-                <br>
             </form>
         </div>
 
         <div class="modal_footer">
-            <button class="btn_modalFooter" id="btn_add" type="submit" name="btn_add">Add</button>
-            <button class="btn_modalFooter" type="submit" name="btn_cancel">Cancel</button>
+            <button class="btn_modalFooter" id="modalBtn_addNewSection_add"  name="modalBtnName_addNewSection_add">
+                Add
+            </button>
+            <button class="btn_modalFooter" id="modalBtn_addNewSection_cancel" name="modalBtnName_addNewSection_cancel">
+                Cancel
+            </button>
         </div>
     </div>
 </div>
@@ -713,31 +918,35 @@ require_once '../core/init.php';
         </div>
 
         <div class="modal_footer">
-            <button class="btn_modalFooter" type="submit" name="btn_save">Save</button>
-            <button class="btn_modalFooter" type="submit" name="btn_cancel">Cancel</button>
+            <button class="btn_modalFooter" id="modalBtn_transfer_save"  name="modalBtnName_transfer_save">
+                Save
+            </button>
+            <button class="btn_modalFooter" id="modalBtn_transfer_cancel" name="modalBtnName_transfer_cancel">
+                Cancel
+            </button>
         </div>
     </div>
 </div>
---------------------------------------------------------------------------------------------------------->
+<!--------------------------------------------------------------------------------------------------------->
 <!--Start Contents for Reviewers -->
 <div id="wrapperReviewers" class="tabContent">
     <div class="wrapper_Control">
         <label class="control_label">
             Find Reviewer :
-            <input id="searchBox_Reviewer" type="text" name="SearchBox">
+            <input class="searchBox" id="pageInput_searchReviewer" type="text" name="pageInputName_searchReviewer">
         </label>
-        <i class="fa fa-search" id="btn_SearchReviewer"></i>
-        <i class="fa fa-refresh" id="btn_RefreshReviewer"></i>
-        <button  class="button" id="btn_publishReviewer">
+        <i class="fa fa-search" id="pageBtn_searchReviewer"></i>
+        <i class="fa fa-refresh" id="pageBtn_refreshReviewer"></i>
+        <button  class="button" id="pageBtn_publishReviewer">
             Publish Reviewer
         </button>
-        <button  class="button" id="btn_createNewReviewer">
+        <button  class="button" id="pageBtn_createNewReviewer">
             Create New Reviewer
         </button>
     </div>
     <div class="wrapper_ContentDetails">
         <div class="table_wrapper" id="table_wrapper">
-            <table id="table_reviewer_record">
+            <table id="pageTable_reviewerRecord">
                 <tr>
                     <th>Reviewer ID</th>
                     <th>Reviewer Title</th>
@@ -815,17 +1024,17 @@ require_once '../core/init.php';
     <div class="wrapper_Control">
         <label class="control_label">
             Find School Year :
-            <input id="searchBox_SchoolYear" type="text" name="SearchBox">
+            <input class="searchBox" id="pageInput_searchSY" type="text" name="pageInputName_searchSY">
         </label>
-        <i class="fa fa-search" id="btn_SearchSY"></i>
-        <i class="fa fa-refresh" id="btn_RefreshSY"></i>
-        <button onclick="createNewSY()" class="button" id="btn_NewSchoolYear">
+        <i class="fa fa-search" id="pageBtn_searchSY"></i>
+        <i class="fa fa-refresh" id="pageBtn_refreshSY"></i>
+        <button class="button" id="pageBtn_createNewSY">
             Create New School Year
         </button>
     </div>
     <div class="wrapper_ContentDetails">
         <div class="table_wrapper" id="table_wrapper">
-            <table id="table_schoolyear_record">
+            <table id="pageTable_syRecord">
                 <tr>
                     <th>School Year</th>
                     <th>Start Date</th>
@@ -837,7 +1046,7 @@ require_once '../core/init.php';
         </div>
     </div>
 </div>
-<!-- Create new SchoolYear modal-->
+<!-- MODAL - CREATE NEW SCHOOL YEAR-->
 <div class="modal" id="container_modalCreateNewSY" >
     <div class="modal_content_createNewSY">
 

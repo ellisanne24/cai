@@ -29,7 +29,7 @@
         </div>
     </div>
     <div class="table_wrapper" id="table_wrapper">
-        <table>
+        <table id="pageTable_quizRecord">
             <tr>
                 <th>Test Name</th>
                 <th>Items</th>

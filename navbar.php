@@ -84,8 +84,8 @@ $role->setRolename($_SESSION['rolename']);
             <a class="nav_tab" id="student_learn" href="#">
                 Learn
             </a>
-            <a class="nav_tab" id="student_quizzes" href="#">
-                My Quizzes
+            <a class="nav_tab" id="student_activity" href="#">
+                My Activities
             </a>
             <a class="nav_tab" id="student_play" href="#">
                 Play

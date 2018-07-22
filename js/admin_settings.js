@@ -12,6 +12,14 @@ $(document).ready(function(){
 
     loadAllTopicsToTable();
     loadToDrpDown_assignToTopic();
+    searchTopic();
+    searchVideo();
+    searchEnrichment();
+    searchGame();
+    searchPPT();
+    searchReviewer();
+    searchSection();
+    searchSY();
 });
 
 
@@ -216,11 +224,23 @@ $(document).on('click','#pageBtn_addNewTopic',showModal_addNewTopic);
 $(document).on('click','#pageBtn_uploadContent',showModal_uploadContent);
 $(document).on('click', '#pageBtn_uploadVideo', showModal_uploadVideo);
 $(document).on('click', '#modalBtn_addNewLesson', showModal_addNewLesson);
+$(document).on('click', '#pageBtn_addNewSection', showModal_addNewSection);
+$(document).on('click', '#pageBtn_transfer', showModal_transferStudent);
+$(document).on('click', '#pageBtn_publishVideo', showModal_publishVideo);
+$(document).on('click', '#pageBtn_uploadPPT', showModal_uploadPPT);
+$(document).on('click', '#pageBtn_publishPPT', showModal_publishPPT);
+$(document).on('click', '#pageBtn_createNewSY', showModal_createNewSY);
 
 //CANCEL MODAL CALL IN
 $(document).on('click', '#modalBtn_addNewTopic_cancel', closeModal_addNewTopic);
 $(document).on('click', '#modalBtn_uploadFile_cancel', closeModal_uploadContent);
 $(document).on('click','#modalBtn_uploadVideo_cancel',closeModal_uploadVideo);
+$(document).on('click', '#modalBtn_addNewSection_cancel', closeModal_addNewSection);
+$(document).on('click', '#modalBtn_transfer_cancel', closeModal_transferStudent);
+$(document).on('click', '#modalBtn_publishVideo_cancel', closeModal_publishVideo);
+$(document).on('click', '#modalBtn_uploadPPT_cancel', closeModal_uploadPPT);
+$(document).on('click', '#modalBtn_publishPPT_cancel', closeModal_publishPPT);
+$(document).on('click', '#modalBtn_createSY_cancel', closeModal_createNewSY);
 
 
 //CLOSE MODAL CALL IN
@@ -228,6 +248,12 @@ $(document).on('click', '.close_openTopicDetails', closeModal_openTopicDetails);
 $(document).on('click', '.close_addNewTopic', closeModal_addNewTopic);
 $(document).on('click','.close_uploadContent',closeModal_uploadContent);
 $(document).on('click','.close_uploadVideo',closeModal_uploadVideo);
+$(document).on('click', '.close_addNewSection', closeModal_addNewSection);
+$(document).on('click', '.close_transfer', closeModal_transferStudent);
+$(document).on('click', '.close_publishVideo',closeModal_publishVideo );
+$(document).on('click', '.close_uploadPPT', closeModal_uploadPPT);
+$(document).on('click', '.close_publishPPT', closeModal_publishPPT);
+$(document).on('click', '.close_createNewSY', closeModal_createNewSY);
 
 //ADD/CREATE CALL IN
 $(document).on('click', '#modalBtn_addNewTopic_add', validateAddNewTopic);
@@ -255,11 +281,7 @@ function resetModalForm(){
 
 //REFRESH CALL IN
 
-//SEARCH CALL IN
-
 //NAVIGATION CALL IN
-
-
 
 //SHOW MODAL FUNCTIONS
 function showModal_addNewTopic(){
@@ -271,6 +293,15 @@ function showModal_uploadContent() {
 }
 function showModal_uploadVideo(){
     $('#container_modalUploadVideo').show();
+}
+function showModal_publishVideo(){
+    $('#container_modalPublishVideo').show();
+}
+function showModal_uploadPPT(){
+    $('#container_modalUploadPPT').show();
+}
+function showModal_publishPPT(){
+    $('#container_modalPublishPPT').show();
 }
 function showModal_OpenTopicLessons(pTopicId){
     var intPtopicId = parseInt(pTopicId);
@@ -321,6 +352,16 @@ function showModal_OpenTopicLessons(pTopicId){
 function showModal_addNewLesson(){
     $('#container_modalAddNewLesson').show();
 }
+function showModal_addNewSection(){
+    $('#container_modalAddNewSection').show();
+
+}
+function showModal_transferStudent(){
+    $('#container_modalTransfer').show();
+}
+function showModal_createNewSY(){
+    $('#container_modalCreateNewSY').show();
+}
 
 //CLOSE MODAL FUNCTIONS
 function closeModal_addNewTopic(){
@@ -329,12 +370,31 @@ function closeModal_addNewTopic(){
 function closeModal_uploadContent(){
     $('#container_modalUploadContent').hide();
 }
+function closeModal_publishVideo(){
+    $('#container_modalPublishVideo').hide();
+
+}
+function closeModal_uploadPPT(){
+    $('#container_modalUploadPPT').hide();
+}
+function closeModal_publishPPT(){
+    $('#container_modalPublishPPT').hide();
+}
 function closeModal_openTopicDetails(){
     $('#container_modalOpenTopicDetails').hide();
 }
 function closeModal_uploadVideo(){
     $('#container_modalUploadVideo').hide();
     resetModalForm();
+}
+function closeModal_addNewSection(){
+    $('#container_modalAddNewSection').hide();
+}
+function closeModal_transferStudent(){
+    $('#container_modalTransfer').hide();
+}
+function closeModal_createNewSY(){
+    $('#container_modalCreateNewSY').hide();
 }
 
 //VALIDATIONS
@@ -497,6 +557,70 @@ function loadToDrpDown_assignToTopic(){
 //REFRESH FUNCTIONS
 
 //SEARCH FUNCTIONS
+function searchTopic() {
+    $("#pageInput_searchTopic").on("keyup", function () {
+        var value = $(this).val().toLowerCase();
+        $("#pageTable_topicRecord tr").filter(function () {
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+    });
+}
+function searchVideo(){
+    $("#pageInput_searchVideo").on("keyup", function () {
+        var value = $(this).val().toLowerCase();
+        $("#pageTable_videoRecord tr").filter(function () {
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+    });
+}
+function searchPPT(){
+    $("#pageInput_searchPPT").on("keyup", function () {
+        var value = $(this).val().toLowerCase();
+        $("#pageTable_pptRecord tr").filter(function () {
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+    });
+}
+function searchEnrichment(){
+    $("#pageInput_searchEnrichment").on("keyup", function () {
+        var value = $(this).val().toLowerCase();
+        $("#pageTable_enrichmentRecord tr").filter(function () {
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+    });
+}
+function searchGame(){
+    $("#pageInput_searchGame").on("keyup", function () {
+        var value = $(this).val().toLowerCase();
+        $("#pageTable_gameRecord tr").filter(function () {
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+    });
+}
+function searchSection(){
+    $("#pageInput_searchSection").on("keyup", function () {
+        var value = $(this).val().toLowerCase();
+        $("#pageTable_sectionRecord tr").filter(function () {
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+    });
+}
+function searchReviewer(){
+    $("#pageInput_searchReviewer").on("keyup", function () {
+        var value = $(this).val().toLowerCase();
+        $("#pageTable_reviewerRecord tr").filter(function () {
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+    });
+}
+function searchSY(){
+    $("#pageInput_searchSY").on("keyup", function () {
+        var value = $(this).val().toLowerCase();
+        $("#pageTable_syRecord tr").filter(function () {
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+    });
+}
 
 //NAVIGATION FUNCTIONS
 function openTab(evt, tabName) {
@@ -519,9 +643,9 @@ function openTab(evt, tabName) {
 document.getElementById("Topics").click();
 
 
-//LOAD TOPIC RECORDS TO TABLE
+//LOAD RECORDS TO TABLE
 function loadAllTopicsToTable(){
-    var loadTopicsToTable = $('#table_topic_record');
+    var loadTopicsToTable = $('#pageTable_topicRecord');
     $.ajax({
         url: 'controller/get_all_topic_record.php',
         type: 'POST',
@@ -534,7 +658,7 @@ function loadAllTopicsToTable(){
                 var topicId = topicData[i]['topicId'];
                 var topicTitle = topicData[i]['topicTitle'];
 
-                $('#table_topic_record').append(
+                $('#pageTable_topicRecord').append(
                     "<tr><td>" + topicId + "</td>" +
                     "<td>" + topicTitle + "</td>" +
                     "<td>" + "-" + "</td>" +
@@ -583,11 +707,6 @@ function refreshTopicRecord(){
     });
 }
 
-//SEARCH TOPIC
-function searchTopic(){
-
-}
-
 //DELETE TOPIC AND ALL SUBS
 function deleteTopic(){
 
@@ -607,77 +726,7 @@ function uploadFile(input) {
     }
 }
 
-function addNewSection(){
-    var modal = document.getElementById('container_modalAddNewSection');
-    var btn = document.getElementById("btn_AddNewSection");
-    var span = document.getElementsByClassName("close_addNewSection")[0];
 
-    modal.style.display = "block";
-
-    span.onclick = function () {
-        modal.style.display = "none";
-    }
-
-    window.onclick = function (event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    }
-}
-
-function transferSection(){
-    var modal = document.getElementById('container_modalTransfer');
-    var btn = document.getElementById("btn_Transfer");
-    var span = document.getElementsByClassName("close_transfer")[0];
-
-    modal.style.display = "block";
-
-    span.onclick = function () {
-        modal.style.display = "none";
-    }
-
-    window.onclick = function (event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    }
-}
-
-function createNewReviewer(){
-    var modal = document.getElementById('container_modalCreateNewReviewer');
-    var btn = document.getElementById("btn_NewReviewer");
-    var span = document.getElementsByClassName("close_createNewReviewer")[0];
-
-    modal.style.display = "block";
-
-    span.onclick = function () {
-        modal.style.display = "none";
-    }
-
-    window.onclick = function (event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    }
-}
-
-function createNewSY(){
-    var modal = document.getElementById('container_modalCreateNewSY');
-    var btn = document.getElementById("btn_NewSchoolYear");
-    var span = document.getElementsByClassName("close_createNewSY")[0];
-
-    modal.style.display = "block";
-
-    span.onclick = function () {
-        modal.style.display = "none";
-    }
-
-    window.onclick = function (event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    }
-}
 //DATE PICKER
 $( function() {
     $( ".datepicker" ).datepicker();

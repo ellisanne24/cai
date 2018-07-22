@@ -1,8 +1,10 @@
 $(document).ready(function(){
 
 
-
+    searchTest()
 })
+
+
 
 
 //ONCHANGE DROPDOWN
@@ -110,3 +112,11 @@ function validateEmptyFields() {
 }
 
 //SEARCH FUNCTION
+function searchTest() {
+    $("#pageInput_searchTest").on("keyup", function () {
+        var value = $(this).val().toLowerCase();
+        $("#pageTable_quizRecord tr").filter(function () {
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+    });
+}

@@ -12,7 +12,7 @@ var navitem_teacher_settings = $("#teacher_settings");
 var navitem_teacher_reports = $("#teacher_reports");
 
 var navitem_student_learn = $("#student_learn");
-var navitem_student_quizzes = $("#student_quizzes");
+var navitem_student_activity = $("#student_activity");
 var navitem_student_play = $("#student_play");
 var navitem_student_review = $("#student_review");
 
@@ -35,7 +35,7 @@ $(document).ready(function () {
     navitem_teacher_reports.on('click', load_teacherReports);
 
     navitem_student_learn.on('click', load_studentLearn);
-    navitem_student_quizzes.on('click', load_student_quizzes);
+    navitem_student_activity.on('click', load_student_myActivity);
     navitem_student_play.on('click', load_studentPlay);
     navitem_student_review.on('click', load_student_review);
 });
@@ -132,7 +132,6 @@ function load_adminReports() {
 }
 
 //TEACHER FUNCTIONS
-
 function load_teacherMyStudents(){
     var url_teacher_myStudents = 'view/teacher_mystudents.php';
 
@@ -177,7 +176,7 @@ function load_teacherReports(){
         console.log(err.message);
     }
 }
-
+//STUDENT MODULE
 function load_studentLearn(){
     var url_student_learn = 'view/student_learn.php';
 
@@ -200,12 +199,12 @@ function load_studentPlay(){
     }
 }
 
-function load_student_quizzes(){
-    var url_student_quizzes = "view/student_quizzes.php";
+function load_student_myActivity(){
+    var url_student_activity = "view/student_activity.php";
 
     try{
         div_content_container.html('');
-        div_content_container.load(url_student_quizzes);
+        div_content_container.load(url_student_activity);
     }catch (err){
         console.log(err.message);
     }

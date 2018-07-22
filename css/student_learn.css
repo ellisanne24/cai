@@ -24,117 +24,193 @@ html, body {
     position: relative;
     /*border:1px solid red;*/
     width: 100%;
-    overflow-y: scroll;
+    overflow-y: auto;
     display: flex;
     flex-direction: column;
     height: 580px;
     justify-content: space-between;
-    background-image: url("../img/cai_backdropthree.png");
+    /*border-top: 1px solid #aaaaaa;*/
+    /*background-image: url("../img/cai_backdropthree.png");*/
 
 }
 
-.container_Multiplication{
+.pageDiv_controlContainer{
+    width: 100%;
+    /*left: 0;*/
+    background-color: #f0f2f2;
+    /*align-items: center;*/
+    /*border: 1px solid black;*/
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.pageLbl{
+    font-family: quicksandlight;
+    font-size: 18px;
+    color: #6f7071;
+    margin-left: 40px;
+    /*border: 1px solid red;*/
+
+}
+.mainWrapper_multiplication{
     order: 1;
-    border-bottom: 1px solid #cccccc;
+    /*border: 1px solid red;*/
     position: relative;
    flex-basis: 32%;
-    /*background-color: yellow;*/
+    background-color: white;
     display: flex;
-    flex-direction: row;
-    justify-content:flex-start;
-    margin-top: 12px;
-
+    flex-direction: column;
+    /*justify-content:flex-start;*/
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    box-shadow: 1px 5px #f0f2f2;
+    transition: 0.3s;
+    animation-name: animateTop;
+    animation-duration: 0.4s
 }
 
-.container_Division{
-     order: 2;
-    border-bottom: 1px solid #cccccc;
-     position: relative;
-    flex-basis: 32%;
-    /*background-color: #3cabd0;*/
+.subWrapper_multiplication{
+    background-image: url("../img/multiplication.png");
+    /*border: 1px soli.d black;*/
+    margin: 15px;
+    /*width: 100%;*/
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
-    margin-top: 12px;
+    order:1;
+}
 
+.scoreContainer_multiplication{
+    /*border: 1px solid red;*/
+    order:2;
+    margin-right: 15px;
+    margin-left: 30px;
+    margin-bottom: 10px;
+    font-family: quicksandmedium;
+    font-size: 15px;
+    color: #6f7071;
+    display: flex;
+}
+
+.pageLbl_scores{
+    margin-right: 200px;
+}
+
+.mainWrapper_division{
+     order: 2;
+    position: relative;
+    flex-basis: 32%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    /*justify-content:flex-start;*/
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    box-shadow: 1px 5px #f0f2f2;
+    transition: 0.3s;
+    animation-name: animateTop;
+    animation-duration: 0.4s
  }
 
-.container_Fractions{
-    order: 3;
-    border-bottom: 1px solid #cccccc;
-    position: relative;
-    flex-basis: 32%;
-    /*background-color: #ff8b85;*/
+.subWrapper_division{
+    background-image: url("../img/division.png");
+    /*border: 1px solid black;*/
+    margin: 15px;
+    /*width: 100%;*/
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
-    margin-top: 12px;
+    order:1;
+}
+
+.scoreContainer_division{
+    /*border: 1px solid red;*/
+    order:2;
+    margin-right: 15px;
+    margin-left: 30px;
+    margin-bottom: 10px;
+    font-family: quicksandmedium;
+    font-size: 15px;
+    color: #6f7071;
+    display: flex;
+}
+
+.mainWrapper_fraction{
+    order: 3;
+    position: relative;
+    flex-basis: 32%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    /*justify-content:flex-start;*/
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    box-shadow: 1px 5px #f0f2f2;
+    transition: 0.3s;
+    animation-name: animateTop;
+    animation-duration: 0.4s
 
 }
 
-.topic_picture_Container{
-    position: relative;
+.subWrapper_fraction{
+    background-image: url("../img/fractions.png");
+    /*border: 1px solid black;*/
+    margin: 15px;
+    /*width: 100%;*/
+    display: flex;
+    flex-direction: row;
     order:1;
-    width: 200px;
-    margin-left: 40px;
+}
+
+.scoreContainer_fraction{
+    /*border: 1px solid red;*/
+    order:2;
+    margin-right: 15px;
+    margin-left: 30px;
     margin-bottom: 10px;
-    border-radius: 5px;
+    font-family: quicksandmedium;
+    font-size: 15px;
+    color: #6f7071;
+    /*display: flex;*/
+    /*flex-direction: row;*/
 }
 
 .topic_link_Container{
     position: relative;
-    order:2;
+    order:1;
     /*border: 1px solid orange;*/
     width: 480px;
     margin-left: 15px;
-    margin-bottom: 10px;
+    /*margin-top: 5px;*/
+    margin-bottom: 15px;
 }
 
 .topic_buttons_Container{
     position: relative;
-    order:3;
+    order:2;
     /*border: 1px solid darkviolet;*/
-    width: 610px;
-    margin-bottom: 10px;
-    margin-right: 80px;
-}
-
-#picture_Multiplication{
-    background-image: url("../img/multiplication.png");
-    background-repeat: no-repeat;
+    margin-top: 35px;
+    margin-right: 30px;
+    width: 100%;
 
 }
 
-#picture_Division{
-    background-image: url("../img/division.png");
-    background-repeat: no-repeat;
-}
 
-#picture_Fractions{
-    background-image: url("../img/fractions.png");
-    background-repeat: no-repeat;
-}
 
 .topic_link{
-    font-family: quicksandregular;
-    font-size: 25px;
-    color: #6f7071;
+    font-family: quicksandmedium;
+    font-size: 40px;
+    color: white;
 }
 .topic_link:hover{
-    color: #3cabd0;
+    color: #f7efb1;
+
 }
 
 .topic_link_labels{
     font-family: quicksandlight;
-    font-size: 15px;
-    color: #6f7071;
-}
-
-.learn_control_label{
-    font-family: quicksandlight;
-    font-size: 18px;
-    color: #6f7071;
-    margin-left: 18px;
-    /*border: 1px solid red;*/
-
+    font-size: 20px;
+    color: white;
+    top: 0;
 }

@@ -1,0 +1,110 @@
+@font-face{
+    font-family: quicksandregular;
+    src:url(../fonts/quicksand-regular.ttf);
+}
+@font-face{
+    font-family: quicksandlight;
+    src:url(../fonts/quicksand-light.ttf);
+
+}
+@font-face{
+    font-family: quicksandmedium;
+    src:url(../fonts/quicksand-medium.ttf);
+
+}
+body{
+    line-height: 1.6
+
+}
+
+
+
+.pageDiv_tabContainer {
+    overflow: auto;
+    /*background-color: #f1f1f1;*/
+    /*border: 1px solid blue;*/
+    height: auto;
+    margin-left: 20px;
+    margin-right: 20px;
+    box-shadow: 1px 5px #f0f2f2;
+}
+
+ul.tabs{
+    margin-left: 20px;
+    margin-bottom: 0;
+    margin-top: 0;
+    padding: 0;
+    list-style: none;
+    transition: 0.3s;
+    animation-name: animateTop;
+    animation-duration: 0.4s
+}
+ul.tabs li{
+    display: inline-block;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-family: quicksandregular;
+    color: white;
+    font-size: 16px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    background-color: #cccccc;
+}
+
+ul.tabs li.current{
+   background-color: #3cabd0;
+    color: #f7efb1;
+    font-family: quicksandregular;
+}
+
+.tab-content{
+    display: none;
+    background: #ededed;
+    padding: 15px;
+}
+
+.tab-content.current{
+    font-family: quicksandregular;
+    display: inherit;
+    background-color: white;
+    color: #6f7071;
+    font-size: 15px;
+}
+
+.pageDiv_controlContainer{
+    width: 100%;
+    /*background-color: #f0f2f2;*/
+    align-items: center;
+    /*border: 1px solid black;*/
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.pageLbl{
+    font-family: quicksandlight;
+    font-size: 18px;
+    color: #6f7071;
+    margin-left: 40px;
+    margin-right: 20px;
+    /*border: 1px solid red;*/
+    top:0;
+    padding:0;
+}
+
+.pageDiv_showTopicContainer{
+    /*border: 1px solid red;*/
+    background-color: white;
+    color: white;
+    padding-bottom: 10px;
+    margin-left: 0;
+}
+
+.pageDrpdown{
+    width: 150px;
+}
+
+.pageLbl_general{
+    font-family: quicksandlight;
+    font-size: 18px;
+    color: #6f7071;
+}

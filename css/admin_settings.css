@@ -452,7 +452,7 @@ html, body{
     background-color: #fefefe;
     margin: auto;
     padding: 20px;
-    width: 100%; /* Could be more or less, depending on screen size */
+    width: 80%; /* Could be more or less, depending on screen size */
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
     animation-name: animateTop;
     animation-duration: 0.4s
@@ -580,7 +580,7 @@ html, body{
     background-color: #fefefe;
     margin: auto;
     padding: 20px;
-    width: 40%; /* Could be more or less, depending on screen size */
+    width: 50%; /* Could be more or less, depending on screen size */
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
     animation-name: animateTop;
     animation-duration: 0.4s
@@ -786,4 +786,156 @@ html, body{
 
 .container_media{
     border: 1px solid blue;
+}
+
+.modalDiv_pinOnTopicContainer{
+    /*border: 1px solid #aaaaaa;*/
+}
+
+.modalDiv_pinOnSectionContainer{
+    /*border: 1px solid #aaaaaa;*/
+}
+
+.modal_content_publishVideo{
+    overflow: auto;
+    height: 100%;
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    width: 50%; /* Could be more or less, depending on screen size */
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    animation-name: animateTop;
+    animation-duration: 0.4s
+}
+
+.modal_header_publishVideo{
+    background-image:url("../img/modal_headerforTransfer.png");
+    background-repeat: no-repeat;
+    padding-top: 15px;
+    padding-left: 20px;
+    padding-right: 15px;
+    color: white;
+    height: 15%;
+}
+
+.close_publishVideo {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close_publishVideo:hover,
+.close_publishVideo:focus {
+    color: orangered;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modalLbl_note{
+    font-size: 14px;
+    color: darkviolet;
+}
+
+/**/
+#pageBtn_topicsPreview{
+    margin-right: 20px;
+}
+
+#pageBtn_publishVideo{
+    margin-right: 20px;
+}
+
+#pageBtn_publishPPT{
+    margin-right: 20px;
+
+}
+
+#pageBtn_assignGame{
+    margin-right: 20px;
+
+}
+
+#pageBtn_publishReviewer{
+    margin-right: 20px;
+
+}
+
+#pageBtn_createNewReviewer{
+    width: 200px;
+}
+
+.modal_content_uploadPPT{
+    overflow: auto;
+    height: 100%;
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    width: 50%; /* Could be more or less, depending on screen size */
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    animation-name: animateTop;
+    animation-duration: 0.4s
+}
+
+.modal_header_uploadPPT{
+    background-image:url("../img/modal_headerforTransfer.png");
+    background-repeat: no-repeat;
+    padding-top: 15px;
+    padding-left: 20px;
+    padding-right: 15px;
+    color: white;
+    height: 15%;
+}
+
+.close_uploadPPT {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close_uploadPPT:hover,
+.close_uploadPPT:focus {
+    color: orangered;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal_content_publishPPT{
+    overflow: auto;
+    height: 100%;
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    width: 50%; /* Could be more or less, depending on screen size */
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    animation-name: animateTop;
+    animation-duration: 0.4s
+}
+
+.modal_header_publishPPT{
+    background-image:url("../img/modal_headerforTransfer.png");
+    background-repeat: no-repeat;
+    padding-top: 15px;
+    padding-left: 20px;
+    padding-right: 15px;
+    color: white;
+    height: 15%;
+}
+
+.close_publishPPT {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close_publishPPT:hover,
+.close_publishPPT:focus {
+    color: orangered;
+    text-decoration: none;
+    cursor: pointer;
 }

@@ -91,15 +91,15 @@
     overflow: auto;
 }
 
-.close_uploadCsv {
+.close_uploadCSV {
     color: white;
     float: right;
     font-size: 28px;
     font-weight: bold;
 }
 
-.close_uploadCsv:hover,
-.close_uploadCsv:focus {
+.close_uploadCSV:hover,
+.close_uploadCSV:focus {
     color: orangered;
     text-decoration: none;
     cursor: pointer;

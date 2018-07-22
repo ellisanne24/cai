@@ -34,7 +34,9 @@
                 <th>Student ID</th>
                 <th>Name</th>
                 <th>Section</th>
-                <th>Status</th>
+                <th>Pre</th>
+                <th>Post</th>
+                <th>Unit Test</th>
                 <th>Activity Completed</th>
             </tr>
         </table>

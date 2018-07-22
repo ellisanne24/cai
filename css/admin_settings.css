@@ -17,6 +17,26 @@ html, body{
     width: 100%;
 
 }
+
+
+
+.allContent_Container{ /* ETO UNG STYLE PARA SA DIV NG TOPICS SA PREVIEW TOPIC*/
+    /*position: relative;*/
+    border:2px solid red;
+    width: 100%;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    height: 100px;
+    justify-content: space-between;
+    /*border-top: 1px solid #aaaaaa;*/
+    /*background-image: url("../img/cai_backdropthree.png");*/
+}
+
+.allContent_Container_Buttons{ /* ETO UNG STYLE PARA SA BUTTON (START PRETEST/POSTTEST/UNITTEST NG TOPICS SA PREVIEW TOPIC*/
+    background-color: #92c142;
+}
+
 .wrapper{
     position: relative;
     margin: 0;

@@ -22,6 +22,39 @@ $(document).ready(function(){
     searchSY();
 });
 
+$('#pageBtn_topicsPreview').click(function(){
+    $('#content_container').html('');
+    $.ajax({
+        url: 'controller/get_all_topic_record.php',
+        type: 'POST',
+        dataType: 'json',
+        success: function(topicData){
+            console.log("Lengthasdf: "+topicData.length);
+            var len = topicData.length;
+
+            for (var i = 0; i < len; i++) {
+                var topicId = topicData[i]['topicId'];
+                var topicTitle = topicData[i]['topicTitle'];
+                var topicDiv = $("<div/>")   // creates a div element
+                    .attr("id", topicId)  // adds the id
+                    .addClass("allContent_Container")   // add a class
+                    .html("<div>"
+                            +topicTitle
+                            +"<button class='allContent_Container_Buttons'>Start Pretest</button>"
+                            +"<button class='allContent_Container_Buttons'>Start PostTest</button>"
+                            +"<button class='allContent_Container_Buttons'>Start Unit Test</button>"
+                            +"</div>");
+                $('#content_container').append(topicDiv);
+            }
+        },
+        error: function (x, e) {
+            handleError(x, e);
+        }
+    });
+
+});
+
+
 
 function getYoutubeVideoId(url) {
     var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
@@ -254,6 +287,9 @@ $(document).on('click', '.close_publishVideo',closeModal_publishVideo );
 $(document).on('click', '.close_uploadPPT', closeModal_uploadPPT);
 $(document).on('click', '.close_publishPPT', closeModal_publishPPT);
 $(document).on('click', '.close_createNewSY', closeModal_createNewSY);
+
+$(document).on('click','#pageBtn_topicsPreview',loadTopicPreview());
+$(document).on('click','#pageBtn_topicsPreview',loadTopicPreview());
 
 //ADD/CREATE CALL IN
 $(document).on('click', '#modalBtn_addNewTopic_add', validateAddNewTopic);

@@ -3,6 +3,7 @@
 <html>
 <head>
     <title>CHCS | Realistic Math</title>
+    <link rel="stylesheet" href="css/landingpage.css">
     <link rel="stylesheet" href="css/navigation_bar.css">
     <link rel="stylesheet" href="css/admin_dashboard.css">
     <link rel="stylesheet" href="css/admin_settings.css">

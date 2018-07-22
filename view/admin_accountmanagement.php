@@ -100,6 +100,7 @@ require_once '../core/init.php';
                     </select>
                 </label><br>
                 <hr/>
+
                 <label class="modal_label">
                     Last Name
                     <input class="modal_inputbox" id="modalInput_lastName" type="text" name="modalInputName_lastName">

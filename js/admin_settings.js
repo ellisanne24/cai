@@ -22,23 +22,11 @@ $(document).ready(function(){
     searchSY();
 });
 
-
-function getYoutubeVideoId(url) {
-    var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
-    var match = url.match(regExp);
-    if (match && match[2].length == 11) {
-        return match[2];
-    } else {
-        return 'error';
-    }
-}
-
 $('#modalInput_pasteURL').on('input',function(e){
     var videoUrl = $('#modalInput_pasteURL').val().trim();
     var videoId = getYoutubeVideoId(videoUrl);
     $('#modalContainer_videoPreview').html('<iframe width="510" height="200" src="//www.youtube.com/embed/' + videoId + '" frameborder="0" allowfullscreen></iframe>');
 });
-
 $("#modalBtn_choose_video_file").on('change',function(event){
     $('#modalInput_pasteURL').val('');
     var fileInput = document.getElementById('modalBtn_choose_video_file');
@@ -54,26 +42,6 @@ $("#modalBtn_choose_video_file").on('change',function(event){
     });
     $('#modalContainer_videoPreview').html(video);
 });
-
-
-function hasInputFileLoaded(){
-    var hasYoutubeURLInput = $('#modalInput_pasteURL').val().trim().length > 0;
-    var hasFileInputLoaded = (document.getElementById("modalBtn_choose_video_file").files.length > 0 );
-    if(hasYoutubeURLInput || hasFileInputLoaded){
-        return true;
-    }else{
-        return false;
-    }
-}
-
-function isYoutubeUrl(){
-    return $('#modalInputCB_pasteUrl').is(':checked');
-}
-
-function isVideoUpload(){
-    return $('#modalInputCB_uploadFrmGallery').is(':checked');
-}
-
 $('#modalBtn_uploadVideo_upload').on('click',function(event){
     event.preventDefault();
     var errorMessageLabel = $('#modalLbl_uploadVideoError');
@@ -89,6 +57,30 @@ $('#modalBtn_uploadVideo_upload').on('click',function(event){
     }
 });
 
+function getYoutubeVideoId(url) {
+    var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+    var match = url.match(regExp);
+    if (match && match[2].length == 11) {
+        return match[2];
+    } else {
+        return 'error';
+    }
+}
+function hasInputFileLoaded(){
+    var hasYoutubeURLInput = $('#modalInput_pasteURL').val().trim().length > 0;
+    var hasFileInputLoaded = (document.getElementById("modalBtn_choose_video_file").files.length > 0 );
+    if(hasYoutubeURLInput || hasFileInputLoaded){
+        return true;
+    }else{
+        return false;
+    }
+}
+function isYoutubeUrl(){
+    return $('#modalInputCB_pasteUrl').is(':checked');
+}
+function isVideoUpload(){
+    return $('#modalInputCB_uploadFrmGallery').is(':checked');
+}
 function uploadYoutubeUrl(){
     var successMessageLabel = $('#modalLbl_uploadVideoSuccess');
     var youtubeUrl = $('#modalInput_pasteURL').val().trim();
@@ -115,7 +107,6 @@ function uploadYoutubeUrl(){
         }
     });
 }
-
 function uploadVideo() {
     var successMessageLabel = $('#modalLbl_uploadVideoSuccess');
     var videoTitle = $('#modalInput_renameVideo').val().trim();
@@ -138,7 +129,6 @@ function uploadVideo() {
         }
     });
 }
-
 function handleError(x,e){
     if (x.status == 0) {
         alert('You are offline!!\n Please Check Your Network.');
@@ -420,6 +410,37 @@ function addNewTopic(){
             alert("isSuccessful: "+isSuccessful);
             alert("Successfully Added Topic!.");
             $('#container_modalAddNewTopic').hide();
+        },
+        error: function (x, e) {
+            if (x.status == 0) {
+                alert('You are offline!!\n Please Check Your Network.');
+            } else if (x.status == 404) {
+                alert('Requested URL not found.');
+            } else if (x.status == 500) {
+                alert('Internal Server Error.');
+            } else if (e == 'parsererror') {
+                alert('Error.\nParsing JSON Request failed.');
+            } else if (e == 'timeout') {
+                alert('Request Time out.');
+            } else {
+                alert('Unknown Error.\n' + x.responseText);
+            }
+        }
+    });
+}
+
+function addNewSection(){
+    var sectionName =$("#modalInput_addSectionTitle").val();
+    $.ajax({
+        url:"controller/add_section.php",
+        type:"POST",
+        data:{
+            modalInput_addSectionTitle:sectionName
+        },
+        success: function(isSuccessful){
+            alert("isSuccessful: "+isSuccessful);
+            alert("Successfully Added Section!");
+            $('#container_modalAddNewSection').hide();
         },
         error: function (x, e) {
             if (x.status == 0) {

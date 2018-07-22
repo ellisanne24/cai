@@ -1,11 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Jordan
- * Date: 5/20/2018
- * Time: 3:42 PM
- */
 
 interface SectionDao {
     function getAllSections();
+    function addNewSection(Section  $section);//create function. Section-galing sa model. $section-var n gawa mo.
 } 

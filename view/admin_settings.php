@@ -821,7 +821,7 @@ require_once '../core/init.php';
                 <hr />
                 <label class="modal_label">
                     Section Name
-                    <input class="modal_inputbox" type="text" name="text_sectionName"><br>
+                    <input class="modal_inputbox" id="modalInput_addSectionTitle" type="text" name="modalInputName_addSectionTitle"><br>
                 </label>
                 <br>
                 <label class="modal_label">

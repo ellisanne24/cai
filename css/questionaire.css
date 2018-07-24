@@ -36,16 +36,16 @@
 }
 
 .modal_header_questionaire{
-    background-image:url("../img/questionaire_header.png");
-    background-repeat: no-repeat;
-    padding-top: 15px;
-    padding-left: 20px;
-    padding-right: 15px;
-    padding-bottom: 15px;
-    /*height: 15%;*/
-    /*border: 1px solid red;*/
-    color: white;
-}
+     background-image:url("../img/questionaire_header.png");
+     background-repeat: no-repeat;
+     padding-top: 15px;
+     padding-left: 20px;
+     padding-right: 15px;
+     padding-bottom: 15px;
+     /*height: 15%;*/
+     /*border: 1px solid red;*/
+     color: white;
+ }
 
 
 .close_questionaire {

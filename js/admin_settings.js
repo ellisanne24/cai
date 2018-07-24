@@ -213,7 +213,6 @@ $(document).on('click', '#modalInputCB_renameVideo', function(){
 $(document).on('click','#pageBtn_addNewTopic',showModal_addNewTopic);
 $(document).on('click','#pageBtn_uploadContent',showModal_uploadContent);
 $(document).on('click', '#pageBtn_uploadVideo', showModal_uploadVideo);
-$(document).on('click', '#modalBtn_addNewLesson', showModal_addNewLesson);
 $(document).on('click', '#pageBtn_addNewSection', showModal_addNewSection);
 $(document).on('click', '#pageBtn_transfer', showModal_transferStudent);
 $(document).on('click', '#pageBtn_publishVideo', showModal_publishVideo);
@@ -339,9 +338,7 @@ function showModal_OpenTopicLessons(pTopicId){
     modalBtn_topicTitle_save.css("background-color", "lightgrey");
     
 }
-function showModal_addNewLesson(){
-    $('#container_modalAddNewLesson').show();
-}
+
 function showModal_addNewSection(){
     $('#container_modalAddNewSection').show();
 

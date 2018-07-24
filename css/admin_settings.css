@@ -686,43 +686,6 @@ html, body{
     cursor: pointer;
 }
 
-.modal_content_AddNewLesson{
-    overflow: auto;
-    height: 50%;
-    position: relative;
-    background-color: #fefefe;
-    margin: auto;
-    padding: 20px;
-    width: 40%; /* Could be more or less, depending on screen size */
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
-    animation-name: animateTop;
-    animation-duration: 0.4s
-}
-
-.modal_header_AddNewLesson{
-    background-image:url("../img/modal_headerforTransfer.png");
-    background-repeat: no-repeat;
-    padding-top: 15px;
-    padding-left: 20px;
-    padding-right: 15px;
-    color: white;
-    height: 15%;
-}
-
-.close_addNewLesson {
-    color: white;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
-
-.close_addNewLesson:hover,
-.close_addNewLesson:focus {
-    color: orangered;
-    text-decoration: none;
-    cursor: pointer;
-}
-
 .modal_label_medium{
     font-family: quicksandmedium;
     font-size: 25px;

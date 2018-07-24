@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-        <?php  include '../../view/view_navi/navbar.php'; ?>
         <title>Admin | Settings</title>
-        <link rel="stylesheet" href="../../css/css_admin/lesson_details.css">
-        <link rel="stylesheet" href="../../css/tables.css">
-        <link rel="stylesheet" href="../../css/modal.css">
-        <link rel="stylesheet" href="../../css/control.css">
+        <link rel="stylesheet" href="../css/lesson_details.css">
+        <link rel="stylesheet" href="../css/tables.css">
+        <link rel="stylesheet" href="../css/modal.css">
+        <link rel="stylesheet" href="../css/control.css">
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
@@ -45,7 +44,7 @@
                     </form>
                 </div>
     <script src="../../js/jquery-3.3.1.js"></script>
-    <script src="../../js/js_admin/admin_settings.js"></script>
+<!--    <script src="../../js/js_admin/admin_settings.js"></script>-->
 </body>
 
 </html>

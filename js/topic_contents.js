@@ -1,29 +1,21 @@
-function createNewLesson(){
-    var modal = document.getElementById('myModal');
-    var createBtn = document.getElementById('modal_createBtn');
-    var span = document.getElementsByClassName("close")[0];
 
-    modal.style.display = "block";
 
-    span.onclick = function() {
-        modal.style.display = "none";
-    }
 
-    window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    }
+/*SHOW MODAL CALL IN*/
+$(document).on('click', '#modalBtn_addNewLesson', showModal_addNewLesson);
 
+//CLOSE MODAL CALL IN.
+$(document).on('click', '.close_addNewLesson', closeModal_addNewLesson);
+
+//CANCEL MODAL CALL IN
+$(document).on('click', '#modalBtn_addNewLesson_cancel', closeModal_addNewLesson);
+
+//SHOW MODAL FUNCTIONS
+function showModal_addNewLesson(){
+    $('#container_modalAddNewLesson').show();
 }
 
-function addedLesson(){
-    $(document).ready(function () {
-        $("#container_lessons").append('<div class="lesson_holder"><div class="module_item"><br>New Lesson</div></div>');
-    });
+//CLOSE MODAL FUNCTIONS
+function closeModal_addNewLesson(){
+    $('#container_modalAddNewLesson').hide();
 }
-
-
-
-
-

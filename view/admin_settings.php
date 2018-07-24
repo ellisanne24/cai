@@ -230,50 +230,6 @@ require_once '../core/init.php';
     </div>
 </div>
 <!----------------------------------------------------------------------------------------------------------->
-<!--MODAL - ADD NEW LESSON-->
-<div class="modal" id="container_modalAddNewLesson">
-    <div class="modal_content_AddNewLesson">
-        <div class="modal_header_AddNewLesson">
-            <span class="close_addNewLesson">&times;</span>
-            <h4 class="modal_header_label">Add New Lesson</h4>
-        </div>
-
-        <div class="modal_body">
-            <form class="container_lessonInfo" id="modalForm_addNewLesson"  method="post">
-                <label class="modal_label" id="modalLbl_lessonNumber">
-                    Lesson No.
-                    <input class="modal_inputbox" id="modalInput_lessonNumber" type="text"
-                           name="modalName_lessonNumber"><br>
-                </label>
-                <br>
-                <label class="modal_label" id="modalLbl_lessonTitle">
-                    Lesson Title
-                    <input class="modal_inputbox" id="modalInput_lessonTitle" type="text" name="modalName_lessonTitle">
-                </label>
-                <hr/>
-                <label class="modal_label" id="modalLbl_lessonStatus">
-                    Status
-                    <select class="dropDown" id="modalDrpDown_lessonStatus">
-                        <option value="Active" class="option">Active</option>
-                        <option value="Inactive" class="option">Inactive</option>
-                    </select><br>
-                </label><br>
-                <hr/>
-            </form>
-        </div>
-        <div class="modal_footer">
-            <button class="btn_modalFooter" id="modalBtn_addNewLesson_add" type="submit"
-                    name="modalBtnName_addNewLesson_add">
-                Add
-            </button>
-            <button class="btn_modalFooter" id="modalBtn_addNewLesson_cancel" type="submit"
-                    name="modalBtnName_addNewLesson_cancel">
-                Cancel
-            </button>
-        </div>
-    </div>
-</div>
-<!----------------------------------------------------------------------------------------------------------->
 <!--MODAL - UPLOAD NEW CONTENT-->
 <div class="modal" id="container_modalUploadContent" >
     <div class="modal_content_uploadContent">

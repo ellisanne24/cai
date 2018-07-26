@@ -11,13 +11,9 @@
     src:url(../fonts/quicksand-medium.ttf);
 }
 
-.wrapper{
-    position: relative;
-    margin: 0;
-    padding: 0;
-    /*border: 4px solid black;*/
-    height: 100%;
-    overflow: auto;
+body{
+    line-height: 1.6
+
 }
 
 /*create new test modal*/
@@ -102,4 +98,155 @@
     color: orangered;
     text-decoration: none;
     cursor: pointer;
+}
+
+.pageDiv_tabContainer {
+    overflow: auto;
+    /*background-color: #f1f1f1;*/
+    /*border: 1px solid blue;*/
+    height: auto;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 10px;
+    box-shadow: 1px 5px #f0f2f2;
+}
+
+
+ul.tabs{
+    margin-left: 20px;
+    margin-bottom: 0;
+    margin-top: 0;
+    padding: 0;
+    list-style: none;
+    transition: 0.3s;
+    animation-name: animateTop;
+    animation-duration: 0.4s
+}
+ul.tabs li{
+    display: inline-block;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-family: quicksandregular;
+    color: white;
+    font-size: 16px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    background-color: #cccccc;
+}
+
+
+ul.tabs li.current{
+    background-color: #3cabd0;
+    color: #f7efb1;
+    font-family: quicksandregular;
+}
+
+.tab-content{
+    display: none;
+    background: #ededed;
+    padding: 15px;
+
+}
+
+.tab-content.current {
+    font-family: quicksandregular;
+    display: inherit;
+    background-color: white;
+    color: #6f7071;
+    font-size: 15px;
+}
+
+.pageDiv_controlContainer{
+    width: 100%;
+    background-color: #f0f2f2;
+    align-items: center;
+    border: 1px solid white;
+    padding-bottom: 10px;
+    height: 70px;
+
+}
+
+.pageLbl{
+    font-family: quicksandlight;
+    font-size: 18px;
+    color: #6f7071;
+    margin-left: 40px;
+    margin-right: 20px;
+    /*border: 1px solid red;*/
+    padding:0;
+
+}
+
+/*.pageDiv_showTopicContainer{*/
+    /*border: 1px solid red;*/
+    /*background-color: white;*/
+    /*color: white;*/
+    /*padding-bottom: 10px;*/
+    /*margin-left: 0;*/
+/*}*/
+
+.pageDrpdown{
+    width: 150px;
+
+}
+
+.pageLbl_general {
+    font-family: quicksandlight;
+    font-size: 18px;
+    color: #6f7071;
+}
+
+.modal_content_addQuestion{
+    overflow: auto;
+    height: 100%;
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    width: 60%; /* Could be more or less, depending on screen size */
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    animation-name: animateTop;
+    animation-duration: 0.4s
+}
+
+.modal_header_addQuestion{
+    background-image:url("../img/modal_headerforTransfer.png");
+    background-repeat: no-repeat;
+    padding-top: 15px;
+    padding-left: 20px;
+    padding-right: 15px;
+    height: 15%;
+}
+
+.close_addQuestion {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close_addQuestion:hover,
+.close_addQuestion:focus {
+    color: orangered;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal_questionInputbox{
+    width: 100%;
+    height: 100px;
+    overflow: auto;
+}
+
+textarea{
+    font-size: 14px;
+    font-family: quicksandregular;
+    height: 100px;
+    width: 100%;
+}
+
+.modalLbl_description{
+    color: blueviolet;
+    font-size: 18px;
+    font-family: quicksandregular;
 }

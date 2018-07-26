@@ -1,10 +1,17 @@
 $(document).ready(function(){
 
+    $('ul.tabs li').click(function(){
+        var tab_id = $(this).attr('data-tab');
+
+        $('ul.tabs li').removeClass('current');
+        $('.tab-content').removeClass('current');
+
+        $(this).addClass('current');
+        $("#"+tab_id).addClass('current');
+    })
 
     searchTest()
 })
-
-
 
 
 //ONCHANGE DROPDOWN
@@ -21,14 +28,17 @@ $('#modalDrpDown_selectTest').on('change', function() {
 //SHOW MODAL CALL IN
 $(document).on('click','#pageBtn_CreateNewTest',showModal_createNewTest);
 $(document).on('click', '#pageBtn_PublishTest',showModal_publishTest);
+$(document).on('click', '#pageBtn_addQuestion', showModal_addQuestion);
 
 //CANCEL MODAL CALL IN
 $(document).on('click', '#modalBtn_createNewTest_cancel', closeModal_createNewTest );
-$(document).on('click', '#modalBtn_publishTest_cancel',closeModal_publishTest );
+$(document).on('click', '#modalBtn_publishTest_cancel', closeModal_publishTest );
+$(document).on('click', '#modalBtn_addQuestion_cancel', closeModal_addQuestion);
 
 //CLOSE MODAL CALL IN
 $(document).on('click', '.close_createNewTest', closeModal_createNewTest );
 $(document).on('click', '.close_publishTest',closeModal_publishTest );
+$(document).on('click', '.close_addQuestion', closeModal_addQuestion);
 
 //ADD/CREATE CALL IN
 $(document).on('click', '#modalBtn_createNewTest_create', validateEmptyFields);
@@ -36,9 +46,14 @@ $(document).on('click', '#modalBtn_createNewTest_create', validateEmptyFields);
 //SHOW MODAL FUNCTION
 function showModal_createNewTest(){
     $('#container_modalCreateNewTest').show();
+
 }
 function showModal_publishTest(){
     $('#container_modalPublishTest').show();
+}
+
+function showModal_addQuestion(){
+    $('#container_modalAddQuestion').show();
 }
 
 //CLOSE MODAL FUNCTION
@@ -47,6 +62,9 @@ function closeModal_createNewTest(){
 }
 function closeModal_publishTest(){
     $('#container_modalPublishTest').hide();
+}
+function closeModal_addQuestion(){
+    $('#container_modalAddQuestion').hide();
 }
 
 //ADD CREATE MODAL FUNCTION

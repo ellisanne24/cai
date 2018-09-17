@@ -11,7 +11,9 @@ $(document).ready(function(){
     container_mediaContentsID.hide();
 
     loadAllTopicsToTable();
-    loadToDrpDown_assignToTopic();
+    loadToDrpDown_uploadNewContent_assignToTopic();
+    loadTeachersToDropDown();
+    loadAllSectionsToTable();
     searchTopic();
     searchVideo();
     searchEnrichment();
@@ -246,7 +248,7 @@ $(document).on('click', '.close_createNewSY', closeModal_createNewSY);
 
 //ADD/CREATE CALL IN
 $(document).on('click', '#modalBtn_addNewTopic_add', validateAddNewTopic);
-
+$(document).on('click', '#modalBtn_addNewSection_add', addNewSection);
 
 function resetModalForm(){
     var modalInput_pasteURL = $('#modalInput_pasteURL');
@@ -435,6 +437,7 @@ function addNewSection(){
             modalInput_addSectionTitle:sectionName
         },
         success: function(isSuccessful){
+            console.log("Is Successful: "+isSuccessful);
             alert("isSuccessful: "+isSuccessful);
             alert("Successfully Added Section!");
             $('#container_modalAddNewSection').hide();
@@ -534,7 +537,7 @@ function getTopicByID(topicId){
 //DELETE FUNCTIONS
 
 //LOAD TO DROPDOWN FUNCTIONS
-function loadToDrpDown_assignToTopic(){
+function loadToDrpDown_uploadNewContent_assignToTopic(){
     var modalDrpDown_assignToTopic = $('#modalDrpDown_assignToTopic');
     $.ajax({
         url: 'controller/get_all_topic_record.php',
@@ -544,12 +547,82 @@ function loadToDrpDown_assignToTopic(){
             //alert("Successful retrieved JSON from PHP.");
             var len = data.length;
             //$("#roledropdown").empty();
-            modalDrpDown_assignToTopic.append("<option value='" + topicId + "'>" + 'Select' + "</option>");
+            loadToDrpDown_uploadNewContent_assignToTopic.append("<option value='" + topicId + "'>" + 'Select' + "</option>");
             for (var i = 0; i < len; i++) {
                 console.log(data[i]['topicId']+", "+data[i]['topicTitle']);
                 var topicId = data[i]['topicId'];
                 var topicTitle = data[i]['topicTitle'];
-                modalDrpDown_assignToTopic.append("<option value='" + topicId + "'>" + topicTitle + "</option>");
+                loadToDrpDown_uploadNewContent_assignToTopic.append("<option value='" + topicId + "'>" + topicTitle + "</option>");
+            }
+        },
+        error: function (x, e) {
+            if (x.status == 0) {
+                alert('You are offline!!\n Please Check Your Network.');
+            } else if (x.status == 404) {
+                alert('Requested URL not found.');
+            } else if (x.status == 500) {
+                alert('Internal Server Error.');
+            } else if (e == 'parsererror') {
+                alert('Error.\nParsing JSON Request failed.');
+            } else if (e == 'timeout') {
+                alert('Request Time out.');
+            } else {
+                alert('Unknown Error.\n' + x.responseText);
+            }
+        }
+    });
+}
+function loadToDrpDown_addNewSection_teacher(){
+    var modalDrpDown_selectSectionTeacher = $('#modalDrpDown_selectSectionTeacher');
+    $.ajax({
+        url: 'controller/get_all_roles.php',
+        type: 'POST',
+        dataType: 'json',
+        success: function (data) {
+            //alert("Successful retrieved JSON from PHP.");
+            var len = data.length;
+            modalDrpDown_selectSectionTeacher.append("<option value='" + sectionID + "'>" + 'Select' + "</option>");
+            for (var i = 0; i < len; i++) {
+                var sectionID = data[i]['sectionId'];
+                var sectionName = data[i]['$sectionName'];
+                modalDrpDown_selectSectionTeacher.append("<option value='" + sectionID + "'>" + sectionName + "</option>");
+            }
+        },
+        error: function (x, e) {
+            if (x.status == 0) {
+                alert('You are offline!!\n Please Check Your Network.');
+            } else if (x.status == 404) {
+                alert('Requested URL not found.');
+            } else if (x.status == 500) {
+                alert('Internal Server Error.');
+            } else if (e == 'parsererror') {
+                alert('Error.\nParsing JSON Request failed.');
+            } else if (e == 'timeout') {
+                alert('Request Time out.');
+            } else {
+                alert('Unknown Error.\n' + x.responseText);
+            }
+        }
+    });
+}
+function loadTeachersToDropDown() {
+    $.ajax({
+        url: 'controller/get_all_teacher_users.php',
+        type: 'POST',
+        dataType: 'json',
+        success: function (data) {
+            //alert("Successful retrieved JSON from PHP.");
+            var len = data.length;
+            //$("#modalDrpDown_selectRole").empty();
+            for (var i = 0; i < len; i++) {
+                console.log(data[i]['id']+", "+data[i]['rolename']);
+                var userId = data[i]['id'];
+                var userName = data[i]['username'];
+                var lastName = data[i]['lastname'];
+                var firstName = data[i]['firstname'];
+                var middleName = data[i]['middleinitial'];
+                var completeName = lastName +", "+firstName+" "+middleName;
+                $('#modalDrpDown_selectSectionTeacher').append("<option value='" + userId + "'>" + completeName+ "</option>");
             }
         },
         error: function (x, e) {
@@ -570,7 +643,57 @@ function loadToDrpDown_assignToTopic(){
     });
 }
 
+
 //LOAD TO TABLE FUNCTIONS
+function loadAllSectionsToTable(){
+    $.ajax({
+        url: 'controller/get_all_sections_info.php',
+        type: 'POST',
+        dataType: 'json',
+        success: function(sectionData){
+            console.log("SECTION DATA: "+sectionData);
+            var len = sectionData.length;
+            $('#pageTable_sectionRecord').find("tr:not(:first)").remove();
+            for (var i = 0; i < len; i++) {
+                var sectionId = sectionData[i]['sectionId'];
+                var sectionName = sectionData[i]['sectionName'];
+                var totalStudents = "-"
+                var sectionTeacher = "-";
+
+                $('#pageTable_sectionRecord').append(
+                    "<tr><td>" + sectionId + "</td>" +
+                    "<td>" + sectionName + "</td>" +
+                    "<td>" + totalStudents + "</td>" +
+                    "<td>" + sectionTeacher + "</td>" +
+
+                    "<td>" + "<a id='"+sectionId+"' class='edit' href=''>Edit</a>" + "</td>" +
+                    "<td>" + "<a id='' href='#'>" + "Delete" + "</a>" + "</td>" +
+                    "</tr>"
+                );
+            }
+            $('.edit').click(function(ev){
+                ev.preventDefault();
+                //do something with click
+                //showModal_editSection(ev.target.id); //gagawin pa tong method na to di pa nageexist
+            });
+        },
+        error: function (x, e) {
+            if (x.status == 0) {
+                alert('You are offline!!\n Please Check Your Network.');
+            } else if (x.status == 404) {
+                alert('Requested URL not found.');
+            } else if (x.status == 500) {
+                alert('Internal Server Error.');
+            } else if (e == 'parsererror') {
+                alert('Error.\nParsing JSON Request failed.');
+            } else if (e == 'timeout') {
+                alert('Request Time out.');
+            } else {
+                alert('Unknown Error.\n' + x.responseText);
+            }
+        }
+    });
+}
 
 //REFRESH FUNCTIONS
 

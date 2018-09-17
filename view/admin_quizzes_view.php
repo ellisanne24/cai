@@ -314,7 +314,7 @@
                                 <br>
                                 <label class="modal_label">
                                     <input type="checkbox" id="modalCB_MC_importCSV">
-                                    <span class="checkmark"></span>
+                                    <span class="checkmark" id = "radioBtn_MC_ImportCSV"></span>
                                     Import CSV File
                                 </label><br>
                                 <br>
@@ -325,7 +325,7 @@
                                 </label><br>
                                 <label class="modal_label">
                                     Select Topic
-                                    <select class="dropDown" id="modalDrpDown_MCSelectTopic">
+                                    <select class="dropDown" id="modalDrpDown_MC_CSV_SelectTopic">
                                         <option value="Multiplication" class="option">Multiplication</option>
                                         <option value="Division" class="option">Division</option>
                                         <option value="Fractions" class="option">Fractions</option>
@@ -336,7 +336,7 @@
                             <div class="modalContainer_MC_manual" id="modalContainer_MC_manual">
                                 <label class="modal_label">
                                     <input type="checkbox" id="modalCB_MC_manual">
-                                    <span class="checkmark"></span>
+                                    <span class="checkmark" id="radioBtn_MC_manual"></span>
                                     Manual
                                 </label>
                                 <br>
@@ -351,7 +351,7 @@
                                 <br>
                                 <label class="modal_label">
                                     Select Topic
-                                    <select class="dropDown" id="modalDrpDown_MCSelectTopic">
+                                    <select class="dropDown" id="modalDrpDown_MC_Manual_SelectTopic">
                                         <option value="Multiplication" class="option">Multiplication</option>
                                         <option value="Division" class="option">Division</option>
                                         <option value="Fractions" class="option">Fractions</option>
@@ -360,7 +360,7 @@
                                 <hr />
                                 <label class="modal_label">
                                     Type your question here. <br>
-                                    <textarea class="modal_questionTextArea" id="modal_MCquestionTextArea" name="modalInputName_question" wrap="hard"></textarea>
+                                    <textarea class="modal_questionTextArea" id="modal_MC_Manual_questionTextArea" name="modalInputName_question" wrap="hard"></textarea>
                                  </label>
                                 <br>
                                 <label class="modal_label">
@@ -407,12 +407,12 @@
                                 <br>
                                 <label class="modal_label" id="modalLbl_browseCSV">
                                     Select CSV File
-                                    <input type="file" name="file" class="modalbtn_browseFiles" id="modalBtn_choose_csv_file"
+                                    <input type="file" name="file" class="modalbtn_browseFiles" id="modalBtn_TOF_choose_csv_file"
                                            value="Select CSV"><br>
                                 </label><br>
                                 <label class="modal_label">
                                     Select Topic
-                                    <select class="dropDown" id="modalDrpDown_TOFSelectTopic">
+                                    <select class="dropDown" id="modalDrpDown_TOF_ImportCSV_SelectTopic">
                                         <option value="Multiplication" class="option">Multiplication</option>
                                         <option value="Division" class="option">Division</option>
                                         <option value="Fractions" class="option">Fractions</option>
@@ -429,7 +429,7 @@
                                 <br>
                                 <label class="modal_label" id="modalLbl_browseCSV">
                                     Select Difficulty
-                                    <select class=" dropDown" id="modalDrpDown_TOFSelectDifficulty">
+                                    <select class=" dropDown" id="modalDrpDown_TOF_Manual_SelectDifficulty">
                                         <option value="Easy" class="option">Easy</option>
                                         <option value="Intermediate" class="option">Intermediate</option>
                                         <option value="Advanced" class="option">Advanced</option>
@@ -438,7 +438,7 @@
                                 <br>
                                 <label class="modal_label">
                                     Select Topic
-                                    <select class="dropDown" id="modalDrpDown_TOFSelectTopic">
+                                    <select class="dropDown" id="modalDrpDown_TOF_Manual_SelectTopic">
                                         <option value="Multiplication" class="option">Multiplication</option>
                                         <option value="Division" class="option">Division</option>
                                         <option value="Fractions" class="option">Fractions</option>
@@ -474,12 +474,12 @@
                                 <br>
                                 <label class="modal_label" id="modalLbl_browseCSV">
                                     Select CSV File
-                                    <input type="file" name="file" class="modalbtn_browseFiles" id="modalBtn_choose_csv_file"
+                                    <input type="file" name="file" class="modalbtn_browseFiles" id="modalBtn_FITB_choose_csv_file"
                                            value="Select CSV"><br>
                                 </label><br>
                                 <label class="modal_label">
                                     Select Topic
-                                    <select class="dropDown" id="modalDrpDown_FITBSelectTopic">
+                                    <select class="dropDown" id="modalDrpDown_FITB_ImportCSV_SelectTopic">
                                         <option value="Multiplication" class="option">Multiplication</option>
                                         <option value="Division" class="option">Division</option>
                                         <option value="Fractions" class="option">Fractions</option>
@@ -496,7 +496,7 @@
                                 <br>
                                 <label class="modal_label" id="modalLbl_browseCSV">
                                     Select Difficulty
-                                    <select class=" dropDown" id="modalDrpDown_FITBSelectDifficulty">
+                                    <select class=" dropDown" id="modalDrpDown_FITB_Manual_SelectDifficulty">
                                         <option value="Easy" class="option">Easy</option>
                                         <option value="Intermediate" class="option">Intermediate</option>
                                         <option value="Advanced" class="option">Advanced</option>
@@ -505,7 +505,7 @@
                                 <br>
                                 <label class="modal_label">
                                     Select Topic
-                                    <select class="dropDown" id="modalDrpDown_FITBSelectTopic">
+                                    <select class="dropDown" id="modalDrpDown_FITB_Manual_SelectTopic">
                                         <option value="Multiplication" class="option">Multiplication</option>
                                         <option value="Division" class="option">Division</option>
                                         <option value="Fractions" class="option">Fractions</option>

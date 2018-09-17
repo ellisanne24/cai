@@ -8,85 +8,93 @@ class Section implements  JsonSerializable{
     private $isSectionActive;
 
     /**
-     * @return mixed
+     * @var SchoolYear
      */
+    private $schoolYear;
+
+    function jsonSerialize()
+    {
+        return [
+            'sectionId' => $this->sectionId,
+            'sectionName' => $this->sectionName,
+            'dateAdded' => $this->dateAdded,
+            'isSectionActive' => $this->isSectionActive,
+            'schoolyearid '=>$this->schoolYear->getSchoolYearId(),
+            'schoolyearfrom'=>$this->schoolYear->getYearFrom(),
+            'schoolyearto'=>$this->schoolYear->getYearTo(),
+            'schoolyeariscurrent'=>$this->schoolYear->getIsCurrent(),
+            'schoolyearstartdate' => $this->schoolYear->getStartDate(),
+            'schoolyearenddate' => $this->schoolYear->getEndDate()
+        ];
+    }
+
+    /**
+     * @return SchoolYear
+     */
+    public function getSchoolYear()
+    {
+        return $this->schoolYear;
+    }
+
+    /**
+     * @param SchoolYear $schoolYear
+     */
+    public function setSchoolYear($schoolYear)
+    {
+        $this->schoolYear = $schoolYear;
+    }
+
+
+
+
     public function getDateAdded()
     {
         return $this->date_added;
     }
 
-    /**
-     * @param mixed $date_added
-     */
+
     public function setDateAdded($date_added)
     {
         $this->date_added = $date_added;
     }
 
-    /**
-     * @return mixed
-     */
+
     public function getIsSectionActive()
     {
         return $this->isSectionActive;
     }
 
-    /**
-     * @param mixed $isSectionActive
-     */
+
     public function setIsSectionActive($isSectionActive)
     {
         $this->isSectionActive = $isSectionActive;
     }
 
-    /**
-     * @return mixed
-     */
+
     public function getSectionId()
     {
         return $this->sectionId;
     }
 
-    /**
-     * @param mixed $sectionId
-     */
+
     public function setSectionId($sectionId)
     {
         $this->sectionId = $sectionId;
     }
 
-    /**
-     * @return mixed
-     */
     public function getSectionName()
     {
         return $this->sectionName;
     }
 
-    /**
-     * @param mixed $sectionName
-     */
+
     public function setSectionName($sectionName)
     {
         $this->sectionName = $sectionName;
     }
 
-    /**
-     * (PHP 5 &gt;= 5.4.0)<br/>
-     * Specify data which should be serialized to JSON
-     * @link http://php.net/manual/en/jsonserializable.jsonserialize.php
-     * @return mixed data which can be serialized by <b>json_encode</b>,
-     * which is a value of any type other than a resource.
-     */
-    function jsonSerialize()
-    {
-        return [
-            'sectionId' => $this->sectionId,
-            'sectionName' => $this->setSectionName,
-            'dateAdded' => $this->dateAdded,
-            'isSectionActive' => $this->isSectionActive
-        ];
-    }
+
+
 
 
 } 

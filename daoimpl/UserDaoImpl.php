@@ -62,6 +62,38 @@ class UserDaoImpl implements UserDao {
         return $usersList;
     }
 
+    function getAllTeacherUsers()
+    {
+        $teacherList = [];
+        try{
+            $SQL = "CALL getAllActiveTeacherUsers()";
+            $sp_getAllActiveTeacherUsers = $this->connection->prepare($SQL);
+            $sp_getAllActiveTeacherUsers->execute();
+
+            $resultSet = $sp_getAllActiveTeacherUsers->fetchAll(PDO::FETCH_ASSOC);
+            foreach($resultSet as $row){
+                $role = new Role();
+                $role->setRoleId($row['role_id']);
+                $role->setRolename($row['role_name']);
+
+                $user = new User();
+                $user->setId($row['user_id']);
+                $user->setUsername($row['username']);
+                $user->setPassword($row['password']);
+                $user->setLastname($row['lastname']);
+                $user->setFirstname($row['firstname']);
+                $user->setMiddleinitial($row['middle']);
+                $user->setIsActive($row['is_user_active'] === 1? true : false);
+                $user->setRole($role);
+
+                $teacherList[] = $user;
+            }
+        }catch(PDOException $e){
+            die($e->getMessage());
+        }
+        return $teacherList;
+    }
+
 
     function getUserBy($username, $password)
     {

@@ -10,6 +10,7 @@ interface UserDao {
 
     function add(User $user);
     function getAllUsers();
+    function getAllTeacherUsers();
     function getUserBy($username, $password);
     function getUserById($userId);
 } 

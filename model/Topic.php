@@ -4,6 +4,18 @@ class Topic implements JsonSerializable{
     private $topicId;
     private $topicTitle;
 
+    function jsonSerialize()
+    {
+        return [
+            'topicId' => $this->topicId,
+            'topicTitle' => $this->topicTitle,
+        ];
+    }
+
+    public function toJSON(){
+        return json_encode($this);
+    }
+
     public function getTopicId()
     {
         return $this->topicId;
@@ -24,17 +36,7 @@ class Topic implements JsonSerializable{
         $this->topicTitle = $topicTitle;
     }
 
-    function jsonSerialize()
-    {
-        return [
-            'topicId' => $this->topicId,
-            'topicTitle' => $this->topicTitle,
-        ];
-    }
 
-    public function toJSON(){
-        return json_encode($this);
-    }
 
 
 } 

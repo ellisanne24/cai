@@ -74,10 +74,11 @@ function showModal_publishFile(){
 function closeModal_uploadNewFile(){
     $('#container_modalUploadNewFile').hide();
 }
-
 function closeModal_publishFile(){
     $('#container_modalPublishFile').hide();
 }
 
 //VALIDATIONS
+
+//LOAD TO DROPDOWN
 

@@ -1,11 +1,13 @@
 console.log('admin_accountmanagement.js is loaded');
 $(document).ready(function(){
     loadRolesToDropDown();
+
     //setInterval(function(){
     //    loadAllUsersToTable();
     //},1000);
     loadAllUsersToTable();
     searchUser();
+
 });
 
 $('#modalDrpDown_selectRole').on('change', function() {
@@ -197,7 +199,8 @@ function loadAllUsersToTable(){
                 var roleName = userData[i]['roleName'];
                 var isActive = userData[i]['isactive'] == true? "Active" : "Inactive";
                 $('#table_users_record').append(
-                    "<tr><td>" + userId + "</td>" +
+                    "<tr>" +
+                    "<td>" + userId + "</td>" +
                     "<td>" + roleName + "</td>" +
                     "<td>" + userName + "</td>" +
                     "<td>" + lastName + "</td>" +
@@ -205,15 +208,26 @@ function loadAllUsersToTable(){
                     "<td>" + middleInitial + "</td>" +
                     "<td>" + isActive + "</td>" +
                     "<td>" + "<a id='"+userId+"' class='edit' href=''>Edit</a>" + "</td>" +
-                    "<td>" + "<a id='' href='#'>" + "Delete" + "</a>" + "</td>" +
+
+                    "<td>" + "<a id='"+userId+"' class='remove' href=''>Remove</a>" + "</td>" +
                     "</tr>"
                 );
             }
             $('.edit').click(function(ev){
-                ev.preventDefault();
                 //do something with click
                 showModal_editUser(ev.target.id);
+
+                ev.preventDefault();
             });
+
+            $('.remove').click(function(ev){
+
+
+                alert("This user will be removed from display, but still exist in the database. =)");
+                $(this).closest("tr").remove();
+                ev.preventDefault();
+            });
+
         },
         error: function (x, e) {
             if (x.status == 0) {
@@ -286,6 +300,43 @@ function loadRolesToDropDown() {
         }
     });
 }
+
+function loadToDrpdown_uploadViaCSV(){
+    var modalDrpDown_section = $('#modalDrpDown_section');
+    $.ajax({
+        url: 'controller/get_section_info_by_id.php',
+        type: 'POST',
+        dataType: 'json',
+        success: function (data) {
+            //alert("Successful retrieved JSON from PHP.");
+            var len = data.length;
+            //$("#roledropdown").empty();
+            loadToDrpdown_uploadViaCSV.append("<option value='" + sectionId + "'>" + 'Select' + "</option>");
+            for (var i = 0; i < len; i++) {
+                console.log(data[i]['topicId']+", "+data[i]['topicTitle']);
+                var sectionId = data[i]['topicId'];
+                var sectionName = data[i]['topicTitle'];
+                loadToDrpdown_uploadViaCSV.append("<option value='" + sectionId + "'>" + sectionName + "</option>");
+            }
+        },
+        error: function (x, e) {
+            if (x.status == 0) {
+                alert('You are offline!!\n Please Check Your Network.');
+            } else if (x.status == 404) {
+                alert('Requested URL not found.');
+            } else if (x.status == 500) {
+                alert('Internal Server Error.');
+            } else if (e == 'parsererror') {
+                alert('Error.\nParsing JSON Request failed.');
+            } else if (e == 'timeout') {
+                alert('Request Time out.');
+            } else {
+                alert('Unknown Error.\n' + x.responseText);
+            }
+        }
+    });
+}
+
 function loadSectionsToDropDown() {
     $.ajax({
         url: 'controller/get_all_sections.php',
@@ -299,6 +350,7 @@ function loadSectionsToDropDown() {
         }
     });
 }
+
 
 
 //SHOW MODAL FUNCTIONS
@@ -386,6 +438,7 @@ function closeModal_uploadCSV(){
 function validate_addNewUser(){
 
 }
+
 
 
 

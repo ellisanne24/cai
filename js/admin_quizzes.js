@@ -13,6 +13,327 @@ $(document).ready(function(){
     searchTest()
 })
 
+//CHANGE LISTENERS
+$(document).on('click', '#modalCB_MC_importCSV', function(){
+    var modalBtn_choose_csv_file = $('#modalBtn_choose_csv_file');
+    var modalDrpDown_MC_CSV_SelectTopic = $('#modalDrpDown_MC_CSV_SelectTopic');
+
+    var modalCB_MC_manual = $('#modalCB_MC_manual');
+    var modalDrpDown_MCSelectDifficulty = $('#modalDrpDown_MCSelectDifficulty');
+    var modalDrpDown_MC_Manual_SelectTopic = $('#modalDrpDown_MC_Manual_SelectTopic');
+    var modal_MC_Manual_questionTextArea = $('#modal_MC_Manual_questionTextArea');
+    var modalInput_MCOptionA = $('#modalInput_MCOptionA');
+    var modalInput_MCOptionB = $('#modalInput_MCOptionB');
+    var modalInput_MCOptionC = $('#modalInput_MCOptionC');
+    var modalInput_MCOptionD = $('#modalInput_MCOptionD');
+    var modalInput_MCRealAnswer = $('#modalInput_MCRealAnswer');
+
+
+    if(this.checked){
+
+        modalBtn_choose_csv_file.prop('disabled', false);
+        modalBtn_choose_csv_file.css("background-color", "#3cabd0");
+        modalDrpDown_MC_CSV_SelectTopic.prop('disabled', false);
+        modalDrpDown_MC_CSV_SelectTopic.css("background-color", "white");
+
+        modalCB_MC_manual.prop('checked', false);
+        modalDrpDown_MCSelectDifficulty.prop('disabled', true);
+        modalDrpDown_MCSelectDifficulty.css("background-color", "lightgrey");
+        modalDrpDown_MC_Manual_SelectTopic.prop('disabled', true);
+        modalDrpDown_MC_Manual_SelectTopic.css("background-color", "lightgrey");
+        modal_MC_Manual_questionTextArea.prop('disabled', true);
+        modal_MC_Manual_questionTextArea.css("background-color", "lightgrey");
+        modalInput_MCOptionA.prop('disabled', true);
+        modalInput_MCOptionA.css("background-color", "lightgrey");
+        modalInput_MCOptionB.prop('disabled', true);
+        modalInput_MCOptionB.css("background-color", "lightgrey");
+        modalInput_MCOptionC.prop('disabled', true);
+        modalInput_MCOptionC.css("background-color", "lightgrey");
+        modalInput_MCOptionD.prop('disabled', true);
+        modalInput_MCOptionD.css("background-color", "lightgrey");
+        modalInput_MCRealAnswer.prop('disabled', true);
+        modalInput_MCRealAnswer.css("background-color", "lightgrey");
+
+
+    }else if(!this.checked){
+
+
+        modalBtn_choose_csv_file.prop('disabled', false);
+        modalBtn_choose_csv_file.css("background-color", "white");
+        modalDrpDown_MC_CSV_SelectTopic.prop('disabled', false);
+        modalDrpDown_MC_CSV_SelectTopic.css("background-color", "white");
+
+        modalDrpDown_MCSelectDifficulty.prop('disabled', false);
+        modalDrpDown_MCSelectDifficulty.css("background-color", "white");
+        modalDrpDown_MC_Manual_SelectTopic.prop('disabled', false);
+        modalDrpDown_MC_Manual_SelectTopic.css("background-color", "white");
+        modal_MC_Manual_questionTextArea.prop('disabled', false);
+        modal_MC_Manual_questionTextArea.css("background-color", "white");
+        modalInput_MCOptionA.prop('disabled', false);
+        modalInput_MCOptionA.css("background-color", "white");
+        modalInput_MCOptionB.prop('disabled', false);
+        modalInput_MCOptionB.css("background-color", "white");
+        modalInput_MCOptionC.prop('disabled', false);
+        modalInput_MCOptionC.css("background-color", "white");
+        modalInput_MCOptionD.prop('disabled', false);
+        modalInput_MCOptionD.css("background-color", "white");
+        modalInput_MCRealAnswer.prop('disabled', false);
+        modalInput_MCRealAnswer.css("background-color", "white");
+
+    }
+});
+
+$(document).on('click', '#modalCB_MC_manual', function(){
+    var modalBtn_choose_csv_file = $('#modalBtn_choose_csv_file');
+    var modalDrpDown_MC_CSV_SelectTopic = $('#modalDrpDown_MC_CSV_SelectTopic');
+
+    var modalCB_MC_importCSV = $('#modalCB_MC_importCSV');
+    var modalDrpDown_MCSelectDifficulty = $('#modalDrpDown_MCSelectDifficulty');
+    var modalDrpDown_MC_Manual_SelectTopic = $('#modalDrpDown_MC_Manual_SelectTopic');
+    var modal_MC_Manual_questionTextArea = $('#modal_MC_Manual_questionTextArea');
+    var modalInput_MCOptionA = $('#modalInput_MCOptionA');
+    var modalInput_MCOptionB = $('#modalInput_MCOptionB');
+    var modalInput_MCOptionC = $('#modalInput_MCOptionC');
+    var modalInput_MCOptionD = $('#modalInput_MCOptionD');
+    var modalInput_MCRealAnswer = $('#modalInput_MCRealAnswer');
+
+
+    if(this.checked){
+
+        modalCB_MC_importCSV.prop('checked', false);
+        modalBtn_choose_csv_file.prop('disabled', true);
+        modalBtn_choose_csv_file.css("background-color", "lightgrey");
+        modalDrpDown_MC_CSV_SelectTopic.prop('disabled', true);
+        modalDrpDown_MC_CSV_SelectTopic.css("background-color", "lightgrey");
+
+        modalDrpDown_MCSelectDifficulty.prop('disabled', false);
+        modalDrpDown_MCSelectDifficulty.css("background-color", "white");
+        modalDrpDown_MC_Manual_SelectTopic.prop('disabled', false);
+        modalDrpDown_MC_Manual_SelectTopic.css("background-color", "white");
+        modal_MC_Manual_questionTextArea.prop('disabled', false);
+        modal_MC_Manual_questionTextArea.css("background-color", "white");
+        modalInput_MCOptionA.prop('disabled', false);
+        modalInput_MCOptionA.css("background-color", "white");
+        modalInput_MCOptionB.prop('disabled', false);
+        modalInput_MCOptionB.css("background-color", "white");
+        modalInput_MCOptionC.prop('disabled', false);
+        modalInput_MCOptionC.css("background-color", "white");
+        modalInput_MCOptionD.prop('disabled', false);
+        modalInput_MCOptionD.css("background-color", "white");
+        modalInput_MCRealAnswer.prop('disabled', false);
+        modalInput_MCRealAnswer.css("background-color", "white");
+
+
+    }else if(!this.checked){
+
+        modalBtn_choose_csv_file.prop('disabled', false);
+        modalBtn_choose_csv_file.css("background-color", "white");
+        modalDrpDown_MC_CSV_SelectTopic.prop('disabled', false);
+        modalDrpDown_MC_CSV_SelectTopic.css("background-color", "white");
+
+        modalDrpDown_MCSelectDifficulty.prop('disabled', false);
+        modalDrpDown_MCSelectDifficulty.css("background-color", "white");
+        modalDrpDown_MC_Manual_SelectTopic.prop('disabled', false);
+        modalDrpDown_MC_Manual_SelectTopic.css("background-color", "white");
+        modal_MC_Manual_questionTextArea.prop('disabled', false);
+        modal_MC_Manual_questionTextArea.css("background-color", "white");
+        modalInput_MCOptionA.prop('disabled', false);
+        modalInput_MCOptionA.css("background-color", "white");
+        modalInput_MCOptionB.prop('disabled', false);
+        modalInput_MCOptionB.css("background-color", "white");
+        modalInput_MCOptionC.prop('disabled', false);
+        modalInput_MCOptionC.css("background-color", "white");
+        modalInput_MCOptionD.prop('disabled', false);
+        modalInput_MCOptionD.css("background-color", "white");
+        modalInput_MCRealAnswer.prop('disabled', false);
+        modalInput_MCRealAnswer.css("background-color", "white");
+
+    }
+});
+
+$(document).on('click', '#modalCB_TOF_importCSV', function(){
+    var modalBtn_TOF_choose_csv_file = $('#modalBtn_TOF_choose_csv_file');
+    var modalDrpDown_TOF_ImportCSV_SelectTopic = $('#modalDrpDown_TOF_ImportCSV_SelectTopic');
+
+    var modalCB_TOF_manual = $('#modalCB_TOF_manual');
+    var modalCB_TOF_importCSV = $('#modalCB_TOF_importCSV');
+    var modalDrpDown_TOF_Manual_SelectDifficulty = $('#modalDrpDown_TOF_Manual_SelectDifficulty');
+    var modalDrpDown_TOF_Manual_SelectTopic = $('#modalDrpDown_TOF_Manual_SelectTopic');
+    var modal_TOFQuestionTextArea = $('#modal_TOFQuestionTextArea');
+    var modalInput_TOFAnswer = $('#modalInput_TOFAnswer');
+
+
+    if(this.checked){
+
+        modalCB_TOF_manual.prop('checked', false);
+        modalBtn_TOF_choose_csv_file.prop('disabled', false);
+        modalBtn_TOF_choose_csv_file.css("background-color", "#3cabd0");
+        modalDrpDown_TOF_Manual_SelectDifficulty.prop('disabled', false);
+        modalDrpDown_TOF_Manual_SelectDifficulty.css("background-color", "white");
+
+        modalDrpDown_TOF_Manual_SelectDifficulty.prop('disabled', true);
+        modalDrpDown_TOF_Manual_SelectDifficulty.css("background-color", "lightgrey");
+        modalDrpDown_TOF_Manual_SelectTopic.prop('disabled', true);
+        modalDrpDown_TOF_Manual_SelectTopic.css("background-color", "lightgrey");
+        modal_TOFQuestionTextArea.prop('disabled', true);
+        modal_TOFQuestionTextArea.css("background-color", "lightgrey");
+        modalInput_TOFAnswer.prop('disabled', true);
+        modalInput_TOFAnswer.css("background-color", "lightgrey");
+
+    }else if(!this.checked){
+
+        modalCB_TOF_manual.prop('checked', false);
+        modalBtn_TOF_choose_csv_file.prop('disabled', false);
+        modalBtn_TOF_choose_csv_file.css("background-color", "#3cabd0");
+        modalDrpDown_TOF_Manual_SelectDifficulty.prop('disabled', false);
+        modalDrpDown_TOF_Manual_SelectDifficulty.css("background-color", "white");
+
+        modalDrpDown_TOF_Manual_SelectDifficulty.prop('disabled', false);
+        modalDrpDown_TOF_Manual_SelectDifficulty.css("background-color", "white");
+        modalDrpDown_TOF_Manual_SelectTopic.prop('disabled', false);
+        modalDrpDown_TOF_Manual_SelectTopic.css("background-color", "white");
+        modal_TOFQuestionTextArea.prop('disabled', false);
+        modal_TOFQuestionTextArea.css("background-color", "white");
+        modalInput_TOFAnswer.prop('disabled', false);
+        modalInput_TOFAnswer.css("background-color", "white");
+    }
+});
+
+$(document).on('click', '#modalCB_TOF_manual', function(){
+    var modalBtn_TOF_choose_csv_file = $('#modalBtn_TOF_choose_csv_file');
+    var modalDrpDown_TOF_ImportCSV_SelectTopic = $('#modalDrpDown_TOF_ImportCSV_SelectTopic');
+
+    var modalCB_TOF_manual = $('#modalCB_TOF_manual');
+    var modalCB_TOF_importCSV = $('#modalCB_TOF_importCSV');
+    var modalDrpDown_TOF_Manual_SelectDifficulty = $('#modalDrpDown_TOF_Manual_SelectDifficulty');
+    var modalDrpDown_TOF_Manual_SelectTopic = $('#modalDrpDown_TOF_Manual_SelectTopic');
+    var modal_TOFQuestionTextArea = $('#modal_TOFQuestionTextArea');
+    var modalInput_TOFAnswer = $('#modalInput_TOFAnswer');
+
+
+    if(this.checked){
+
+        modalCB_TOF_importCSV.prop('checked', false);
+        modalBtn_TOF_choose_csv_file.prop('disabled', true);
+        modalBtn_TOF_choose_csv_file.css("background-color", "lightgrey");
+        modalDrpDown_TOF_ImportCSV_SelectTopic.prop('disabled', true);
+        modalDrpDown_TOF_ImportCSV_SelectTopic.css("background-color", "lightgrey");
+
+        modalDrpDown_TOF_Manual_SelectDifficulty.prop('disabled', false);
+        modalDrpDown_TOF_Manual_SelectDifficulty.css("background-color", "white");
+        modalDrpDown_TOF_Manual_SelectTopic.prop('disabled', false);
+        modalDrpDown_TOF_Manual_SelectTopic.css("background-color", "white");
+        modal_TOFQuestionTextArea.prop('disabled', false);
+        modal_TOFQuestionTextArea.css("background-color", "white");
+        modalInput_TOFAnswer.prop('disabled', false);
+        modalInput_TOFAnswer.css("background-color", "white");
+
+    }else if(!this.checked){
+
+        modalCB_TOF_importCSV.prop('checked', false);
+        modalBtn_TOF_choose_csv_file.prop('disabled', false);
+        modalBtn_TOF_choose_csv_file.css("background-color", "#3cabd0");
+        modalDrpDown_TOF_Manual_SelectDifficulty.prop('disabled', false);
+        modalDrpDown_TOF_Manual_SelectDifficulty.css("background-color", "white");
+
+        modalDrpDown_TOF_Manual_SelectDifficulty.prop('disabled', false);
+        modalDrpDown_TOF_Manual_SelectDifficulty.css("background-color", "white");
+        modalDrpDown_TOF_Manual_SelectTopic.prop('disabled', false);
+        modalDrpDown_TOF_Manual_SelectTopic.css("background-color", "white");
+        modal_TOFQuestionTextArea.prop('disabled', false);
+        modal_TOFQuestionTextArea.css("background-color", "white");
+        modalInput_TOFAnswer.prop('disabled', false);
+        modalInput_TOFAnswer.css("background-color", "white");
+    }
+});
+
+$(document).on('click', '#modalCB_FITB_importCSV', function(){
+    var modalBtn_FITB_choose_csv_file = $('#modalBtn_FITB_choose_csv_file');
+    var modalDrpDown_FITB_ImportCSV_SelectTopic = $('#modalDrpDown_FITB_ImportCSV_SelectTopic');
+
+    var modalCB_FITB_manual = $('#modalCB_FITB_manual');
+    var modalCB_FITB_importCSV = $('#modalCB_FITB_importCSV');
+    var modalDrpDown_FITB_Manual_SelectDifficulty = $('#modalDrpDown_FITB_Manual_SelectDifficulty');
+    var modalDrpDown_FITB_Manual_SelectTopic = $('#modalDrpDown_FITB_Manual_SelectTopic');
+    var modal_FITBQuestionTextArea = $('#modal_FITBQuestionTextArea');
+    var modalInput_FITBAnswer = $('#modalInput_FITBAnswer');
+
+    if(this.checked){
+
+        modalCB_FITB_manual.prop('checked', false);
+        modalBtn_FITB_choose_csv_file.prop('disabled', false);
+        modalBtn_FITB_choose_csv_file.css("background-color", "#3cabd0");
+
+        modalDrpDown_FITB_Manual_SelectDifficulty.prop('disabled', true);
+        modalDrpDown_FITB_Manual_SelectDifficulty.css("background-color", "lightgrey");
+        modalDrpDown_FITB_Manual_SelectTopic.prop('disabled', true);
+        modalDrpDown_FITB_Manual_SelectTopic.css("background-color", "lightgrey");
+        modal_FITBQuestionTextArea.prop('disabled', true);
+        modal_FITBQuestionTextArea.css("background-color", "lightgrey");
+        modalInput_FITBAnswer.prop('disabled', true);
+        modalInput_FITBAnswer.css("background-color", "lightgrey");
+
+    }else if(!this.checked){
+
+        modalCB_FITB_manual.prop('checked', false);
+        modalBtn_FITB_choose_csv_file.prop('disabled', false);
+        modalBtn_FITB_choose_csv_file.css("background-color", "#3cabd0");
+
+        modalDrpDown_FITB_Manual_SelectDifficulty.prop('disabled', false);
+        modalDrpDown_FITB_Manual_SelectDifficulty.css("background-color", "white");
+        modalDrpDown_FITB_Manual_SelectTopic.prop('disabled', false);
+        modalDrpDown_FITB_Manual_SelectTopic.css("background-color", "white");
+        modal_FITBQuestionTextArea.prop('disabled', false);
+        modal_FITBQuestionTextArea.css("background-color", "white");
+        modalInput_FITBAnswer.prop('disabled', false);
+        modalInput_FITBAnswer.css("background-color", "white");
+    }
+});
+
+$(document).on('click', '#modalCB_FITB_manual', function(){
+    var modalBtn_FITB_choose_csv_file = $('#modalBtn_FITB_choose_csv_file');
+    var modalDrpDown_FITB_ImportCSV_SelectTopic = $('#modalDrpDown_FITB_ImportCSV_SelectTopic');
+
+
+    var modalCB_FITB_importCSV = $('#modalCB_FITB_importCSV');
+    var modalDrpDown_FITB_Manual_SelectDifficulty = $('#modalDrpDown_FITB_Manual_SelectDifficulty');
+    var modalDrpDown_FITB_Manual_SelectTopic = $('#modalDrpDown_FITB_Manual_SelectTopic');
+    var modal_FITBQuestionTextArea = $('#modal_FITBQuestionTextArea');
+    var modalInput_FITBAnswer = $('#modalInput_FITBAnswer');
+
+    if(this.checked){
+
+        modalCB_FITB_importCSV.prop('checked', false);
+        modalBtn_FITB_choose_csv_file.prop('disabled', true);
+        modalBtn_FITB_choose_csv_file.css("background-color", "lightgrey");
+        modalDrpDown_FITB_ImportCSV_SelectTopic.prop('disabled', true);
+        modalDrpDown_FITB_ImportCSV_SelectTopic.css("background-color", "lightgrey");
+
+        modalDrpDown_FITB_Manual_SelectDifficulty.prop('disabled', false);
+        modalDrpDown_FITB_Manual_SelectDifficulty.css("background-color", "white");
+        modalDrpDown_FITB_Manual_SelectTopic.prop('disabled', false);
+        modalDrpDown_FITB_Manual_SelectTopic.css("background-color", "white");
+        modal_FITBQuestionTextArea.prop('disabled', false);
+        modal_FITBQuestionTextArea.css("background-color", "white");
+        modalInput_FITBAnswer.prop('disabled', false);
+        modalInput_FITBAnswer.css("background-color", "white");
+
+    }else if(!this.checked){
+
+        modalCB_FITB_importCSV.prop('checked', false);
+        modalBtn_FITB_choose_csv_file.prop('disabled', false);
+        modalBtn_FITB_choose_csv_file.css("background-color", "#3cabd0");
+
+        modalDrpDown_FITB_Manual_SelectDifficulty.prop('disabled', false);
+        modalDrpDown_FITB_Manual_SelectDifficulty.css("background-color", "white");
+        modalDrpDown_FITB_Manual_SelectTopic.prop('disabled', false);
+        modalDrpDown_FITB_Manual_SelectTopic.css("background-color", "white");
+        modal_FITBQuestionTextArea.prop('disabled', false);
+        modal_FITBQuestionTextArea.css("background-color", "white");
+        modalInput_FITBAnswer.prop('disabled', false);
+        modalInput_FITBAnswer.css("background-color", "white");
+    }
+});
 
 //ONCHANGE DROPDOWN
 $('#modalDrpDown_selectTest').on('change', function() {
@@ -54,6 +375,8 @@ function showModal_publishTest(){
 
 function showModal_addQuestion(){
     $('#container_modalAddQuestion').show();
+
+
 }
 
 //CLOSE MODAL FUNCTION

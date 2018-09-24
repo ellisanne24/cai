@@ -10,10 +10,42 @@ $(document).ready(function(){
     modalDrpDown_uploadFileStatus.css("background-color", "lightgrey");
     container_mediaContentsID.hide();
 
+
+
+    //ADD LESSON
+    $("#modalBtn_addNewLesson").click(function () {
+
+            var lessonNo = $("#modalInput_addLessonNumber").val();
+            var lessonTitle = $("#modalInput_addLessonTitle").val();
+
+            var markup = "<tr><td><input type='checkbox' name='record'></td><td>" +
+            lessonNo +
+            "</td><td>" +
+            lessonTitle +
+            "</td></tr>";
+
+            if($('#modalInput_addLessonNumber').val().length===0 || $('#modalInput_addLessonTitle').val().length===0) {
+                $('#modalLbl_addLesson_ERROR').text("Found empty field/s.");
+                $('#modalLbl_addLesson_ERROR').css("color", "red");
+            }else{
+                alert("Successfully added Lesson!");
+                $("#table_lessonsRecord").append(markup);
+            }
+
+    })
+
+    $("#modalInput_addLessonNumber").keypress(function (e) {
+        if (String.fromCharCode(e.keyCode).match(/[^0-9]/g))
+            return false;
+    });
+
     loadAllTopicsToTable();
     loadToDrpDown_uploadNewContent_assignToTopic();
     loadTeachersToDropDown();
     loadAllSectionsToTable();
+    loadVideoTitlesToDropDown();
+    loadTopicsToPinOnTopicDropDown();
+    loadSectionsToPublishVideoModalSectionsDropdown();
     searchTopic();
     searchVideo();
     searchEnrichment();
@@ -90,11 +122,14 @@ function uploadYoutubeUrl(){
     var youtubeEmbedUrl = "www.youtube.com/embed/";
     var completeYoutubeUrl = (youtubeEmbedUrl + youtubeVideoId);
     var youtubeVideoTitle = $('#youtube_video_title').val().trim();
+    var contentCategory = $('#modalDrpDown_selectVideoCategory').find(":selected").text();
+
     console.log('Youtube Embed URL: '+completeYoutubeUrl);
 
     var formData = new FormData();
     formData.append('completeYoutubeUrl',completeYoutubeUrl);
     formData.append('youtubeVideoTitle',youtubeVideoTitle);
+    formData.append('contentCategory',contentCategory);
     $.ajax({
         url: 'controller/upload_youtube_video.php',
         type: 'POST',
@@ -147,12 +182,13 @@ function handleError(x,e){
     }
 }
 
+
 //CHANGE LISTENERS
 $(document).on('click', '#modalInputCB_pasteUrl', function(){
     var modalInputCB_pasteUrl = $('#modalInputCB_pasteUrl');
+    var youtube_video_title = $('#youtube_video_title');
     var modalInputCB_upload = $('#modalInputCB_uploadFrmGallery');
     var modalInput_pasteURL = $('#modalInput_pasteURL');
-    var modalBtn_browseVideo = $('#modalBtn_browseVideo');
     var modalBtn_choose_video_file = $('#modalBtn_choose_video_file');
     var videoPreviewDivContainer = $('#modalContainer_videoPreview');
 
@@ -162,23 +198,28 @@ $(document).on('click', '#modalInputCB_pasteUrl', function(){
         modalInput_pasteURL.prop('disabled', false);
         modalInput_pasteURL.css("background-color", "white");
         modalInputCB_upload.prop('checked', false);
-        modalBtn_browseVideo.prop('disabled', true);
-        modalBtn_browseVideo.css("background-color", "lightgrey");
+        modalBtn_choose_video_file.prop('disabled', true);
+        modalBtn_choose_video_file.css("background-color", "lightgrey");
+        youtube_video_title.prop('disabled', false);
+        youtube_video_title.css("background-color", "white");
 
     }else if(!this.checked){
         modalInput_pasteURL.prop('disabled', true);
         modalInput_pasteURL.css("background-color", "lightgrey");
-        modalBtn_browseVideo.prop('disabled', true);
-        modalBtn_browseVideo.css("background-color", "lightgrey");
+        modalBtn_choose_video_file.prop('disabled', true);
+        modalBtn_choose_video_file.css("background-color", "lightgrey");
+        youtube_video_title.prop('disabled', true);
+        youtube_video_title.css("background-color", "lightgrey");
     }
 });
 
 $(document).on('click', '#modalInputCB_uploadFrmGallery', function(){
     var modalInputCB_pasteUrl = $('#modalInputCB_pasteUrl');
     var modalInput_pasteURL = $('#modalInput_pasteURL');
-    var modalBtn_browseVideo = $('#modalBtn_browseVideo');
-    var modalInput_pasteURL = $('#modalInput_pasteURL');
+    var modalBtn_choose_video_file = $('#modalBtn_choose_video_file');
     var videoPreviewDivContainer = $('#modalContainer_videoPreview');
+    var youtube_video_title = $('#youtube_video_title');
+
 
     if(this.checked){
         videoPreviewDivContainer.html('');
@@ -186,14 +227,16 @@ $(document).on('click', '#modalInputCB_uploadFrmGallery', function(){
         modalInputCB_pasteUrl.prop('checked', false);
         modalInput_pasteURL.prop('disabled', true);
         modalInput_pasteURL.css("background-color", "lightgrey");
-        modalBtn_browseVideo.prop('disabled', false);
-        modalBtn_browseVideo.css("background-color", "#3cabd0");
+        modalBtn_choose_video_file.prop('disabled', false);
+        modalBtn_choose_video_file.css("background-color", "#3cabd0");
+        youtube_video_title.prop('disabled', true);
+        youtube_video_title.css("background-color", "lightgrey");
 
     }else if(!this.checked){
         modalInput_pasteURL.prop('disabled', true);
         modalInput_pasteURL.css("background-color", "lightgrey");
-        modalBtn_browseVideo.prop('disabled', true);
-        modalBtn_browseVideo.css("background-color", "lightgrey");
+        modalBtn_choose_video_file.prop('disabled', true);
+        modalBtn_choose_video_file.css("background-color", "lightgrey");
     }
 
 })
@@ -211,6 +254,87 @@ $(document).on('click', '#modalInputCB_renameVideo', function(){
     }
 });
 
+$('#modalDrpDown_selectVideo').on('change', function() {
+    var videoContentIdOfSelected = this.value;
+    setCategoryOfVideoToPublish(videoContentIdOfSelected);
+});
+
+function setCategoryOfVideoToPublish(pVideoContentIdOfSelected){
+    //alert("Data type of pVideoContentIdOfSelected: "+typeof pVideoContentIdOfSelected);
+    $.ajax({
+        url: 'controller/get_content_by_id.php',
+        type: 'POST',
+        data:{videoContentId: parseInt(pVideoContentIdOfSelected)},
+        dataType: 'json',
+        success: function (videoContent) {
+            //console.log(videoContent);
+            var contentCategory = videoContent['contentCategory'];
+            if(contentCategory === 1){
+                $('#modalLbl_videoCategoryHolder').text('Standard');
+            }else if(contentCategory === 0){
+                $('#modalLbl_videoCategoryHolder').text('Custom');
+            }
+
+
+        },
+        error: function (x, e) {
+            if (x.status == 0) {
+                alert('You are offline!!\n Please Check Your Network.');
+            } else if (x.status == 404) {
+                alert('Requested URL not found.');
+            } else if (x.status == 500) {
+                alert('Internal Server Error.');
+            } else if (e == 'parsererror') {
+                alert('Error.\nParsing JSON Request failed.');
+            } else if (e == 'timeout') {
+                alert('Request Time out.');
+            } else {
+                alert('Unknown Error.\n' + x.responseText);
+            }
+        }
+    });
+}
+
+$('#modalDrpDown_pinOnTopic').on('change', function() {
+    var topicIdOfSelected = this.value;
+    loadLessonsByTopicId(topicIdOfSelected)
+});
+
+function loadLessonsByTopicId(pTopicId){
+    //alert(typeof pTopicId);
+    $.ajax({
+        url: 'controller/get_lessons_by_topic_id.php',
+        type: 'POST',
+        data:{topicId: parseInt(pTopicId)},
+        dataType: 'json',
+        success: function (lessonsData) {
+            console.log(lessonsData);
+            var len = lessonsData.length;
+            for (var i = 0; i < len; i++) {
+                var lessonId = lessonsData[i]['lessonId'];
+                var lessonTitle = lessonsData[i]['lessonTitle'];
+                $('#modalDrpDown_pinOnLesson').append("<option value=' " + lessonId + " ' >"    + lessonTitle +    "</option>" );
+            }
+        },
+        error: function (x, e) {
+            if (x.status == 0) {
+                alert('You are offline!!\n Please Check Your Network.');
+            } else if (x.status == 404) {
+                alert('Requested URL not found.');
+            } else if (x.status == 500) {
+                alert('Internal Server Error.');
+            } else if (e == 'parsererror') {
+                alert('Error.\nParsing JSON Request failed.');
+            } else if (e == 'timeout') {
+                alert('Request Time out.');
+            } else {
+                alert('Unknown Error.\n' + x.responseText);
+            }
+        }
+    });
+}
+
+
 //SHOW MODAL CALL IN
 $(document).on('click','#pageBtn_addNewTopic',showModal_addNewTopic);
 $(document).on('click','#pageBtn_uploadContent',showModal_uploadContent);
@@ -221,11 +345,12 @@ $(document).on('click', '#pageBtn_publishVideo', showModal_publishVideo);
 $(document).on('click', '#pageBtn_uploadPPT', showModal_uploadPPT);
 $(document).on('click', '#pageBtn_publishPPT', showModal_publishPPT);
 $(document).on('click', '#pageBtn_createNewSY', showModal_createNewSY);
+$(document).on('click', '#pageBtn_topicsPreview', openPreview);
 
 //CANCEL MODAL CALL IN
 $(document).on('click', '#modalBtn_addNewTopic_cancel', closeModal_addNewTopic);
 $(document).on('click', '#modalBtn_uploadFile_cancel', closeModal_uploadContent);
-$(document).on('click','#modalBtn_uploadVideo_cancel',closeModal_uploadVideo);
+$(document).on('click', '#modalBtn_uploadVideo_cancel',closeModal_uploadVideo);
 $(document).on('click', '#modalBtn_addNewSection_cancel', closeModal_addNewSection);
 $(document).on('click', '#modalBtn_transfer_cancel', closeModal_transferStudent);
 $(document).on('click', '#modalBtn_publishVideo_cancel', closeModal_publishVideo);
@@ -249,6 +374,7 @@ $(document).on('click', '.close_createNewSY', closeModal_createNewSY);
 //ADD/CREATE CALL IN
 $(document).on('click', '#modalBtn_addNewTopic_add', validateAddNewTopic);
 $(document).on('click', '#modalBtn_addNewSection_add', addNewSection);
+$(document).on('click','#modalBtn_publishVideo_publish',publishVideoOnModal);
 
 function resetModalForm(){
     var modalInput_pasteURL = $('#modalInput_pasteURL');
@@ -277,13 +403,25 @@ function resetModalForm(){
 //SHOW MODAL FUNCTIONS
 function showModal_addNewTopic(){
     $('#container_modalAddNewTopic').show();
+
 }
+
 function showModal_uploadContent() {
     $('#container_modalUploadContent').show();
 
 }
 function showModal_uploadVideo(){
     $('#container_modalUploadVideo').show();
+
+    $("#youtube_video_title").prop('disable', true);
+    $("#youtube_video_title").css("background-color", "lightgrey");
+    $("#modalInput_pasteURL").prop('disable', true);
+    $("#modalInput_pasteURL").css("background-color", "lightgrey");
+    $("#modalBtn_choose_video_file").prop('disable', true);
+    $("#modalBtn_choose_video_file").css("background-color", "lightgrey");
+    $("#modalInput_renameVideo").prop('disable', true);
+    $("#modalInput_renameVideo").css("background-color", "lightgrey");
+
 }
 function showModal_publishVideo(){
     $('#container_modalPublishVideo').show();
@@ -314,6 +452,7 @@ function showModal_OpenTopicLessons(pTopicId){
             var topicTitle = topic['topicTitle'];
             console.log(topicTitle);
 
+            $("#modalLbl_topicId_container").text(topicID);
             $("#modalInput_topicTitle").val(topicTitle);
         },
         error: function (x, e) {
@@ -441,6 +580,43 @@ function addNewSection(){
             alert("isSuccessful: "+isSuccessful);
             alert("Successfully Added Section!");
             $('#container_modalAddNewSection').hide();
+        },
+        error: function (x, e) {
+            if (x.status == 0) {
+                alert('You are offline!!\n Please Check Your Network.');
+            } else if (x.status == 404) {
+                alert('Requested URL not found.');
+            } else if (x.status == 500) {
+                alert('Internal Server Error.');
+            } else if (e == 'parsererror') {
+                alert('Error.\nParsing JSON Request failed.');
+            } else if (e == 'timeout') {
+                alert('Request Time out.');
+            } else {
+                alert('Unknown Error.\n' + x.responseText);
+            }
+        }
+    });
+}
+
+function publishVideoOnModal(evt){
+
+    alert("test ng publish");
+    var contentId =  $('#modalDrpDown_selectVideo').find(":selected").val();
+    var topicId = $('#modalDrpDown_pinOnTopic').find(":selected").val();
+    var lessonId = $('#modalDrpDown_pinOnLesson').find(":selected").val();
+    $.ajax({
+        url:"controller/add_content_topic_lesson.php",
+        type:"POST",
+        data:{
+            contentId: parseInt(contentId),
+            topicId : parseInt(topicId),
+            lessonId : parseInt(lessonId),
+        },
+        success: function(isSuccessful){
+            console.log("Is Publishing of video Successful: "+isSuccessful);
+            alert("Successfully Published Video!");
+            $('#container_modalPublishVideo').hide();
         },
         error: function (x, e) {
             if (x.status == 0) {
@@ -623,6 +799,100 @@ function loadTeachersToDropDown() {
                 var middleName = data[i]['middleinitial'];
                 var completeName = lastName +", "+firstName+" "+middleName;
                 $('#modalDrpDown_selectSectionTeacher').append("<option value='" + userId + "'>" + completeName+ "</option>");
+            }
+        },
+        error: function (x, e) {
+            if (x.status == 0) {
+                alert('You are offline!!\n Please Check Your Network.');
+            } else if (x.status == 404) {
+                alert('Requested URL not found.');
+            } else if (x.status == 500) {
+                alert('Internal Server Error.');
+            } else if (e == 'parsererror') {
+                alert('Error.\nParsing JSON Request failed.');
+            } else if (e == 'timeout') {
+                alert('Request Time out.');
+            } else {
+                alert('Unknown Error.\n' + x.responseText);
+            }
+        }
+    });
+}
+
+function loadSectionsToPublishVideoModalSectionsDropdown(){
+    $.ajax({
+        url: 'controller/get_all_active_sections.php',
+        type: 'POST',
+        dataType: 'json',
+        success: function (sectionData) {
+            var len = sectionData.length;
+            for (var i = 0; i < len; i++) {
+                var section_id = sectionData[i]['sectionId'];
+                var section_name = sectionData[i]['sectionName'];
+                $('#modalDrpDown_assignToSection').append("<option value=' " + section_id + " ' >"    + section_name +    "</option>" );
+            }
+        },
+        error: function (x, e) {
+            if (x.status == 0) {
+                alert('You are offline!!\n Please Check Your Network.');
+            } else if (x.status == 404) {
+                alert('Requested URL not found.');
+            } else if (x.status == 500) {
+                alert('Internal Server Error.');
+            } else if (e == 'parsererror') {
+                alert('Error.\nParsing JSON Request failed.');
+            } else if (e == 'timeout') {
+                alert('Request Time out.');
+            } else {
+                alert('Unknown Error.\n' + x.responseText);
+            }
+        }
+    });
+}
+
+function loadVideoTitlesToDropDown() {
+    $.ajax({
+        url: 'controller/get_all_video_titles.php',
+        type: 'POST',
+        dataType: 'json',
+        success: function (data) {
+            var len = data.length;
+            for (var i = 0; i < len; i++) {
+                //console.log(data[i]['id'] + ", " + data[i]['rolename']);
+                var videoContentId = data[i]['contentId'];
+                var videoContentName = data[i]['contentName'];
+                $('#modalDrpDown_selectVideo').append("<option value=' " + videoContentId + " ' >"    + videoContentName +    "</option>" );
+            }
+        },
+        error: function (x, e) {
+            if (x.status == 0) {
+                alert('You are offline!!\n Please Check Your Network.');
+            } else if (x.status == 404) {
+                alert('Requested URL not found.');
+            } else if (x.status == 500) {
+                alert('Internal Server Error.');
+            } else if (e == 'parsererror') {
+                alert('Error.\nParsing JSON Request failed.');
+            } else if (e == 'timeout') {
+                alert('Request Time out.');
+            } else {
+                alert('Unknown Error.\n' + x.responseText);
+            }
+        }
+    });
+}
+
+function loadTopicsToPinOnTopicDropDown() {
+    $.ajax({
+        url: 'controller/get_all_topic_record.php',
+        type: 'POST',
+        dataType: 'json',
+        success: function (topicData) {
+            var len = topicData.length;
+            for (var i = 0; i < len; i++) {
+                var topicId = topicData[i]['topicId'];
+                var topicTitle = topicData[i]['topicTitle'];
+                $('#modalDrpDown_pinOnTopic').append("<option value=' " + topicId + " ' >"    + topicTitle +    "</option>" );
             }
         },
         error: function (x, e) {
@@ -841,6 +1111,62 @@ function loadAllTopicsToTable(){
     });
 }
 
+function loadAllVideosToTable(){
+    var loadVideosToTable = $('#pageTable_videoRecord');
+    $.ajax({
+        url: 'controller/get_all_video_record.php',
+        type: 'POST',
+        dataType: 'json',
+        success: function(topicData){
+            console.log("Length: "+topicData.length);
+            var len = topicData.length;
+            loadTopicsToTable.find("tr:not(:first)").remove();
+            for (var i = 0; i < len; i++) {
+                var topicId = topicData[i]['topicId'];
+                var topicTitle = topicData[i]['topicTitle'];
+
+                $('#pageTable_topicRecord').append(
+                    "<tr><td>" + topicId + "</td>" +
+                    "<td>" + topicTitle + "</td>" +
+                    "<td>" + "-" + "</td>" +
+                    "<td>" + "-" + "</td>" +
+                    "<td>" + "-" + "</td>" +
+                    "<td>" + "-" + "</td>" +
+                    "<td>" + "-" + "</td>" +
+                    "<td>" + "-" + "</td>" +
+                    "<td>" + "-" + "</td>" +
+                    "<td>" + "-" + "</td>" +
+                    "<td>" + "-" + "</td>" +
+                    "<td>" + "-" + "</td>" +
+                    "<td>" + "<a id='"+topicId+"' class='open' href=''>Open</a>" + "</td>" +
+                    "<td>" + "<a id='' href='#'>" + "Remove" + "</a>" + "</td>" +
+                    "</tr>"
+                );
+            }
+            $('.open').click(function(ev){
+                ev.preventDefault();
+                //do something with click
+                showModal_OpenTopicLessons(ev.target.id);
+            });
+        },
+        error: function (x, e) {
+            if (x.status == 0) {
+                alert('You are offline!!\n Please Check Your Network.');
+            } else if (x.status == 404) {
+                alert('Requested URL not found.');
+            } else if (x.status == 500) {
+                alert('Internal Server Error.');
+            } else if (e == 'parsererror') {
+                alert('Error.\nParsing JSON Request failed.');
+            } else if (e == 'timeout') {
+                alert('Request Time out.');
+            } else {
+                alert('Unknown Error.\n' + x.responseText);
+            }
+        }
+    });
+}
+
 //REFRESH TOPIC RECORDS ON TABLE
 function refreshTopicRecord(){
     $.ajax({
@@ -887,4 +1213,8 @@ function openMediaTab(evt, mediaName) {
     evt.currentTarget.className += " active";
 }
 
+function openPreview(){
+    window.open("view/student_learn.php");
 
+
+}

@@ -10,6 +10,9 @@ $(document).ready(function(){
         $("#"+tab_id).addClass('current');
     })
 
+
+    $('#modalContainer_selectCoverage').prop('disabled', true);
+    $('#modalContainer_selectCoverage').css("background-color","lightgrey");
     searchTest()
 })
 
@@ -335,6 +338,166 @@ $(document).on('click', '#modalCB_FITB_manual', function(){
     }
 });
 
+$(document).on('click', '#modalCB_difficulty_custom', function(){
+    var modalCB_difficulty_custom = $('#modalCB_difficulty_custom');
+    var modalCB_difficulty_easy = $('#modalCB_difficulty_easy');
+    var modalCB_difficulty_intermediate = $('#modalCB_difficulty_intermediate');
+    var modalCB_difficulty_advanced = $('#modalCB_difficulty_advanced');
+    var modalInput_noOfEasy = $('#modalInput_noOfEasy');
+    var modalInput_noOfIntermediate = $('#modalInput_noOfIntermediate');
+    var modalInput_noOfAdvanced = $('#modalInput_noOfAdvanced');
+
+    if(this.checked){
+
+        modalCB_difficulty_easy.prop('checked', false);
+        modalCB_difficulty_intermediate.prop('checked', false);
+        modalCB_difficulty_advanced.prop('checked', false);
+
+        modalInput_noOfIntermediate.prop('disabled', false);
+        modalInput_noOfIntermediate.css("background-color", "white");
+        modalInput_noOfAdvanced.prop('disabled', false);
+        modalInput_noOfAdvanced.css("background-color", "white");
+        modalInput_noOfEasy.prop('disabled', false);
+        modalInput_noOfEasy.css("background-color", "white");
+
+    }else if(!this.checked){
+        modalCB_difficulty_easy.prop('checked', false);
+        modalCB_difficulty_intermediate.prop('checked', false);
+        modalCB_difficulty_advanced.prop('checked', false);
+
+        modalInput_noOfIntermediate.prop('disabled', false);
+        modalInput_noOfIntermediate.css("background-color", "white");
+        modalInput_noOfAdvanced.prop('disabled', false);
+        modalInput_noOfAdvanced.css("background-color", "white");
+        modalInput_noOfEasy.prop('disabled', false);
+        modalInput_noOfEasy.css("background-color", "white");
+
+    }
+});
+
+$(document).on('click', '#modalCB_difficulty_easy', function(){
+    var modalCB_difficulty_custom = $('#modalCB_difficulty_custom');
+    var modalCB_difficulty_intermediate = $('#modalCB_difficulty_intermediate');
+    var modalCB_difficulty_advanced = $('#modalCB_difficulty_advanced');
+    var modalInput_noOfEasy = $('#modalInput_noOfEasy');
+    var modalInput_noOfIntermediate = $('#modalInput_noOfIntermediate');
+    var modalInput_noOfAdvanced = $('#modalInput_noOfAdvanced');
+
+
+    if(this.checked){
+
+        modalCB_difficulty_custom.prop('checked', false);
+        modalCB_difficulty_intermediate.prop('checked', false);
+        modalCB_difficulty_advanced.prop('checked', false);
+
+        modalInput_noOfIntermediate.prop('disabled', true);
+        modalInput_noOfIntermediate.css("background-color", "lightgrey");
+        modalInput_noOfAdvanced.prop('disabled', true);
+        modalInput_noOfAdvanced.css("background-color", "lightgrey");
+        modalInput_noOfEasy.prop('disabled', false);
+        modalInput_noOfEasy.css("background-color", "white");
+
+
+    }else if(!this.checked){
+        modalCB_difficulty_custom.prop('checked', false);
+        modalCB_difficulty_intermediate.prop('checked', false);
+        modalCB_difficulty_advanced.prop('checked', false);
+
+        modalInput_noOfEasy.prop('disabled', false);
+        modalInput_noOfEasy.css("background-color", "white");
+        modalInput_noOfIntermediate.prop('disabled', false);
+        modalInput_noOfIntermediate.css("background-color", "white");
+        modalInput_noOfAdvanced.prop('disabled', false);
+        modalInput_noOfAdvanced.css("background-color", "white");
+    }
+});
+
+$(document).on('click', '#modalCB_difficulty_intermediate', function(){
+    var modalCB_difficulty_custom = $('#modalCB_difficulty_custom');
+    var modalCB_difficulty_advanced = $('#modalCB_difficulty_advanced');
+    var modalCB_difficulty_easy = $('#modalCB_difficulty_easy');
+    var modalInput_noOfEasy = $('#modalInput_noOfEasy');
+    var modalInput_noOfIntermediate = $('#modalInput_noOfIntermediate');
+    var modalInput_noOfAdvanced = $('#modalInput_noOfAdvanced');
+
+    if(this.checked){
+
+        modalCB_difficulty_custom.prop('checked', false);
+        modalCB_difficulty_easy.prop('checked', false);
+        modalCB_difficulty_advanced.prop('checked', false);
+
+        modalInput_noOfEasy.prop('disabled', true);
+        modalInput_noOfEasy.css("background-color", "lightgrey");
+        modalInput_noOfAdvanced.prop('disabled', true);
+        modalInput_noOfAdvanced.css("background-color", "lightgrey");
+        modalInput_noOfIntermediate.prop('disabled', false);
+        modalInput_noOfIntermediate.css("background-color", "white");
+
+    }else if(!this.checked){
+        modalCB_difficulty_custom.prop('checked', false);
+        modalCB_difficulty_easy.prop('checked', false);
+        modalCB_difficulty_advanced.prop('checked', false);
+
+        modalInput_noOfEasy.prop('disabled', false);
+        modalInput_noOfEasy.css("background-color", "white");
+        modalInput_noOfAdvanced.prop('disabled', false);
+        modalInput_noOfAdvanced.css("background-color", "white");
+        modalInput_noOfIntermediate.prop('disabled', false);
+        modalInput_noOfIntermediate.css("background-color", "white");
+
+    }
+});
+
+$(document).on('click', '#modalCB_difficulty_advanced', function(){
+    var modalCB_difficulty_custom = $('#modalCB_difficulty_custom');
+    var modalCB_difficulty_intermediate = $('#modalCB_difficulty_intermediate');
+    var modalCB_difficulty_easy = $('#modalCB_difficulty_easy');
+    var modalInput_noOfEasy = $('#modalInput_noOfEasy');
+    var modalInput_noOfIntermediate = $('#modalInput_noOfIntermediate');
+    var modalInput_noOfAdvanced = $('#modalInput_noOfAdvanced');
+
+    if(this.checked){
+
+        modalCB_difficulty_custom.prop('checked', false);
+        modalCB_difficulty_easy.prop('checked', false);
+        modalCB_difficulty_intermediate.prop('checked', false);
+
+        modalInput_noOfEasy.prop('disabled', true);
+        modalInput_noOfEasy.css("background-color", "lightgrey");
+        modalInput_noOfIntermediate.prop('disabled', true);
+        modalInput_noOfIntermediate.css("background-color", "lightgrey");
+        modalInput_noOfAdvanced.prop('disabled', false);
+        modalInput_noOfAdvanced.css("background-color", "white");
+
+    }else if(!this.checked){
+        modalCB_difficulty_custom.prop('checked', false);
+        modalCB_difficulty_easy.prop('checked', false);
+        modalCB_difficulty_intermediate.prop('checked', false);
+
+        modalInput_noOfEasy.prop('disabled', false);
+        modalInput_noOfEasy.css("background-color", "white");
+        modalInput_noOfIntermediate.prop('disabled', false);
+        modalInput_noOfIntermediate.css("background-color", "white");
+        modalInput_noOfAdvanced.prop('disabled', false);
+        modalInput_noOfAdvanced.css("background-color", "white");
+    }
+});
+
+$(document).on('click', '#modalCB_coverage', function(){
+    var modalContainer_selectCoverage = $('#modalContainer_selectCoverage');
+
+    if(this.checked){
+
+        modalContainer_selectCoverage.prop('disabled', false);
+        modalContainer_selectCoverage.css("background-color", "white");
+
+    }else if(!this.checked){
+
+        modalContainer_selectCoverage.prop('disabled', true);
+        modalContainer_selectCoverage.css("background-color", "lightgrey");
+    }
+});
+
 //ONCHANGE DROPDOWN
 $('#modalDrpDown_selectTest').on('change', function() {
     var testSelect = this.value;
@@ -376,7 +539,6 @@ function showModal_publishTest(){
 function showModal_addQuestion(){
     $('#container_modalAddQuestion').show();
 
-
 }
 
 //CLOSE MODAL FUNCTION
@@ -395,7 +557,6 @@ function closeModal_addQuestion(){
 
 //VALIDATION FUNCTION
 function validateEmptyFields() {
-    console.log("PASOK NA BES!!!!!");
 
     var selectTest = $("#modalDrpDown_selectTest option:selected").text();
     var testName = $("#modalInput_testName").val();
@@ -410,7 +571,7 @@ function validateEmptyFields() {
     var easyIsNotChecked =  $("#modalCB_difficulty_easy").prop(':checked' , false);
     var intermediateIsNotChecked =  $("#modalCB_difficulty_intermediate").prop(':checked' , false);
     var advancedIsNotChecked =  $("#modalCB_difficulty_advanced").prop(':checked' , false);
-    var customIsNotChecked =  $("#modalCB_difficulty_custom").prop(':checked' , false);
+    var customIsNotChecked =  $("#modalCB_difficulty_custom").prop('checked' , false);
     var coverageMenu = $("#modalContainer_selectCoverage");
     var cbCoverageContainer =  $("#modalContainer_coverage");
     var difficultyContainer = $("#modalContainer_difficulty");

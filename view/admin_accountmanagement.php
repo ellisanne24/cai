@@ -52,7 +52,7 @@ require_once '../core/init.php';
     </div>
     <div class="table_wrapper" id="table_wrapper">
         <table id="table_users_record">
-            <tr>
+            <tr class="row">
                 <th>User ID</th>
                 <th>Role</th>
                 <th>Username</th>
@@ -171,7 +171,7 @@ require_once '../core/init.php';
             <form>
                 <label class="modal_label">
                     Section
-                    <select class="dropDown" id="modalDrpDown_section">
+                    <select class="dropDown" id="modalDrpDown_uploadCSV_section">
                         <option value="Select" class="option">Select</option>
                     </select>
                 </label><br>

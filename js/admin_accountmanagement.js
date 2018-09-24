@@ -1,12 +1,10 @@
 console.log('admin_accountmanagement.js is loaded');
 $(document).ready(function(){
-    loadRolesToDropDown();
 
-    //setInterval(function(){
-    //    loadAllUsersToTable();
-    //},1000);
+    loadRolesToDropDown();
     loadAllUsersToTable();
     searchUser();
+    loadToDrpdown_uploadCSV_sections();
 
 });
 
@@ -72,6 +70,7 @@ $('#modalInput_browseFiles').on('change', function (e) {
     return false;
 });
 
+
 function reset_form(){
     $("#modalDrpDown_selectRole").val($("#modalDrpDown_selectRole option:first").val());
     $("#modalDrpDown_section").prop($("#modalDrpDown_section option:first").val());
@@ -136,7 +135,8 @@ function addUser(){
                     },
                     success: function(isSuccessful){
                         console.log("isSuccessful: "+isSuccessful);
-                        alert("Successful added user.");
+                        alert("Successfully Added User.");
+                        $("#container_modalAddNewUser").hide();
                     },
                     error: function (x, e) {
                         if (x.status == 0) {
@@ -156,7 +156,8 @@ function addUser(){
                 });
             }else{
                 validation_div.html('');
-                validation_div.append('<label>Password must contain at least 8 characters.</label>');
+                validation_div.append('<label id="validation_password">Password must contain at least 8 characters.</label>');
+                $("#validation_password").css("text-color","red");
             }
         }else{
             validation_div.html('');
@@ -301,57 +302,10 @@ function loadRolesToDropDown() {
     });
 }
 
-function loadToDrpdown_uploadViaCSV(){
-    var modalDrpDown_section = $('#modalDrpDown_section');
-    $.ajax({
-        url: 'controller/get_section_info_by_id.php',
-        type: 'POST',
-        dataType: 'json',
-        success: function (data) {
-            //alert("Successful retrieved JSON from PHP.");
-            var len = data.length;
-            //$("#roledropdown").empty();
-            loadToDrpdown_uploadViaCSV.append("<option value='" + sectionId + "'>" + 'Select' + "</option>");
-            for (var i = 0; i < len; i++) {
-                console.log(data[i]['topicId']+", "+data[i]['topicTitle']);
-                var sectionId = data[i]['topicId'];
-                var sectionName = data[i]['topicTitle'];
-                loadToDrpdown_uploadViaCSV.append("<option value='" + sectionId + "'>" + sectionName + "</option>");
-            }
-        },
-        error: function (x, e) {
-            if (x.status == 0) {
-                alert('You are offline!!\n Please Check Your Network.');
-            } else if (x.status == 404) {
-                alert('Requested URL not found.');
-            } else if (x.status == 500) {
-                alert('Internal Server Error.');
-            } else if (e == 'parsererror') {
-                alert('Error.\nParsing JSON Request failed.');
-            } else if (e == 'timeout') {
-                alert('Request Time out.');
-            } else {
-                alert('Unknown Error.\n' + x.responseText);
-            }
-        }
-    });
+function loadToDrpdown_uploadCSV_sections() {
+    var modalDrpDown_uploadCSV_section = $('#modalDrpDown_uploadCSV_section');
+
 }
-
-function loadSectionsToDropDown() {
-    $.ajax({
-        url: 'controller/get_all_sections.php',
-        type: 'POST',
-        dataType: 'json',
-        success: function (sections) {
-            var len = sections.length;
-            for(var index = 0; i<len; i++){
-
-            }
-        }
-    });
-}
-
-
 
 //SHOW MODAL FUNCTIONS
 function showModal_addNewUser(){

@@ -31,10 +31,6 @@ class TopicDaoImpl implements TopicDao
 
     }
 
-    /**
-     * For filling dropdown
-     * @return array
-     */
     function getAllTopicTitle()
     {
         $topicsList = [];
@@ -56,6 +52,7 @@ class TopicDaoImpl implements TopicDao
         return $topicsList;
     }
 
+//    FOR LOADING TABLE
     function getAllTopicRecord()
     {
         $topicList = [];
@@ -103,6 +100,17 @@ class TopicDaoImpl implements TopicDao
         }
             return $topic;
     }
+
+    function addTopicLessons(Topic $topic, array $lesson)
+    {
+        $lessonDaoImpl  = new LessonDaoImpl($this->connection);
+        $lesson = new Lesson();
+
+        foreach($lesson as $les) {
+
+        }
+    }
+
 
 }
 

@@ -11,10 +11,48 @@ class Content implements JsonSerializable{
     private $contentId;
     private $contentName;
     private $contentType;
+    private $contentCategory;
     private $contentFileExtension;
     private $contentUrl;
     private $dateAdded;
     private $isContentActive;
+    private $isPublished;
+
+    /**
+     * @return mixed
+     */
+    public function getIsPublished()
+    {
+        return $this->isPublished;
+    }
+
+    /**
+     * @param mixed $isPublished
+     */
+    public function setIsPublished($isPublished)
+    {
+        $this->isPublished = $isPublished;
+    }
+
+
+
+    /**
+     * @return mixed
+     */
+    public function getContentCategory()
+    {
+        return $this->contentCategory;
+    }
+
+    /**
+     * @param mixed $contentCategory
+     */
+    public function setContentCategory($contentCategory)
+    {
+        $this->contentCategory = $contentCategory;
+    }
+
+
 
     public function getContentId(){
         return $this->contentId;
@@ -63,23 +101,18 @@ class Content implements JsonSerializable{
         return json_encode($this);
     }
 
-    /**
-     * (PHP 5 &gt;= 5.4.0)<br/>
-     * Specify data which should be serialized to JSON
-     * @link http://php.net/manual/en/jsonserializable.jsonserialize.php
-     * @return mixed data which can be serialized by <b>json_encode</b>,
-     * which is a value of any type other than a resource.
-     */
     function jsonSerialize()
     {
         return [
             'contentId' => $this->contentId,
             'contentName' => $this->contentName,
+            'contentCategory' => $this->contentCategory,
             'contentType' => $this->contentType,
             'contentFileExtension' => $this->contentFileExtension,
             'contentUrl' => $this->contentUrl,
             'dateAdded' => $this->dateAdded,
             'isContentActive' => $this->isContentActive,
+            'isPublished' => $this->isPublished,
         ];
     }
 

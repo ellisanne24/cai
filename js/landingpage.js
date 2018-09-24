@@ -18,6 +18,7 @@ var navitem_student_review = $("#student_review");
 
 var roleObj = JSON.parse(role);
 var logout = $('#logout');
+
 /* END */
 
 $(document).ready(function () {

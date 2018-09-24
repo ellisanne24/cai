@@ -18,6 +18,7 @@ require_once '../core/init.php';
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="//resources/demos/style.css">
     <link href="http://hayageek.github.io/jQuery-Upload-File/4.0.11/uploadfile.css" rel="stylesheet">
+
 </head>
 
 <body>
@@ -42,12 +43,12 @@ require_once '../core/init.php';
     <button id="Sections" class="tabLinks" onclick="openTab(event, 'wrapperSections')">
         Sections
     </button>
-    <button id="Reviewer" class="tabLinks" onclick="openTab(event, 'wrapperReviewers')">
-        Reviewers
-    </button>
-    <button id="Account" class="tabLinks" onclick="openTab(event, 'wrapperAccount')">
-        Account
-    </button>
+<!--    <button id="Reviewer" class="tabLinks" onclick="openTab(event, 'wrapperReviewers')">-->
+<!--        Reviewers-->
+<!--    </button>-->
+<!--    <button id="Account" class="tabLinks" onclick="openTab(event, 'wrapperAccount')">-->
+<!--        Account-->
+<!--    </button>-->
     <button id="SchoolYear" class="tabLinks" onclick="openTab(event, 'wrapperSchoolYear')">
         School Year
     </button>
@@ -65,9 +66,9 @@ require_once '../core/init.php';
         <button  class="button" id="pageBtn_topicsPreview">
             Preview
         </button>
-        <button class="button" id="pageBtn_uploadContent">
-            Upload Content
-        </button>
+<!--        <button class="button" id="pageBtn_uploadContent">-->
+<!--            Upload Content-->
+<!--        </button>-->
         <button class="button" id="pageBtn_addNewTopic">
             Add New Topic
         </button>
@@ -150,6 +151,7 @@ require_once '../core/init.php';
     </div>
 </div>
 <!----------------------------------------------------------------------------------------------------------->
+
 <!--MODAL - OPEN TOPIC DETAILS-->
 <div class="modal" id="container_modalOpenTopicDetails" >
     <div class="modal_content_openTopicDetails">
@@ -162,6 +164,7 @@ require_once '../core/init.php';
         <div class="modal_body">
             <form class="container_topicInfo" id="modalForm_openTopicDetails" action="" method="post">
                 <br>
+                <label>Topic Id</label>&nbsp;<label class="modal_label" id = "modalLbl_topicId_container"></label><br/>
                 <label class="modal_label" id="modalLbl_topicTitle">
                     Topic Title
                     <input class="modal_input_custom" id="modalInput_topicTitle" type="text"
@@ -173,17 +176,26 @@ require_once '../core/init.php';
                     <br>
                 <hr/>
                 </form>
-                <label class="modal_label_medium" id="modalLbl_lessonsList">Lessons List</label>&emsp; &emsp; &emsp;
+                <input class="modal_inputbox" id="modalInput_addLessonNumber" type="text" placeholder="Enter Lesson No. (Numeric only)"><br>
+                <br>
+                <input class="modal_inputbox" id="modalInput_addLessonTitle" type="text" placeholder="Enter Lesson Title">
+                <br>
+                <label class="modal_label" id="modalLbl_addLesson_ERROR">
+
+                </label>
                 <button class="button" id="modalBtn_addNewLesson" type="submit" name="modalBtnName_addNewLesson">
-                    Add New Lesson
-                </button>
+                    Add Lesson
+                </button><br>
+                <br>
                 <hr/>
+            <label class="modal_label_medium" id="modalLbl_lessonsList">Lessons List</label>&emsp; &emsp; &emsp;
                 <div class="container_topicInfo" id="container_lessonsTable"> <!--  THIS WILL BE INSERTED START-->
                     <table class="modal_tableLabel" id="table_lessonsRecord">
                         <tr>
-                            <th>Lesson No.</th>
+                            <th width="10%">Choose</th>
+                            <th width="10%">Lesson No.</th>
                             <th>Lesson Title</th>
-                            <th colspan="3">Action</th>
+                            <th colspan="2">Action</th>
                         </tr>
                     </table>
                  </div><!--  THIS WILL BE INSERTED END-->
@@ -229,91 +241,93 @@ require_once '../core/init.php';
 
     </div>
 </div>
+
+
 <!----------------------------------------------------------------------------------------------------------->
 <!--MODAL - UPLOAD NEW CONTENT-->
-<div class="modal" id="container_modalUploadContent" >
-    <div class="modal_content_uploadContent">
-        <div class="modal_header_uploadNewContent">
-            <span class="close_uploadContent">&times;</span>
-            <h4 class="modal_header_label">Upload Content</h4>
-        </div>
-
-        <div class="modal_body">
-            <form class="container_UserInfo" id="modalForm_uploadFile" action="" method="post">
-                <label class="modal_label" id="modalLbl_fileType">
-                    File Type
-                    <select class="dropDown" id="modalDrpDown_fileType">
-                        <option value="Video" class="option">Video</option>
-                        <option value="Powerpoint(PPT)" class="option">Powerpoint(PPT)</option>
-                        <option value="Enrichment" class="option">Enrichment</option>
-                        <option value="Game" class="option">Game</option>
-                    </select><br>
-                </label><br>
-                <br>
-                <label class="modal_label" id="modalLbl_chooseFile">
-                    Choose File
-                    <input type="file" id="modalBtn_chooseFile" class="modalbtn_browseFiles" value="Browse Files"/><br>
-                </label><br>
-                <hr/>
-                <label class="modal_label" id="modalLbl_fileName">
-                    File Name
-                    <input class="modal_inputbox" id="modalInput_fileName" type="text" name="modalInputName_fileName" placeholder="Optional"><br>
-                </label><br>
-                <br>
-                <label class="modal_label" id="modalLbl_assignToTopic">
-                    Assign to Topic
-                    <select class="dropDown" id="modalDrpDown_assignToTopic"></select><br>
-                </label><br>
-                <br>
-                <label class="modal_label" id="modalLbl_assignToLesson">
-                    Assign to Lesson
-                    <select class="dropDown" id="modalDrpDown_assignToLesson">
-                        <option value="Multiplication:Lesson 1" class="option">Multiplication:Lesson 1</option>
-                        <option value="Multiplication:Lesson 2" class="option">Multiplication:Lesson 2</option>
-                        <option value="Multiplication:Lesson 3" class="option">Multiplication:Lesson 3</option>
-                        <option value="Multiplication:Lesson 4" class="option">Multiplication:Lesson 4</option>
-                        <option value="Multiplication:Lesson 5" class="option">Multiplication:Lesson 5</option>
-                        <option value="Multiplication:Lesson 6" class="option">Multiplication:Lesson 6</option>
-                        <option value="Multiplication:Lesson 7" class="option">Multiplication:Lesson 7</option>
-                        <option value="Multiplication:Lesson 8" class="option">Multiplication:Lesson 8</option>
-                        <option value="Multiplication:Lesson 9" class="option">Multiplication:Lesson 9</option>
-                        <option value="Multiplication:Lesson 10" class="option">Multiplication:Lesson 10</option>
-                        <option value="Division:Lesson 1" class="option">Division:Lesson 1</option>
-                        <option value="Division:Lesson 2" class="option">Division:Lesson2</option>
-                        <option value="Division:Lesson 3" class="option">Division:Lesson 3</option>
-                        <option value="Division:Lesson 4" class="option">Division:Lesson 4</option>
-                        <option value="Division:Lesson 5" class="option">Division:Lesson 5</option>
-                        <option value="Division:Lesson 6" class="option">Division:Lesson 6</option>
-                        <option value="Division:Lesson 7" class="option">Division:Lesson 7</option>
-                        <option value="Division:Lesson 8" class="option">Division:Lesson 8</option>
-                        <option value="Fractions:Lesson 1" class="option">Fractions:Lesson 1</option>
-                        <option value="Fractions:Lesson 2" class="option">Fractions:Lesson 2</option>
-                        <option value="Fractions:Lesson 3" class="option">Fractions:Lesson 3</option>
-                        <option value="Fractions:Lesson 4" class="option">Fractions:Lesson 4</option>
-                    </select><br>
-                </label><br>
-                <hr/>
-                <label class="modal_label" id="modalLbl_uploadFileStatus">
-                    Status
-                    <select class="dropDown" id="modalDrpDown_uploadFileStatus">
-                        <option value="Active" class="option">Active</option>
-                        <option value="Inactive" class="option">Inactive</option>
-                    </select><br>
-                </label><br>
-                <hr/>
-            </form>
-        </div>
-
-        <div class="modal_footer">
-            <button class="btn_modalFooter" id="modalBtn_uploadFile_upload" type="submit" name="modalBtnName_uploadFile_upload">
-                Upload
-            </button>
-            <button class="btn_modalFooter" id="modalBtn_uploadFile_cancel" type="submit" name="modalBtnName_uploadFile_cancel">
-                Cancel
-            </button>
-        </div>
-    </div>
-</div>
+<!--<div class="modal" id="container_modalUploadContent" >-->
+<!--    <div class="modal_content_uploadContent">-->
+<!--        <div class="modal_header_uploadNewContent">-->
+<!--            <span class="close_uploadContent">&times;</span>-->
+<!--            <h4 class="modal_header_label">Upload Content</h4>-->
+<!--        </div>-->
+<!---->
+<!--        <div class="modal_body">-->
+<!--            <form class="container_UserInfo" id="modalForm_uploadFile" action="" method="post">-->
+<!--                <label class="modal_label" id="modalLbl_fileType">-->
+<!--                    File Type-->
+<!--                    <select class="dropDown" id="modalDrpDown_fileType">-->
+<!--                        <option value="Video" class="option">Video</option>-->
+<!--                        <option value="Powerpoint(PPT)" class="option">Powerpoint(PPT)</option>-->
+<!--                        <option value="Enrichment" class="option">Enrichment</option>-->
+<!--                        <option value="Game" class="option">Game</option>-->
+<!--                    </select><br>-->
+<!--                </label><br>-->
+<!--                <br>-->
+<!--                <label class="modal_label" id="modalLbl_chooseFile">-->
+<!--                    Choose File-->
+<!--                    <input type="file" id="modalBtn_chooseFile" class="modalbtn_browseFiles" value="Browse Files"/><br>-->
+<!--                </label><br>-->
+<!--                <hr/>-->
+<!--                <label class="modal_label" id="modalLbl_fileName">-->
+<!--                    File Name-->
+<!--                    <input class="modal_inputbox" id="modalInput_fileName" type="text" name="modalInputName_fileName" placeholder="Optional"><br>-->
+<!--                </label><br>-->
+<!--                <br>-->
+<!--                <label class="modal_label" id="modalLbl_assignToTopic">-->
+<!--                    Assign to Topic-->
+<!--                    <select class="dropDown" id="modalDrpDown_assignToTopic"></select><br>-->
+<!--                </label><br>-->
+<!--                <br>-->
+<!--                <label class="modal_label" id="modalLbl_assignToLesson">-->
+<!--                    Assign to Lesson-->
+<!--                    <select class="dropDown" id="modalDrpDown_assignToLesson">-->
+<!--                        <option value="Multiplication:Lesson 1" class="option">Multiplication:Lesson 1</option>-->
+<!--                        <option value="Multiplication:Lesson 2" class="option">Multiplication:Lesson 2</option>-->
+<!--                        <option value="Multiplication:Lesson 3" class="option">Multiplication:Lesson 3</option>-->
+<!--                        <option value="Multiplication:Lesson 4" class="option">Multiplication:Lesson 4</option>-->
+<!--                        <option value="Multiplication:Lesson 5" class="option">Multiplication:Lesson 5</option>-->
+<!--                        <option value="Multiplication:Lesson 6" class="option">Multiplication:Lesson 6</option>-->
+<!--                        <option value="Multiplication:Lesson 7" class="option">Multiplication:Lesson 7</option>-->
+<!--                        <option value="Multiplication:Lesson 8" class="option">Multiplication:Lesson 8</option>-->
+<!--                        <option value="Multiplication:Lesson 9" class="option">Multiplication:Lesson 9</option>-->
+<!--                        <option value="Multiplication:Lesson 10" class="option">Multiplication:Lesson 10</option>-->
+<!--                        <option value="Division:Lesson 1" class="option">Division:Lesson 1</option>-->
+<!--                        <option value="Division:Lesson 2" class="option">Division:Lesson2</option>-->
+<!--                        <option value="Division:Lesson 3" class="option">Division:Lesson 3</option>-->
+<!--                        <option value="Division:Lesson 4" class="option">Division:Lesson 4</option>-->
+<!--                        <option value="Division:Lesson 5" class="option">Division:Lesson 5</option>-->
+<!--                        <option value="Division:Lesson 6" class="option">Division:Lesson 6</option>-->
+<!--                        <option value="Division:Lesson 7" class="option">Division:Lesson 7</option>-->
+<!--                        <option value="Division:Lesson 8" class="option">Division:Lesson 8</option>-->
+<!--                        <option value="Fractions:Lesson 1" class="option">Fractions:Lesson 1</option>-->
+<!--                        <option value="Fractions:Lesson 2" class="option">Fractions:Lesson 2</option>-->
+<!--                        <option value="Fractions:Lesson 3" class="option">Fractions:Lesson 3</option>-->
+<!--                        <option value="Fractions:Lesson 4" class="option">Fractions:Lesson 4</option>-->
+<!--                    </select><br>-->
+<!--                </label><br>-->
+<!--                <hr/>-->
+<!--                <label class="modal_label" id="modalLbl_uploadFileStatus">-->
+<!--                    Status-->
+<!--                    <select class="dropDown" id="modalDrpDown_uploadFileStatus">-->
+<!--                        <option value="Active" class="option">Active</option>-->
+<!--                        <option value="Inactive" class="option">Inactive</option>-->
+<!--                    </select><br>-->
+<!--                </label><br>-->
+<!--                <hr/>-->
+<!--            </form>-->
+<!--        </div>-->
+<!---->
+<!--        <div class="modal_footer">-->
+<!--            <button class="btn_modalFooter" id="modalBtn_uploadFile_upload" type="submit" name="modalBtnName_uploadFile_upload">-->
+<!--                Upload-->
+<!--            </button>-->
+<!--            <button class="btn_modalFooter" id="modalBtn_uploadFile_cancel" type="submit" name="modalBtnName_uploadFile_cancel">-->
+<!--                Cancel-->
+<!--            </button>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
 <!----------------------------------------------------------------------------------------------------------->
 <!--PAGE - VIDEO TAB-->
 <div class="tabContent" id="wrapperVideos">
@@ -368,7 +382,7 @@ require_once '../core/init.php';
                         Category
                         <select class="dropDown" id="modalDrpDown_selectVideoCategory">
                             <option value="Standard" class="option">Standard</option>
-                            <option value="Video File" class="option">Custom</option>
+                            <option value="VideoFile" class="option">Custom</option>
                         </select>
                     </label>
                     <hr />
@@ -457,6 +471,8 @@ require_once '../core/init.php';
                 <label class="modal_label" id="modalLbl_videoCategory">
                     Category:
                 </label>
+                <label class="modal_label" id="modalLbl_videoCategoryHolder"> </label>
+
                 <hr />
                 <div class="modalDiv_pinOnTopicContainer" id="modalDiv_pinOnTopicContainer">
                     <label class="modal_label">

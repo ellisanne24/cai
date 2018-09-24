@@ -8,7 +8,7 @@ for (i = 0; i < acc.length; i++) {
         if (panel.style.maxHeight){
             panel.style.maxHeight = null;
         } else {
-            panel.style.maxHeight = panel.scrollHeight + "px";
+            panel.style.maxHeight = panel.scrollHeight + "1px";
         }
     });
 }
@@ -18,4 +18,12 @@ $(".btn_lessons_Accordion").click(function(event){
     $("#lesson_title_display").html(valueOfButtonClicked);
 
 });
+
+
+$(document).ready(function(){
+
+
+
+});
+
 

@@ -13,8 +13,8 @@
 <div class="wrapper">
     <div class="lessons_Container">
         <div class="lessons_label_Container">
-            <img src="../../img/openbook.png" />
-            <label class="lessons_label">Learn Multiplication</label>
+            <img src="../img/openbookWhitesmoke.png" />
+            <label class="lessons_label" id="pageLbl_learnMultiplication">Learn Multiplication</label>
         </div>
         <div class="accordion_Container">
             <button class="btn_lessons" value="Start Pretest">Start Pretest</button>
@@ -24,24 +24,24 @@
             </button>
                 <div class="panel">
                     <div class="video_Container" id="lesson1_video">
-                        <img src="../../img/watchvideo.png" />
+                        <img src="../img/watchvideo.png" />
                         <button class="btn_video" id="lesson1_video">Watch Video</button>
                     </div>
                     <div class="ppt_Container">
-                        <img src="../../img/ppt.png" />
+                        <img src="../img/ppt.png" />
                         <button class="btn_textAndAudio">Read and/or Listen</button>
                     </div>
                     <div class="practice_Container">
-                        <img src="../../img/practice.png" />
+                        <img src="../img/practice.png" />
                         <button class="btn_practice">Let's Practice!</button>
                     </div>
                     <div class="enrichment_Container">
-                        <img src="../../img/enrichment.png" />
+                        <img src="../img/enrichment.png" />
                         <button class="btn_enrichment">Enrichment</button>
                     </div>
                     <div class="miniquiz_Container">
-                        <img src="../../img/miniquiz.png" />
-                        <button class="btn_miniquiz">Take Mini-quiz</button>
+                        <img src="../img/miniquiz.png" />
+                        <button class="btn_miniquiz">Take Lesson Quiz</button>
                     </div>
                 </div>
 <!-- Lesson 2-->
@@ -49,24 +49,24 @@
                 Lesson 2: Properties of Multiplication
             </button>
                 <div class="panel">
-                    <div class="video_Container">
-                        <img src="../../img/watchvideo.png" />
+                        <div class="video_Container">
+                        <img src="../img/watchvideo.png" />
                         <button class="btn_video">Watch Video</button>
                     </div>
                     <div class="ppt_Container">
-                        <img src="../../img/ppt.png" />
+                        <img src="../img/ppt.png" />
                         <button class="btn_textAndAudio">Read and/or Listen</button>
                     </div>
                     <div class="practice_Container">
-                        <img src="../../img/practice.png" />
+                        <img src="../img/practice.png" />
                         <button class="btn_practice">Let's Practice!</button>
                     </div>
                     <div class="enrichment_Container">
-                        <img src="../../img/enrichment.png" />
+                        <img src="../img/enrichment.png" />
                         <button class="btn_enrichment">Enrichment</button>
                     </div>
                     <div class="miniquiz_Container">
-                        <img src="../../img/miniquiz.png" />
+                        <img src="../img/miniquiz.png" />
                         <button class="btn_miniquiz">Take Mini-quiz</button>
                     </div>
                 </div>
@@ -75,7 +75,14 @@
                 Lesson 3: Multiplying Numbers without Regrouping
             </button>
                 <div class="panel">
-                    <p>video here</p>
+                    <div class="video_Container">
+                        <img src="../img/watchvideo.png" />
+                        <button class="btn_video">Watch Video</button>
+                    </div>
+                    <div class="ppt_Container">
+                        <img src="../img/ppt.png" />
+                        <button class="btn_textAndAudio">Read and/or Listen</button>
+                    </div>
                 </div>
 <!-- Lesson 4 -->
             <button class="btn_lessons_Accordion" value="Lesson 4: Multiplying Numbers with Regrouping">
@@ -127,7 +134,7 @@
                 <p>video here</p>
             </div>
 <!-- Unit Test-->
-            <button class="btn_lessons" value="Start Unit Test">Start Unit Test</button>
+<!--            <button class="btn_lessons" value="Start Unit Test">Start Unit Test</button>-->
 <!--Post Test-->
             <button class="btn_lessons" value="Start Post Test">Start Post Test</button>
 <!-- Play a Game-->
@@ -144,7 +151,7 @@
 
 
 </div>
-<script src="../../js/jquery-3.3.1.js"></script>
-<script src="../../js/js_student/student_topiclink.js"></script>
+    <script src="../js/jquery-3.3.1.js"></script>
+   <script src="../js/student_topiclink.js"></script>
 </body>
 </html>

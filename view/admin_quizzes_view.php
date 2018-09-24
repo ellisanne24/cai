@@ -546,6 +546,5 @@
             var urlb = "js/admin_quizzes.js";
             $.getScript(urlb);
         </script>
-
 </body>
 </html>

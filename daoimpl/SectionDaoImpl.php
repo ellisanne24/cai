@@ -50,6 +50,39 @@ class SectionDaoImpl implements SectionDao{//generate implement right click lng
         return $section;
     }
 
+    function getAllActiveSections()
+    {
+        $sectionsList = [];
+        try{
+            $SQL = "CALL getAllActiveSections()";
+            $sp_getAllSectionsInfo = $this->connection->prepare($SQL);
+            $sp_getAllSectionsInfo->execute();
+
+            $resultSet = $sp_getAllSectionsInfo->fetchAll(PDO::FETCH_ASSOC);
+            foreach($resultSet as $row){
+                $schoolYear = new SchoolYear();
+                $schoolYear->setSchoolYearId($row['schoolyear_id']);
+                $schoolYear->setYearFrom($row['yearfrom']);
+                $schoolYear->setYearTo($row['yearto']);
+                $schoolYear->setStartDate($row['start_date']);
+                $schoolYear->setEndDate($row['end_date']);
+                $schoolYear->setDateCreated($row['date_created']);
+
+                $section = new Section();
+                $section->setSectionId($row['section_id']);
+                $section->setSectionName($row['section_name']);
+                $section->setDateAdded($row['date_added']);
+                $section->setIsSectionActive($row['is_section_active']);
+                $section->setSchoolYear($schoolYear);
+
+                $sectionsList[] = $section;
+            }
+        }catch(PDOException $e){
+            die($e->getMessage());
+        }
+        return $sectionsList;
+    }
+
 
     function getAllSectionsInfo()
     {
@@ -83,7 +116,6 @@ class SectionDaoImpl implements SectionDao{//generate implement right click lng
         }
         return $sectionsList;
     }
-
 
     function addNewSection(Section $section)
     {

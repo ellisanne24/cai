@@ -6,8 +6,10 @@ require_once '../core/init.php';
 if(isset($_POST['completeYoutubeUrl']) && isset($_POST['youtubeVideoTitle'])){
     $contentUrl = $_POST['completeYoutubeUrl'];
     $contentName = $_POST['youtubeVideoTitle'];
+    $contentCategory = $_POST['contentCategory'];
 
     $content = new Content();
+    $content->setContentCategory($contentCategory);
     $content->setContentName($contentName);
     $content->setContentUrl($contentUrl);
     $content->setContentType('video');
